@@ -1,0 +1,1061 @@
+@charset "utf-8"
+// **************************************
+//
+//   #admin
+//
+// **************************************
+
+// -------------------------------------
+//   IMPORTS: Basic project imports
+//   Keep the order of imports
+//
+//   0. #requirements: Vendor libraries
+//   1. #settings:     Global variables, site-wide settings, config switches, etc.
+//   2. #tools:        Site-wide mixins and functions.
+//   3. #generic:      Low-specificity, far-reaching rulesets (e.g. resets).
+//   4. #base:         Unclassed HTML elements (e.g. a {}, blockquote {}, address {}).
+//   5. #objects:      Objects, abstractions, and design patterns (e.g. .media {}).
+//   6. #components:   Discrete, complete chunks of UI (e.g. .carousel {}). This is the one layer that inuitcss doesn’t get involved with.
+//   7. #trumps:       High-specificity, very explicit selectors. Overrides and helper classes (e.g. .hidden {}).
+// -------------------------------------
+
+// [0] #requirements
+@import "requirements"
+
+// [1] #settings
+@import "settings"
+
+// [2] #tools
+@import "tools"
+
+// [3] #generic
+@import "generic"
+
+// [4] #base
+@import "base"
+
+// [5] #objects
+@import "objects"
+@import "objects/object.containers"
+@import "objects/objects.rows"
+@import "objects/objects.buttons"
+@import "objects/objects.forms"
+@import "objects/objects.form-selects"
+@import "objects/objects.progressbar"
+@import "objects/objects.tables"
+@import "objects/objects.tabs"
+@import "objects/objects.lists"
+@import "objects/objects.text-effects"
+@import "objects/objects.alerts"
+@import "objects/objects.videos"
+
+// [6] #components
+@import "components/components.session"
+@import "components/components.header"
+@import "components/components.navbar"
+@import "components/components.date_time_picker"
+@import "components/components.slidebar"
+@import "components/components.themes"
+@import "components/components.dashboard"
+@import "components/components.dashboard_sidebar"
+@import "components/components.editor"
+@import "components/components.forum"
+@import "components/components.library"
+@import "components/components.pagination"
+
+
+
+
+// [7] #trumps
+@import "trumps"
+
+@import "structures/header_section"
+@import "structures/create_unit"
+@import "structures/list_thumbs"
+@import "structures/list_courses"
+@import "structures/list_managers"
+@import "structures/header_inline"
+@import "structures/blank_state"
+
+@import "uploadbox"
+// -------------------------------------
+//   Inbox
+// -------------------------------------
+[data-behavior="image-uploader"]
+  // display: none
+  .uploadbox-image-uploader.uploads-many
+    height: 64px !important
+    width: 100px !important
+
+  .btn.btn-file, input[type="file"]
+    height: 64px !important
+    width: 100px !important
+    background: transparent
+
+  .btn.btn-file .fileupload-new, .btn.btn-file .fileupload-new
+    height: 64px !important
+    width: 100px !important
+    background: transparent
+    color: white
+    font-size: 16px
+    top: 0
+    left: 0
+    margin: 0
+    line-height: 45px
+    margin-left: 0 !important
+    margin-top: 0 !important
+
+  [data-component="UploaderPreview"], [data-container="uploader"]
+    display: none
+
+  [data-container="uploader"]:first-child
+    display: block
+
+[data-component="VideoInput"]
+  position: relative
+  &[data-video-rendered="true"]
+    input
+      display: none
+  &[data-video-rendered="false"]
+    [data-behavior="remove"]
+      display: none
+
+  [data-behavior="remove"]
+    position: absolute
+    top: 0
+    right: 0
+  textarea
+    display: none
+
+label.checkbox
+  display: block
+  input
+    width: auto
+    margin-right: 5px
+    &:focus
+      outline: 0
+
+
+
+body, html
+  height: 100%
+  a
+    text-decoration: none
+
+body
+  background-color: #f4f7fb
+
+
+
+html.page--private
+
+  // ADMIN BUTTONS
+  .btn
+    font-family: $helvetica
+    text-transform: capitalize
+    padding: .7em 1.2em
+    line-height: 1
+    font-weight: 500
+
+    &:before
+      font-family: FontAwesome
+      margin-right: .5em
+      position: relative
+      bottom: -1px
+
+  .btn--primary
+    background-color: #37c544
+
+    &:hover
+      background-color: darken(#37c544, 10%)
+
+  .btn--secondary
+    background-color: #fff
+    color: #8c959d
+    box-shadow: inset 0 0 1px rgba(#8c959d, .9)
+
+    &:hover
+      color: darken(#8c959d, 10%)
+      box-shadow: inset 0 0 1px #333
+
+  .btn--delete
+    &:hover
+      color: #d30000
+      box-shadow: inset 0 0 1px red
+
+  .btn--view-course
+    background-color: lighten(#292e3a, 2%)
+    margin-top: 15px
+    margin-left: 30px
+    padding: 7px 20px
+    font-size: 12px
+    color: rgba(#e4ecff, .7)
+    font-weight: 400
+    border-radius: 100px
+    position: absolute
+
+    &:hover
+      color: rgba(#e4ecff, .9)
+
+
+  .btn-add-blue
+    font-size: 15px
+    color: #2db0cb
+    box-shadow: inset 0 0 1px rgba(#8c959d, .9)
+
+    &:before
+      font-family: FontAwesome
+      margin-right: 10px
+
+    &:hover
+      color: darken(#2db0cb, 10%)
+
+  .btn-group
+    +span(12)
+
+    .nav-section
+      +span(12)
+      padding: 20px
+
+
+  .btn-add-field
+    +span(12)
+    display: block
+    border-bottom: 1px solid #e9e9e9
+    padding: 15px 0
+
+    &:before
+      margin-right: 10px
+
+    &:hover
+      background-color: #fafed7
+
+
+      .btn-add-topic-icon
+        p
+          color: rgba(#8c959d, .6)
+
+      .btn-add-topic-text
+        h2
+          color: rgba(#8c959d, .6)
+
+
+    .btn-add-topic-icon
+      +span(2)
+      p
+        color: rgba(#8c959d, .3)
+        font-family: FontAwesome
+        font-size: 16px
+        text-align: center
+        margin: 0
+
+    .btn-add-topic-text
+      h2
+        color: rgba(#8c959d, .3)
+        font-size: 18px
+        font-weight: 400
+        margin: 0
+
+  .btn-add-question
+    +span(12)
+    display: block
+    border-bottom: 1px solid #e9e9e9
+    padding: 15px 0
+    background-color: lighten(#edeff0, 3%)
+
+    &:before
+      margin-right: 10px
+
+    &:hover
+      background-color: #fafed7
+
+
+      .btn-add-topic-icon
+        p
+          color: rgba(#8c959d, .6)
+
+      .btn-add-topic-text
+        h2
+          color: rgba(#8c959d, .6)
+
+
+    .btn-add-topic-icon
+      +span(2)
+      p
+        color: rgba(#8c959d, .3)
+        font-family: FontAwesome
+        font-size: 16px
+        text-align: center
+        margin: 0
+
+    .btn-add-topic-text
+      h2
+        color: rgba(#8c959d, .3)
+        font-size: 18px
+        font-weight: 400
+        margin: 0
+
+  .list-question
+    +span(12)
+    display: block
+    border-bottom: 1px solid #e9e9e9
+    padding: 15px 0
+    background-color: #edfcff
+
+
+    &:before
+      margin-right: 10px
+
+    &:hover
+      background-color: #fafed7
+
+
+      .btn-add-topic-icon
+        p
+          color: #8c959d
+
+      .btn-add-topic-text
+        h2
+          color: #2db0cb
+
+    .btn-add-topic-icon
+      +span(2)
+      p
+        color: #8c959d
+        font-family: FontAwesome
+        font-size: 16px
+        text-align: center
+        margin: 0
+
+    .btn-add-topic-text
+      h2
+        color: #2db0cb
+        font-size: 18px
+        margin: 0
+
+        span
+          color: #8c959d
+          text-transform: uppercase
+          font-size: 14px
+
+  .btn-edit-module
+    color: #5c646c
+    font-size: 12px
+    font-weight: 500
+    padding: .5em 1em
+    border: 1px solid rgba(#5c646c, .2)
+    border-radius: 4px
+    &:before
+      bottom: 0
+
+    &:hover
+      color: darken(#5c646c, 30%)
+      border: 1px solid rgba(#5c646c, .4)
+
+
+
+  p
+    color: #868b90
+
+  form
+    margin: 0
+
+  .error
+    color: #b74444
+    font-size: 14px
+    line-height: 250%
+
+  .input
+    .form-label
+      display: block
+
+  .box-edit-url
+    +span(12)
+    position: relative
+
+    .box-url
+      display: table-cell
+      white-space: nowrap
+
+      .label
+        display: inline-block
+        vertical-align: middle
+        padding-right: 10px
+        padding-left: 10px
+        line-height: 38px
+        background-color: #edeff0
+        border: 1px solid #ccc
+        cursor: default
+        margin-right: -1px
+        margin-top: -1px
+        color: rgba(#000, .6)
+        font-size: 13px
+
+    .box-url-edit
+      display: table-cell
+      width: 100%
+      .form__label
+        +clearfix
+
+      .input
+        display: inline-block
+        vertical-align: middle
+        width: 100%
+
+
+    input
+      border-top-left-radius: 0
+      border-bottom-left-radius: 0
+
+  span.hint
+    font-size: 12px
+    line-height: 1.3
+    color: #9a9a9a
+    vertical-align: top
+    display: block
+    padding: 0
+    margin: -5px 0 5px 0
+
+
+
+  .main
+    width: 100%
+    margin-left: 0
+    height: 100%
+    padding: 64px 0 0 240px
+    z-index: 3
+    float: left
+    background-color: #fff
+    position: absolute
+
+
+
+
+
+.section
+  +span(12)
+  padding: 0
+  margin: 0
+  min-height: 44px
+  background-color: #fff
+
+  .nav-top
+    font-size: 21px
+    font-weight: 500
+    color: #3b4358
+    padding: 0
+    padding-top: 5px
+    margin: 0
+    +span(7)
+
+    li
+      list-style: none
+      display: inline
+      margin: 0
+
+      a
+        color: #8c959d
+        font-weight: 400
+
+        &.btn-back
+          position: relative
+          padding-left: 20px
+
+          &:before
+            @extend .fa
+            content: $fa-var-angle-left
+            position: absolute
+            top: 0
+            left: 0
+            font-size: 24px
+            color: #8c959d
+
+          &:hover
+            color: darken(#8c959d, 10%)
+
+            &:before
+              color: darken(#8c959d, 10%)
+
+  .nav-section
+    +span(5)
+    padding: 0
+    text-align: right
+    margin: 0
+    li
+      list-style: none
+      display: inline
+      margin-left: 10px
+
+  .section-heading
+    border-bottom: 1px solid #e9e9e9
+    +span(12)
+    padding: 10px 15px
+
+    .section-title
+      font-size: 21px
+      font-weight: 400
+      color: #3b4358
+      padding-top: 8px
+      margin: 0
+      +span(7)
+
+      span, a
+        font-weight: 300
+
+        &.module-title
+          color: rgba(#5c646c, .6)
+          font-size: 17px
+          margin-left: 5px
+          &:hover
+            color: #5c646c
+
+          &:before
+            margin-right: 10px
+
+  fieldset
+    padding: 0
+    margin: 0
+
+  .section-body
+    +span(12)
+
+    a.ignored-students
+      float: right
+      padding: 20px
+      color: #868b90
+      font-size: 12px
+      font-style: italic
+
+      &:before
+        @extend .fa
+        content: $fa-var-angle-right
+        font-size: 12px
+        color: #8c959d
+        margin-right: 5px
+
+  .section-form
+    +span(12)
+    padding: 40px 0
+    border-bottom: 1px solid #e9e9e9
+
+    .panel-form
+      +span(12)
+      .panel-heading
+        +span(3)
+        padding: 0 30px 0 40px
+
+        .panel-title
+          font-size: 17px
+          font-weight: 500
+          color: #343434
+        p
+          font-size: 14px
+          font-weight: 200
+          color: rgba(#868b90, .6)
+          line-height: 160%
+
+      .panel-body
+        +span(8)
+
+        .btn-group
+          padding: 15px 0
+
+  .section-area
+    +span(12)
+    padding: 0 0 200px 0
+
+  .panel-area
+    +span(12)
+    .panel-heading
+      +span(3)
+      padding: 0 30px 0 40px
+
+      .panel-title
+        font-size: 17px
+        font-weight: 500
+        color: #343434
+      p
+        font-size: 14px
+        font-weight: 200
+        color: rgba(#868b90, .6)
+        line-height: 160%
+
+    .panel-body
+      +span(8)
+
+      .btn-group
+        padding: 15px 0
+
+
+  .panel-topico
+    +span(12)
+    border-bottom: 1px solid #e9e9e9
+    padding: 0
+    margin: 0
+
+    a
+      +span(12)
+      display: block
+      padding: 15px 0
+      margin: 0
+      position: relative
+
+      &:hover
+        background-color: #fafed7
+
+      &:after
+        @extend .fa
+        content: $fa-var-bars
+        position: absolute
+        top: 40%
+        right: 22px
+        font-size: 13px
+        color: #d6d8d9
+
+
+    .panel-heading
+      +span(2)
+      padding: 0
+      .panel-title
+        font-size: 18px
+        color: #8c959d
+        margin: 0
+        text-align: center
+    .panel-body
+      +span(8)
+      padding: 0
+      h2
+        margin: 0
+        color: #2db0cb
+        font-size: 18px
+
+  .panel-link, .panel-library
+    +span(12)
+    border-bottom: 1px solid #e9e9e9
+    padding: 0
+    margin: 0
+
+    a
+      +span(12)
+      display: block
+      padding: 15px 0
+      margin: 0
+      position: relative
+
+      &:hover
+        background-color: #fafed7
+
+    .panel-heading
+      +span(2)
+      padding: 0
+      .icon-file
+        font-size: 18px
+        font-family: FontAwesome
+        color: #8c959d
+        margin: 0
+        text-align: center
+    .panel-body
+      +span(8)
+      padding: 0
+      h2
+        margin: 0
+        color: #2db0cb
+        font-size: 18px
+      p
+        font-size: 12px
+        margin: 0
+
+  .panel-library
+    a
+      padding: 15px
+
+    .number-of-files
+      font-weight: normal
+      color: rgba(134, 139, 144, 0.6)
+
+    .panel-body
+      +span(12)
+
+    .filetype
+      +span(1)
+
+      .filetype-icon
+        width: 60%
+        display: block
+        margin: 0 auto
+        overflow: hidden
+
+    .file-details
+      +span(10)
+
+  p.library-category
+    background-color: #edeff0
+    margin-bottom: 0
+    font-weight: bold
+    padding: 15px
+    color: #444E58
+
+  .panel-tutor, .panel-student, .panel-student-pending
+    +span(12)
+    border-bottom: 1px solid #e9e9e9
+    padding: 0
+    margin: 0
+
+    a
+      +span(12)
+      display: block
+      padding: 10px 0
+      margin: 0
+
+      &:hover
+        background-color: #fafed7
+
+    .panel-avatar
+      +span(2)
+      padding: 0
+      text-align: center
+
+      .uploadbox-image-container
+        border: 1px solid #e9e9e9
+        width: 36px
+        height: 36px
+        border-radius: 100px
+        overflow: hidden
+        margin: 0 auto
+
+
+    .panel-name
+      +span(3)
+      padding: 0
+      text-align: center
+      h2
+        font-size: 18px
+        color: #2db0cb
+        margin: 0
+        text-align: left
+        line-height: 36px
+
+    .panel-email
+      +span(7)
+      +last
+      padding: 0
+      p
+        margin: 0
+        color: #8c959d
+        font-size: 18px
+        text-align: left
+        line-height: 36px
+
+  .panel-student
+    &:hover
+      background-color: #fafed7
+    a
+      +span(9)
+      display: inline
+      padding: 10px 0
+      margin: 0
+      .panel-avatar
+        +span(2)
+      .panel-name
+        +span(3)
+      .panel-email
+        +span(4)
+
+  .panel-student-pending
+    &:hover
+      background-color: #fafed7
+    a
+      +span(9)
+      display: inline
+      padding: 10px 0
+      margin: 0
+      .panel-avatar
+        +span(2)
+      .panel-name
+        +span(3)
+      .panel-email
+        +span(4)
+    .panel-actions
+      +span(3)
+      padding: 10px 0
+
+      .btn
+        width: 40%
+        margin-right: 5%
+
+      .btn--primary
+        &:hover
+          background-color: darken(#37c544, 10%)
+
+      .btn--secondary
+        &:hover
+          color: darken(#8c959d, 10%)
+          box-shadow: inset 0 0 1px #333
+
+      .btn--delete
+        &:hover
+          color: #d30000
+          background-color: white
+          box-shadow: inset 0 0 1px red
+
+  .panel-educadores
+    +span(12)
+    border: 1px solid red
+    border-bottom: 1px solid #e9e9e9
+
+
+    a
+      display: block
+      padding: 12px 0
+
+      &:hover
+        background-color: #e9e9e9
+
+    .panel-heading
+      +span(4)
+      padding: 0
+      border: 1px solid red
+      .panel-title
+        font-size: 16px
+        color: #2db0cb
+
+    .panel-body
+      +span(4)
+      padding: 0
+      p
+        color: #8c959d
+        font-size: 14px
+        font-weight: 400
+    .panel-footer
+      +span(3)
+      padding: 0
+      .btn
+        font-size: 14px
+        padding: 0
+        &.btn--secondary
+          box-shadow: none
+
+
+  .section-blank
+    +span(10)
+    +pre(1)
+    text-align: center
+    padding-top: 200px
+
+    &.blank-topics
+      background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL4AAADcCAYAAADOSBvMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBOEJEQkU5MEEzREUxMUUzQUNDOENCMUNFRjU5OEU4NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBOEJEQkU5MUEzREUxMUUzQUNDOENCMUNFRjU5OEU4NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkE4QkRCRThFQTNERTExRTNBQ0M4Q0IxQ0VGNTk4RTg0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkE4QkRCRThGQTNERTExRTNBQ0M4Q0IxQ0VGNTk4RTg0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+o2w/xwAABd5JREFUeNrs3E+I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') no-repeat 50% 30%
+      background-size: 95px 110px
+
+    &.blank-modules
+      background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBOEJEQkU5NEEzREUxMUUzQUNDOENCMUNFRjU5OEU4NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBOEJEQkU5NUEzREUxMUUzQUNDOENCMUNFRjU5OEU4NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkE4QkRCRTkyQTNERTExRTNBQ0M4Q0IxQ0VGNTk4RTg0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkE4QkRCRTkzQTNERTExRTNBQ0M4Q0IxQ0VGNTk4RTg0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BvT6MgAACBZJREFUeNrs3VlsVFUcx/E7ttSliRhFaCtREaJBhQiC0bjBo2FHXNBni0ENWEUj70bZhLAYgUcFjEZZCviEuDyYGNSIC4JFCUILBFkecCkt4+9kDtEYXDLzn97zp99P8nsQ4uk9Z85v7p2S0xaKxWIG4NwuYAkACgJQEICCABQEoCAABQEoCEBBAAoCgIIAFASoWG25/2N7xyFWD640NTZwBwFSfMTqp7ys7FJ+U4qJ5LiyTXlYKVRpDUcoa5SDSnci8+6O17MmXl81FOK6hvU9kdBrHvbfd8q8uC8rm2S550H+8og1SmlVGhJ/M1ivPKr8ajjmTGWpUpPwvENZZikrDMesU9YpUxN/zcMmnaDsyOsRKzR0k4NyBFOUxYbjjVOWJ16OLF7fMmW84ZhLHJQji/tySyV3kkoL8ozS6OiR8jHlBqOx5lXxsa0aj0PzjMYaojQ7es37x32aS0GmOPzMNclok9zkbO43KkMNxpns4K55rmvOpSCDHH5jYqDBGB7nHVydyBg97bq8ClLncLFqDcaoc1qQ2kTG6Gl1eRUEOK9REICCABQEoCAABQEoCEBBAAoCUBCAggCgIAAFASgIQEEACgJQEICCABQEoCAABQFAQQAKAlAQgIIAFASgIAAFASgIQEEAUBCAggAUBEi3ICcdzvmUwRgnnb7epxIZo6edyKsgnzlcrJ0GY3ylnHY279NGc/f4mn+RV0FWOVuoDuVdozvIm87m/rZyzGCc1riOnqzMqyBvGW24ntCtzDB8RHheOeBk7uE65xg+pjXH9fRgY9ynuRSkqExXViS+YOEdb1J897Mc807lk8Q3SLi+u5R2wzE3KxMTv5OcifvywbhPy1IoFsv7f9s7Dv39j66LmzD8DvELE/pwFp6Zt1Txw2VBuVsZozRmaXxnMGyO8AJtVz6uZIP8h0uU8cqtymWJvOa/K/vinWPvX/+iqbEh14IASSunIPw7CEBBAAoCUBCAggAUBKAgAAUBKAhAQQBQEICCABQEoCAABQESVGs4Vjg4dL0yWKlPYG7hoMthZZdytMpf6yJlmNKk1CUw986sdIIw/HCJ36r8tfopQ5UBcQ/kLRyM+0HZnRkcFLMqSDhVtigWJDXhKHA4Nz87sz12enb95iotSt8E5x5+uMRi5UWly3jscPpoqTJVqUlw7nuUZ7MKj1lbnCicqSxP5N3j3xzMSsdi24zG65OVjnXe5+BJ4T1lcryzWBiSlY7zDkx83mFzPxPfJHI5UTgivosUHGySq5S1htc6x0k5snidLxg+Sq9xUI6z17og7tNcPqTPSfT2+k9Gx7uIxd2jxdnnzdnxuit1r3Kbo3nXZBX8yKNKCzIm82eswRjDlSuczTv81JFbElm/njYmr4IMcLhY/QzG8DjvoL/BGFc6nHdDXgXprf+OUsjQK14v/qEQoCAABQEoCEBBAAoCUBCAggAUBKAgACgIQEEACgJQEICCABQEoCAABQEoCEBBAFAQgIIAFASgIAAFASgIQEEACgJQEAAUBKAgAAUB0i3ImV66bkW2jitn8irIYYeLddRgjMNON4rFdR/pTfOutCDbHS7WNoMxdio/O5v3ceVLg3E8vubv51WQ+Uq3o4X6VPnIYJzTykJnm2RJvO5KfRTX0YuwPxfkVZDwjvSEk2fyA8ojhtcaCrLFySbZqrxk+PkrrONPTj4rPl3JndPiu1grlXHxsSNFncobyihlr+G4Xcok5QWjzzXV+rw1V5lodPc4K6zjaOX1uL4p2hn35bJKBikUi+W9obZ3HDrXHw9WrsnS+fbxr8rXyskqf51aZbhyeUIb5FjcJF1V/jp9lZuVixOZd/iO1X6l7e9/0dTYkHtBgGSVUxD+oRCgIAAFASgIQEEACgJQEICCABQEoCAAKAhAQQAKAlAQgIIACao1HGtIVjq5NkipS2R+4aDU50qrcqpKX6Og3KOMVRrif+ctHPIJB3Y+UD7Mqnckul6ZoIzMSgenUhBOOO5TNinfV/ziGhyYulB5RXk84TtSh9KsbDYe91plrXJHwm+Cn2SlM+T7jMcNx1lXK42JzjucLHxNaVF+D3+Qx4nC8G75jjLFwd2yO15nq9F4YWOEn+4x0MHcww+suF05aDReuGusV2oczH2DMjXcRfM4Ufigk3Jk8cVcFR8LLCx0Uo4sXucCo7Hq4zrWOJn7ZOWhvD6kz3D2mashvptU6jLlAWdzn5bZ/FCJiXEdPWnOqyAjHX5jYrjBGMOUPs7m3cdo7h5f85F5FaSvw8WyeMS6NPOpPpExelrfvAoCnNcoCEBBAAoCUBCAggAUBKAgAAUBKAhAQQBQEICCABQEoCAABQEoCEBBAAoCUBCAggCgIAAFASgIQEEACgJQEICCABQEoCAAKAhAQQAKAqRbkE6Hc+4yGKPT6evdlcgYPa0zr4L86HCxDhiM8aPTguxPZIye9kNeBVnvbKHCL5ffaDBOm/KNs7l/q+wyGCf83vFuZ3PfkFdBFikdjhZqtbLbaKznlKKTeYfrfN5orLa4jl4cifs0l4IczUq/N/uQg4UKd7sWw/G2Kk86eDcN1/eUstlwzFnKuw5e87Avx8V9mktBgh1Z6feGz4vvzil9gD2pbFemK/crvxiP/6oyWlkb76Sp3FGK8XrWxetbUYUPvdPium6P65zSB/I9yvy4L3dUMlihWCzvNW3v8HDTAP7U1NiQyx0EOG+VfQcBegPuIAAFASgIQEEACgJQEICCABQEoCAABQFAQYD/6Q8BBgBzPMb1AIyiNgAAAABJRU5ErkJggg==') no-repeat 49% 30%
+      background-size: 100px 100px
+
+    h2
+      font-size: 16px
+      font-weight: 500
+      color: #8c959d
+
+
+
+  .alert
+    +span(12)
+    margin-bottom: 15px
+    padding: 20px 25px
+    border-bottom: 1px solid #e9e9e9
+    font-size: 14px
+    font-weight: 400
+
+    &.alert--success
+      background-color: #e3fae1
+      border-color: #bfebba
+      color: #5e9757
+
+    &.alert--info
+      background-color: #e1f3fa
+      border-color: #baddeb
+      color: #528da4
+
+    &.alert--warning, &.alert--error
+      background-color: #fae1e1
+      border-color: #ebbaba
+      color: #b74444
+
+    &.alert--danger
+      background-color: #faf3e1
+      border-color: #ebddba
+      color: #8f7a47
+
+  .form
+    .form__label
+      color: #343434
+      font-size: 14px
+      font-weight: 500
+
+    .datetime
+      +span(12)
+      .form__label
+        +span(12)
+      .form__input
+        +span(2)
+
+
+
+  .section-editor
+    +span(10)
+    +pre(1)
+    padding: 40px 30px 80px 30px
+
+    .topic_name
+      input
+        color: #3b4358
+        font-size: 36px
+
+    h1
+      color: #3b4358
+      font-size: 21px
+      font-weight: 500
+      text-align: center
+      margin-bottom: 15px
+      +respond-to(small, medium, large)
+        font-size: 26px
+
+    h2
+      font-size: 24px
+      font-weight: 500
+      color: #3b4358
+      border-bottom: 1px solid #e9e9e9
+      margin-top: 40px
+      margin-bottom: 10px
+      padding: 5px 0
+
+
+    h3
+      font-size: 18px
+      font-weight: 600
+      color: #3b4358
+      margin-top: 15px
+      margin-bottom: 10px
+      padding: 5px 0
+
+    p
+      font-size: 18px
+      color: rgba(#5c646c, .8)
+      line-height: 160%
+      font-weight: 200
+      margin-bottom: 20px
+
+    a
+      color: #2db0cb
+      font-weight: 400
+
+      &:hover
+        color: darken(#2db0cb, 10%)
+
+
+    blockquote
+      margin: 20px 0 20px 0
+      border-left: 6px solid #2db0cb
+      padding-left: 30px
+      font-family: Georgia
+      font-style: italic
+      font-size: 14px
+      line-height: 170%
+      color: rgba(92, 100, 108, 0.8)
+
+    iframe
+      margin-bottom: 12px
+
+    ul, ol
+      color: rgba(92, 100, 108, 0.8)
+
+
+  .section-modules
+    +clearfix
+    +span(12)
+    padding: 0 0 200px 0
+
+    a
+      +span(12)
+      position: relative
+      // +omega(4n)
+
+      &:after
+        @extend .fa
+        content: $fa-var-bars
+        position: absolute
+        top: 42%
+        right: 22px
+        font-size: 13px
+        color: #d6d8d9
+
+    .panel-module
+      +span(12)
+      border-bottom: 1px solid #e9e9e9
+      padding: 15px 0
+
+      &:hover
+        background-color: #fafed7
+
+      .panel-heading
+        +span(2)
+        .panel-title
+          color: #8c959d
+          font-size: 24px
+          text-align: center
+
+
+      .panel-body
+        +span(8)
+        h2
+          color: #2db0cb
+          font-size: 18px
+        p
+          font-size: 13px
+          color: rgba(#868b90, .6)
+          margin: 0
+        .author
+          font-size: 11px
+          color: #868b90
+          margin: 10px 0
+      // .panel-footer
+      //   +span(2)
+
+        .nav-module
+          padding: 0
+          text-align: right
+          li
+            list-style: none
+            display: inline
+            a
+              &.btn
+                font-size: 13px
+                width: 105px
+                text-align: left
+
+    .panel-module--unit-list
+      h2
+        padding-left: 15px
+        margin-bottom: 0px
+
+  .section-modules--unit-list
+    a
+      &:after
+        content: ''
+
+.section
+  .section-body
+    .student-status
+      padding: 10px 20px
+      background-color: #edeff0
+      border-bottom: 2px solid #d9d9d9
+      height: 40px
+      font-size: 12px
+      font-weight: 400
+      color: #444e58
+      margin-bottom: 0
+      clear: both
+
+
+// Modifiers
+html.page--private .main--create--units
+  padding: 0

@@ -1,0 +1,11 @@
+= simple_form_for([:admin, :unit, @course]) do |f|
+  section.section
+    .section-heading
+      h1.section-title Duplicar curso em
+      ul.nav-section
+        li = link_to 'Cancelar', :back, class: 'btn btn--secondary'
+        li = f.button :submit
+
+
+    .section-body
+      = render partial: 'duplicate_form', locals: {f: f}

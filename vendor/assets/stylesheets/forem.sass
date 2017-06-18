@@ -1,0 +1,351 @@
+@charset "utf-8"
+// **************************************
+//
+//   #admin
+//
+// **************************************
+
+// -------------------------------------
+//   IMPORTS: Basic project imports
+//   Keep the order of imports
+//
+//   0. #requirements: Vendor libraries
+//   1. #settings:     Global variables, site-wide settings, config switches, etc.
+//   2. #tools:        Site-wide mixins and functions.
+//   3. #generic:      Low-specificity, far-reaching rulesets (e.g. resets).
+//   4. #base:         Unclassed HTML elements (e.g. a {}, blockquote {}, address {}).
+//   5. #objects:      Objects, abstractions, and design patterns (e.g. .media {}).
+//   6. #components:   Discrete, complete chunks of UI (e.g. .carousel {}). This is the one layer that inuitcss doesn’t get involved with.
+//   7. #trumps:       High-specificity, very explicit selectors. Overrides and helper classes (e.g. .hidden {}).
+// -------------------------------------
+
+// [0] #requirements
+@import "requirements"
+
+// [1] #settings
+@import "settings"
+
+// [2] #tools
+@import "tools"
+
+// [3] #generic
+@import "generic"
+
+// [4] #base
+@import "base"
+
+// [5] #objects
+@import "objects"
+@import "objects/object.containers"
+@import "objects/objects.rows"
+@import "objects/objects.buttons"
+@import "objects/objects.forms"
+@import "objects/objects.tables"
+@import "objects/objects.videos"
+
+// [6] #components
+@import "components/components.header"
+@import "components/components.navbar"
+@import "components/components.session"
+// @import "components/components.topic"
+
+// [7] #trumps
+@import "trumps"
+
+
+.container
+  @include container
+
+
+// ==============================================================================================
+
+.form__field
+  display: block
+  label, input[type="text"], textarea, input[type="submit"]
+    display: block
+  textarea
+    float: none
+
+form
+  .btn.btn-primary
+    display: block !important
+
+// ==============================================================================================
+
+.header
+  .container
+    padding: 0
+
+  .header-brand
+
+  .navbar
+    padding: 0
+    margin: 0
+    min-height: $header-height
+
+    ul
+      margin: 0
+      padding: 0
+
+      li
+        margin: 0
+        padding: 0
+
+    .navbar-nav--primary
+      margin: 0
+      padding: 6px 0 0 0
+
+      li
+        a
+          &:hover
+            text-decoration: none
+            color: #fff
+
+    .navbar-nav--secondary
+      min-height: 46px
+      padding: 6px 14px 0 0
+
+      li
+        a
+          &:hover
+            text-decoration: none
+            color: #fff
+
+
+
+
+
+
+// ==============================================================================================
+
+.topic
+  > .container
+
+  .topic__main
+
+    @include respond-to(small, medium, large)
+      @include span(12)
+
+// ==============================================================================================
+
+.forums
+  .forum
+    td
+      padding: 15px 20px
+      font-size: 12px
+
+      a
+        &.title
+          font-size: 16px
+          font-weight: bold
+
+      .description
+        font-size: 14px
+
+.topic__main
+
+  #menu
+    text-align: right
+    .btn-group
+      .btn
+
+      .btn--primary, .btn--secondary
+        color: #fff
+
+  .forum
+    td
+      vertical-align: middle
+
+    #description
+      +span(10)
+      margin-top: 0
+      background-color: #fff
+
+    .btn-group
+      +span(2)
+      text-align: right
+
+      .btn
+        color: #fff
+        float: none
+
+        .btn--primary
+          color: #fff
+          float: none
+
+.topics
+  .topic
+    td
+      vertical-align: middle
+
+    .byline
+      .subject
+        a
+          font-size: 16px
+          font-weight: bold
+
+.table
+  thead
+    tr
+      th
+        background-color: #989ea4
+        border-bottom: 1px solid #70787f
+        text-transform: uppercase
+
+
+#posts
+  .post
+    border: 0
+    border-bottom: 1px solid #e9e9e9
+    border-radius: 0
+    padding: 20px 0
+    margin: 0
+
+    // &.odd
+    //   background-color: #e9e9e9
+
+    .contents
+      border: 0
+
+      .username
+        text-align: center
+        font-size: 14px
+        margin-top: 5px
+
+      .uploadbox-image-container
+        width: 36px
+        height: 36px
+        border-radius: 100px
+        overflow: hidden
+        border: 1px solid #e9e9e9
+        margin: 0 auto
+        display: block
+
+      blockquote
+        background-color: #e9e9e9
+        margin: 0 0 15px 0
+
+      > .contents
+
+        time
+          font-size: 12px
+          margin: 5px 0 5px 0
+          color: darken(#e9e9e9, 20%)
+          text-decoration-color: darken(#e9e9e9, 20%)
+
+          &:hover
+            color: darken(#e9e9e9, 30%)
+        a
+          &:hover
+            text-decoration: none
+
+        .in-reply-to
+          // font-size: 12px
+          font-size: 12px
+          margin: 5px 0 10px 0
+          color: darken(#e9e9e9, 20%)
+          text-decoration-color: darken(#e9e9e9, 20%)
+
+        .btn-group
+          display: block
+          margin-top: 20px
+
+          .btn
+            border: 1px solid #e9e9e9
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+            text-transform: capitalize
+            font-size: 13px
+
+          .btn--primary, .btn--secondary, .btn--info, .btn--danger
+            background-color: transparent
+            color: rgba(92, 100, 108, 0.9)
+            margin-right: 5px
+            border-radius: 3px
+            border: 1px solid darken(#e9e9e9, 5%)
+            padding: 7px 15px
+
+            &:hover
+              background-color: #e9e9e9
+
+// ==============================================================================================
+
+
+#forum
+
+  #description
+    +span(9)
+
+  .btn-group
+    +span(3)
+    text-align: right
+
+    .btn
+      float: none
+      color: #fff
+
+
+.topic__main
+
+  .category
+    .category-name
+      border: 0
+      a
+        color: #3b4358
+        font-size: 22px
+        font-weight: bold
+
+  .reply_to_post_title
+    border: 1px solid red
+    +span(12)
+    border: 0
+    margin: 0
+
+  .reply_to_post
+    border: 1px solid #e9e9e9
+    border-radius: 0
+    padding: 20px 0
+    margin: 0 0 20px 0
+
+    // &.odd
+    //   background-color: #e9e9e9
+
+    .username
+      text-align: center
+      font-size: 14px
+      margin-top: 5px
+
+    .uploadbox-image-container
+      width: 36px
+      height: 36px
+      border-radius: 100px
+      overflow: hidden
+      border: 1px solid #e9e9e9
+      margin: 0 auto
+      display: block
+
+    blockquote
+      background-color: #e9e9e9
+      margin: 0 0 15px 0
+
+    .contents
+      border: 0
+
+    > .contents
+
+      time
+        font-size: 12px
+        margin: 5px 0 5px 0
+        color: darken(#e9e9e9, 20%)
+        text-decoration-color: darken(#e9e9e9, 20%)
+
+        &:hover
+          color: darken(#e9e9e9, 30%)
+      a
+        &:hover
+          text-decoration: none
+
+      .in-reply-to
+        font-size: 12px
+        margin: 5px 0 10px 0
+        color: darken(#e9e9e9, 20%)
+        text-decoration-color: darken(#e9e9e9, 20%)

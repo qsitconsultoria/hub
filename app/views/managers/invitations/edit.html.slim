@@ -1,0 +1,27 @@
+section.create-unit__section
+  .header-section
+    .header-section__title--centered Completar cadastro
+    .header-section__subtitle--centered = "Unidade #{resource.units.first.name}"
+
+
+  .create-unit__container
+    = simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f|
+      = devise_error_messages!
+      fieldset
+        .form-inputs
+          = f.hidden_field :invitation_token
+          .form__row
+            = f.uploads_one :avatar, preview: :regular, default: image_path('regular_avatar.jpg')
+          .form__row
+            label Nome:
+            = f.input :name, label: false, placeholder: 'digite o nome completo'
+          .form__row
+            p = resource.email
+          .form__row
+            label Senha:
+            = f.input :password, label: false, placeholder: 'digite sua senha, mínimo 8 caracteres'
+            = f.input :password_confirmation, label: false, placeholder: 'digite sua senha novamente'
+
+        .form-actions
+          .form__row
+            = f.submit 'Salvar', class: 'btn btn--dark btn--mini fr'

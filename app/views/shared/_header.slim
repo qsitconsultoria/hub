@@ -1,0 +1,16 @@
+- unless params[:controller] == 'devise/sessions' and params[:action] == 'new'
+  header class='[ header header--primary ]' role='banner'
+    nav class='navbar js-navbar' role='navigation'
+      - if current_user
+        - if params[:controller] == 'library_files'
+          = render 'shared/navbar/library'
+        - elsif params[:controller].in? admin_library_controllers
+          = render 'shared/navbar/admin_library'
+        - else
+          = render "shared/navbar/#{current_user.type.parameterize}"
+        = render 'shared/navbar/secondary_navigation'
+      - else
+        - if params[:controller] == 'library_files'
+          = render 'shared/navbar/public_library'
+        - else
+          = render 'shared/navbar/public'

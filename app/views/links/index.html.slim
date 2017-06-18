@@ -1,0 +1,35 @@
+section.course
+  .container
+
+    main.course__main
+
+
+      .panel.panel--library
+
+        .panel__header.breadcrumb
+          h1.panel__title #{@links.count} Arquivos disponíveis para este curso
+
+        .panel__body
+          .list.list--library
+            - @links.each do |link|
+              .list__item
+                .item__icon
+                  = image_tag("file-icons/ico-#{link.icon}-small.png", size: '30x36')
+                .td-file-name
+                  - if link.url.present?
+                    = link_to link.name, link.url, class: 'file', target: '_blank'
+                  - else
+                    .file = link.name
+                .td-module = link.subjects.pluck(:name).to_sentence
+
+
+    aside.course__aside
+
+      .panel.panel--content.panel--general-library
+        .panel__header
+          h1.panel__title Biblioteca do HUB
+        .panel__body
+          .icon-library = image_tag('thumb_biblioteca.png', width: 48)
+          p Visite a <b>Biblioteca do HUB</b> e encontre de forma fácil diversos arquivos que vão auxiliar nos seus estudos.
+        .panel__footer
+          = link_to 'Ver Biblioteca', library_files_path, class: 'test'

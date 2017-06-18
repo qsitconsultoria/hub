@@ -1,0 +1,33 @@
+section.create-unit__section
+  .header-section
+    .header-section__title--centered Olá João, seja bem vindo!
+    .header-section__subtitle--centered Por favor complete as informações da unidade.
+
+  .create-unit__container
+    .create-unit__form
+      = simple_form_for('resource', url: '#') do |f|
+        fieldset
+          .form-inputs
+            .form__row
+              label Nome da unidade:
+              = f.input :email, label: false, placeholder: 'MMA'
+
+            .form__row
+              label Endereço web da unidade:
+              = f.input :endereco, label: false, placeholder: 'http://www.blbla.com.br'
+            .form__row
+              label Tema de cores, escolha um:
+              .form__input--radio--color-check
+                li.radio__azul
+                  = f.collection_radio_buttons :cores, [['azul', 'Azul']],:first, :last, label: false, css: "oi"
+                li.radio__red
+                  = f.collection_radio_buttons :cores, [['red', 'Red']],:first, :last, label: false
+                li.radio__verde
+                  = f.collection_radio_buttons :cores, [['verde', 'Verde']],:first, :last, label: false
+            .form__row
+              label Sobre:
+              = f.text_area :sobre, label: false, placeholder: 'digite aqui a descrição da unidade', class: 'form__textarea'
+          .form-actions
+            .form__row
+              = f.submit 'Salvar', class: 'btn btn--dark btn--mini fr'
+

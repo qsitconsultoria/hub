@@ -1,0 +1,11 @@
+= render 'admin/library_files/sidebar'
+section.dashboard-panel
+  = simple_form_for [:admin, @file] do |f|
+    section.section
+      .section-heading
+        h1.section-title Adicionar Arquivo
+        ul.nav-section
+          li = link_to 'Cancelar', :back, class: 'btn btn--secondary'
+          li = f.button :submit
+      .section-body
+        = render partial: 'form', locals: {f: f}

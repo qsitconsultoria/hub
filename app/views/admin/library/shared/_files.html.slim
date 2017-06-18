@@ -1,0 +1,22 @@
+- @files.each do |library_file|
+  .list-file-item
+    .file
+      .filetype
+        = image_tag("file-icons/ico-#{library_file.filetype.parameterize}-small.png")
+
+      .file-details
+        - if library_file.original_file_size
+          h2 = "#{library_file.title} (#{readable_file_size(library_file.original_file_size, 1)})"
+        - else
+          h2 = library_file.title
+
+        p = "#{library_file.filetype} • Adicionado há #{time_ago_in_words(library_file.created_at)} atrás"
+
+    .file-actions
+      = link_to library_file_url(library_file), target: '_blank', class: 'btn btn--secondary btn--mini' do
+          i.fa.fa-eye &nbsp;Visualizar
+
+      = link_to edit_admin_library_file_url(library_file), class: 'btn btn--secondary btn--mini' do
+          i.fa.fa-pencil &nbsp;Editar
+
+= paginate @files

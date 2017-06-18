@@ -1,0 +1,89 @@
+section.hero.hero--course
+  .container
+
+    .hero__header
+
+      .course__intro
+        .module-number
+          p Módulo 02
+        h1.hero__title Integração em Pequenas Propriedades
+
+      .course__video
+        .video
+          .video__player
+            iframe src="//player.vimeo.com/video/79899786?title=0&amp;byline=0&amp;portrait=0&amp;color=e91c6b" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen
+
+section.course
+  .container
+
+    main.course__main
+
+      .panel.panel--course
+        .panel__header
+          h1.panel__title Tópicos nesse Módulo (4)
+
+        .panel__body
+          .list.list--topics
+            = link_to '#', class: 'list__item' do
+              header.list__header
+                .list__number 01
+              .list__body
+                h1.list__title Introdução
+                .status
+                  .status__finished Concluído
+
+            = link_to '#', class: 'list__item' do
+              header.list__header
+                .list__number 02
+              .list__body
+                h1.list__title Características da Região
+                .status
+                  .status__in_progress Em Progresso
+
+
+            = link_to '#', class: 'list__item' do
+              header.list__header
+                .list__number 03
+              .list__body
+                h1.list__title Integração Lavoura, Pecuária e Floresta - Uma opção para recuperação das Pastagens
+                .status
+                  .status__not_started Não iniciado
+
+            = link_to '#', class: 'list__item' do
+              header.list__header
+                .list__number 04
+              .list__body
+                h1.list__title Etapas para implantação e estabelecimento da ILPF
+                .status
+                  .status__not_started Não iniciado
+
+            = link_to '#', class: 'list__item' do
+              header.list__header
+                .list__number 05
+              .list__body
+                h1.list__title Considerações Finais
+                .status
+                  .status__not_started Não iniciado
+
+
+    aside.course__aside
+
+      .panel.panel--course
+        .panel__header
+          h1.panel__title Biblioteca
+
+        .panel__body
+
+          .list.list--library
+            .list__item
+              = link_to '#', class: 'file' do
+                | Apresentação.pdf
+            .list__item
+              = link_to '#', class: 'file' do
+                | Apresentação.pdf
+            .list__item
+              = link_to '#', class: 'file' do
+                | Apresentação.pdf
+            .list__item
+              = link_to '#', class: 'file' do
+                | Apresentação.pdf

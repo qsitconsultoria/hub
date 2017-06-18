@@ -1,0 +1,14 @@
+- set_meta_tags :title => 'Editar Gestores'
+
+= simple_form_for [:admin, current_unit, @manager] do |f|
+  section.section
+    .section-heading
+      / h1.section-title Editar Tutor
+      ul.nav-top
+        li = link_to 'Gestores', admin_unit_managers_path(current_unit), class: 'btn-back'
+      ul.nav-section
+        li = link_to 'Excluir', [:admin, current_unit, @manager], class: 'btn btn--secondary btn--delete', data: {confirm: 'Tem certeza?'}, method: :delete
+        li = f.button :submit
+
+    .section-body
+      == render partial: 'edit_form', locals: {f: f}

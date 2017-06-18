@@ -1,0 +1,188 @@
+// *************************************
+//
+//   Navbar
+//
+// *************************************
+$navbar-height: 55px
+$navbar-color-bg: #1e2126
+$navbar-whitespace: 20px
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+
+.navbar
+  +clearfix
+  height: $navbar-height
+
+  .uploadbox-image-container
+    width: 35px
+    height: 35px
+    border-radius: 3px
+    overflow: hidden
+    display: inline-block
+
+    img
+      width: 35px
+      height: 35px
+      vertical-align: top
+
+
+// Slidebar button
+// ----------------
+#sb-site
+  padding-top: $navbar-height
+  background-color: #edeff0
+
+.sb-style-overlay
+  background-color: red
+
+.sb-slide, #sb-site, .sb-site-container, .sb-slidebar
+  -webkit-transition: -webkit-transform 200ms ease-in
+  -moz-transition: -moz-transform 200ms ease-in
+  -o-transition: -o-transform 200ms ease-in
+  transition: transform 200ms ease-in
+  -webkit-transition-property: -webkit-transform, left, right
+  -webkit-backface-visibility: hidden
+
+.sb-slidebar
+  width: 255px
+
+.slidebar-btn
+  float: left
+  height: $navbar-height
+  border-right: 1px solid rgba(#fff, 0.2)
+
+  a
+    height: $navbar-height
+    padding-right: $navbar-whitespace
+    padding-left: $navbar-whitespace
+    display: inline-block
+    font-size: 27px
+    line-height: $navbar-height
+    color: rgba(#fff, 0.7)
+
+    &:hover
+      color: #fff
+
+
+// Site Brand Bar
+// ----------------
+.site-brand
+  +clearfix
+  float: left
+  height: $navbar-height
+  padding-left: $navbar-whitespace
+  padding-right: $navbar-whitespace
+
+  &:hover
+    background-color: darken($navbar-color-bg, 40%)
+
+  &__title
+    +ellipsis(255px)
+    +font-weight(bold)
+    line-height: $navbar-height
+    float: left
+
+  &__image
+    float: left
+    margin-top: 10px
+    padding-right: $navbar-whitespace
+
+    &.image__unit
+      .uploadbox-image-container
+        margin-top: 0
+
+
+// Site Nav
+// ----------------
+.nav-site
+  margin: 0
+  padding: 0
+  list-style: none
+
+  a
+    text-decoration: none
+
+  li
+    list-style-type: none
+
+  > a, > li
+    display: inline-block
+
+  > a
+    display: inline-block
+
+  > .nav-site__item
+    height: $navbar-height
+
+    > a
+      +font-weight(bold)
+      display: inline-block
+      height: $navbar-height
+      line-height: $navbar-height
+      padding-left: $navbar-whitespace
+      padding-right: $navbar-whitespace
+      border-left: 1px solid rgba(#fff, 0.2)
+
+  &--primary
+    float: left
+
+  &--secondary
+    float: right
+
+  &__submenu
+    position: absolute
+    top: $navbar-height
+    margin: 0
+    padding: 0
+    left: 0
+    min-width: 200px
+    border-radius: 0px 0px 4px 4px
+    visibility: hidden
+    z-index: 999
+    background-color: darken($navbar-color-bg, 40%)
+    width: 100%
+
+    a
+      +font-weight(semibold)
+      display: block
+      padding: $navbar-whitespace/2 $navbar-whitespace
+
+      &:hover
+        background-color: rgba(#fff, .25)
+
+    .nav-site__item
+
+      &:first-of-type
+        margin-top: $navbar-whitespace/2
+
+      &:last-of-type
+        margin-bottom: $navbar-whitespace/2
+
+  &__submenu--right
+    left: auto
+    right: 0
+
+  .uploadbox-image-container
+    margin-top: $navbar-whitespace/2
+    display: inline-block
+
+  &.has-submenu
+    position: relative
+
+    > li > a:after
+      @extend .fa
+      content: $fa-var-angle-down
+      line-height: $navbar-height
+      padding-left: $navbar-whitespace
+      display: inline-block
+      color: #fff
+      vertical-align: top
+      font-size: 18px
+
+    &:hover
+      background-color: darken($navbar-color-bg, 40%)
+
+      .nav-site__submenu
+        visibility: visible

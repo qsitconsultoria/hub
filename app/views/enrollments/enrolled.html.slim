@@ -1,0 +1,10 @@
+section.section--basic
+  .container
+      .enrollment-request-sent
+        i.fa.fa-check-square
+        h1 Pedido de matrícula realizado com sucesso!
+        .request-info
+          p Sua matrícula está em processo de aprovação pelos tutores desse curso.
+          p Você receberá um email assim que seu acesso for liberado
+
+        = link_to 'VOLTAR PARA PÁGINA DO CURSO', unit_course_url(@unit, @course), class: 'btn btn--primary btn--medium'

@@ -1,0 +1,19 @@
+- if library_section?
+  - @class = 'library--page'
+
+doctype 5
+html.no-js class="#{@page_class} theme--#{color_theme(current_unit)}" lang="#{I18n.locale}"
+  head
+    = stylesheet_link_tag 'application', media: 'all'
+    = render 'shared/head'
+  body
+    = render 'shared/slidebar'
+    #sb-site class="#{@class}"
+      = render 'shared/body_top'
+      = render 'shared/unsupported_browser'
+      = render 'shared/header'
+      = yield
+      = render 'shared/footer'
+    = javascript_include_tag 'requirements'
+    = javascript_include_tag 'application'
+    = render 'shared/body_bottom'

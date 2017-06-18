@@ -1,0 +1,11 @@
+= render 'admin/courses/sidebar'
+
+section.section style="width: 80%; float: right"
+  .section-heading
+    h1.section-title Itens do Fórum
+    ul.nav-section
+      li = link_to 'Adicionar Tópico', new_admin_unit_course_forum_forum_thread_url(current_unit, current_course, current_course.forum), class: 'btn btn--primary fa fa-plus'
+      li = link_to 'Editar', edit_admin_unit_course_forum_url(current_unit, current_course, current_course.forum), class: 'btn btn--secondary fa'
+
+  .section-modules data-component="Sortable" data-sortable-route="#{sortables_path}"
+    = render @threads

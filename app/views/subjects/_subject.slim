@@ -1,0 +1,20 @@
+= link_to_if_with_block subject.active?, [current_unit, current_course, subject] do
+  .list__item
+    header.list__header
+      .list__number = padded_number(subject_counter + 1)
+
+      h1.list__title = subject.name
+      .meta
+        - if @course.teachers.any?
+          .meta__name Tutores: #{@course.teachers.pluck(:name).to_sentence}
+
+    - if subject.description?
+      .list__body
+        = simple_format subject.description
+
+    .list__footer
+      - if subject.active?
+        button.btn.btn--primary Estudar
+      - else
+        .release-date Lançamento em #{l(subject.published_at.to_date)}
+

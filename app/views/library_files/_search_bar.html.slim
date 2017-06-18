@@ -1,0 +1,9 @@
+.search--public-library
+  label for='library_file_public_search'
+    i.fa.fa-search
+  - if params[:query]
+    = text_field_tag 'query[searchable_title_cont]', params[:query][:searchable_title_cont], id: "library_file_search", autocomplete: "off", placeholder: 'Qual arquivo você procura?', autofocus: true
+  - else
+    = text_field_tag '', '', id: "library_file_search", autocomplete: "off", placeholder: 'Qual arquivo você procura?', autofocus: true
+
+= submit_tag 'Buscar', class: 'btn btn-primary', style: 'display: none'

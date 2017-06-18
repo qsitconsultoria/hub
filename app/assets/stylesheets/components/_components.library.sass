@@ -1,0 +1,975 @@
+.library--page
+  background-color: #EDEFF0 !important
+  padding-bottom: 40px !important
+
+  .header
+    background-color: #3B4358
+
+  .site-brand__title
+    +respond-to(small)
+      display: none
+
+.library--title
+  color: #A0A6AF
+  text-align: center
+  font-size: 48px
+  margin: 40px
+  font-weight: 200
+
+  +respond-to(small)
+    font-size: 28px
+
+.nav-tabs
+  background-color: #FAFBFB
+  list-style: none
+  margin: 0
+  box-shadow: inset 0 -1px 0 #EDEFF0
+  li
+    display: inline-block
+    border-right: 1px solid #EDEFF0
+    margin-right: -4px
+
+    a
+      text-decoration: none
+      color: #A0A6AF
+      display: block
+      padding: 20px 40px
+
+      &:hover
+        color: darken(#A0A6AF, 20%)
+        // background-color: #fff
+        // box-shadow: inset 0 -1px 0 #EDEFF0
+
+      +respond-to(small)
+        padding: 12px
+
+    &.active
+      background-color: #FFF
+
+      a
+        color: #2DB0CB
+
+
+.simple--search--panel, .advanced--search--panel
+  display: none
+  padding: 20px
+
+.visible
+  display: block !important
+
+.simple--search--panel
+  margin-top: 10px
+  margin-bottom: 0
+
+  .search--library--field
+    width: 100% !important
+    position: relative
+    background-color: transparent
+    box-shadow: inset 0 1px 0 rgba(#000, .2)
+    border: 1px solid #E4E5E5
+    border-radius: 3px
+    outline-color: rgba(#2DB0CB, .3)
+    padding: 20px 15px 20px 15px
+    padding-left: 60px
+    margin-bottom: 0
+    +inuit-font-size(23px)
+    color: darken(#A0A6AF, 20%)
+    line-height: 120%
+
+    @include placeholder
+      color: rgba(#A0A6AF, .4)
+
+    +respond-to(small)
+      +inuit-font-size(18px)
+      padding: 12px 0 10px 30px
+
+  label
+    position: absolute
+    +inuit-font-size(23px)
+    padding: 23px 22px 0 22px
+    color: #2DB0CB
+
+    +respond-to(small)
+      +inuit-font-size(17px)
+      padding: 13px 10px
+
+.tt-dropdown-menu
+  width: 100%
+  border-bottom: 1px solid #E4E5E5
+  box-shadow: 0 15px 30px rgba(#333, .2)
+
+.tt-hint
+  display: none
+
+.file-suggestion
+  +span(12)
+  background-color: #fff
+  border: 1px solid #E4E5E5
+  border-bottom: 0
+
+  .filetype
+    +span(1)
+    float: left
+    display: inline
+    text-align: center
+    margin-left: 2%
+    padding: 20px
+
+    +respond-to(small)
+      margin-right: 6.7%
+      margin-left: 0
+
+  .file--details
+    +span(9)
+    +respond-to(small)
+      padding: 2%
+
+    h2, p
+      margin-bottom: 0
+
+    h2
+      color: #2DB0CB
+      font-size: 16px
+      margin-top: 15px
+      font-weight: 500
+
+    p
+      font-size: 12px
+      margin-top: 5px
+      color: rgba(#5C646C, 0.7)
+
+  .tt-is-under-cursor &
+    background-color: #fafed7
+
+.file-suggestion-footer
+  border: 1px solid #E4E5E5
+  border-bottom: 0
+  background-color: #EDEFF0
+  text-align: center
+  display: inline-block
+  width: 100%
+  outline: 0
+
+  button
+    background-color: #EDEFF0
+    border: 0
+    color: #5C646C
+    width: 100%
+    padding: 20px
+    outline: 0
+
+    &:hover
+      background-color: #2DB0CB
+      color: #fff
+
+    &:active
+      background-color: darken(#2DB0CB, 5%)
+      color: #fff
+
+  .empty-results
+    margin-bottom: 0
+    padding: 20px
+    color: #5C646C
+
+.advanced--search--panel
+  .form__row
+
+    label
+      color: #A0A6AF
+      +inuit-font-size(15px)
+      width: 19%
+      display: inline-block
+      margin: 15px auto
+
+      +respond-to(small)
+        width: 100%
+
+      &.inline--label
+        width: 50px
+
+    input, select
+      width: 75%
+      padding: 3px 10px
+      outline: 0
+
+    input
+      height: 35px
+      border-radius: 4px
+      border: none
+      border: 1px solid #E4E5E5
+      box-shadow: inset 0 1px 0 rgba(#000, .2)
+
+      +respond-to(small)
+        width: 90%
+
+    select
+      color: #A0A6AF
+      height: 45px
+
+      +respond-to(small)
+        width: 100%
+
+      &.inline--select
+        width: 15%
+        margin-right: 30px
+
+  .action
+    color: #FAFBFB
+    border-top: 1px solid #EDEFF0
+    padding-top: 20px
+    margin-top: 20px
+    text-align: center
+
+    .btn--search-files
+      width: 80%
+      height: auto
+      padding: 10px
+      text-transform: none
+      margin: 0 auto
+
+    label
+      color: #ffffff
+
+
+.search--box
+  padding: 0
+  background-color: #fff
+  box-shadow: 0 1px 0 rgba(#ccc, .5)
+
+.metadata--modal, .search--by--metadata
+  h2
+    font-size: 14px
+    text-transform: uppercase
+    margin-bottom: 0
+
+  ul
+    list-style: none
+    margin-left: 0
+
+  a
+    text-decoration: none
+    color: rgba(#3B4258, .5)
+
+.overlay
+  display: none
+  background: rgba(102,102,102,0.5)
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  display: block
+  cursor: auto
+
+.metadata--modal
+  width: 60%
+  position: fixed
+  border-radius: 4px
+  z-index: 999
+  top: 20%
+  bottom: 0
+  left: 0
+  right: 0
+  margin-left: auto
+  margin-right: auto
+  opacity: 0
+  -webkit-transition: opacity 0.2s ease-in
+  -moz-transition: opacity 0.2s ease-in
+  transition: opacity 0.2s ease-in
+  pointer-events: none
+
+  &.open
+    opacity: 1
+    pointer-events: visible
+
+  .modal-content
+    width: 100%
+    position: relative
+
+  .modal--header
+    background-color: #BABFC4
+    color: #fff
+    padding: 20px
+
+    h2
+      display: inline
+
+  .close-modal
+    float: right
+    display: inline
+    color: white
+    font-weight: bolder
+
+  .modal--body
+    clear: both
+    padding-bottom: 20px
+    background: #fff
+
+  ul
+    padding: 20px
+    margin-bottom: 0
+    max-height: 320px
+    overflow: auto
+
+
+  li
+    background-color: #fff
+    padding: 10px 20px
+    border-top: 1px solid #EDEFF0
+
+    &:after
+      @extend .fa
+      content: $fa-var-angle-right
+      color: #CFD2D7
+      float: right
+      padding-top: 4px
+      font-size: 20px
+
+    &:hover
+      background-color: #fafed7
+
+.search--by--metadata
+  margin-top: 40px
+
+  .section--header
+    background-color: #BABFC4
+    color: #fff
+    padding: 20px
+
+  li
+    background-color: #fff
+    padding: 20px 20px
+    border-bottom: 1px solid #EDEFF0
+
+    &:after
+      @extend .fa
+      content: $fa-var-angle-right
+      color: #CFD2D7
+      float: right
+      padding-top: 4px
+      font-size: 20px
+
+    &:hover
+      background-color: #fafed7
+
+
+.results--number
+  color: #A0A6AF
+  +inuit-font-size(20px)
+  font-weight: 400
+  +respond-to(small)
+    text-align: center
+
+html, body
+  width: 100%
+  height: 100%
+
+
+.sidebar--filters
+  width: 380px
+  position: fixed
+  // top: 116px
+  height: 100%
+  // overflow: auto
+  padding: 0
+  padding-top: 61px
+  // padding-bottom: 195px
+  background-color: #fff
+  border-right: 1px solid rgba(#ccc, .5)
+
+  +respond-to(small)
+    display: none
+
+  +respond-to(medium)
+    width: 320px
+
+  .sidebar--title
+    border-bottom: 1px solid rgba(#ccc, .5)
+    // background-color: rgba(#EDEFF0, .5)
+    background-color: #fff
+    padding: 10px 0
+
+    h2
+      margin: 0
+      +inuit-font-size(14px)
+      color: #A0A6AF
+
+  .search--action
+    width: 360px
+    height: 80px
+    display: inline-block
+    background-color: transparent
+    @include linear-gradient(rgba(#fff, 0), rgba(#fff, 1) 20%)
+    // @include background-image(linear-gradient(white, #cccccc 30%, #bbbbbb 70%, #aaaaaa));
+    position: fixed
+    left: 0
+    bottom: 0
+    z-index: 99
+    text-align: center
+    padding: 15px 15px
+    padding-top: 25px
+
+    +respond-to(medium)
+      width: 300px
+
+
+  .btn--show-results
+    width: 100%
+
+.scroll
+  // padding-bottom: 195px
+  height: 100%
+  height: -moz-calc(100% - 55px) /* Firefox */
+  height: -webkit-calc(100% - 55px) /* Chrome, Safari */
+  height: calc(100% - 55px) /* IE9+ and future browsers */
+  overflow: auto
+  padding: 0 10px
+
+  .container-filters
+    padding-bottom: 74px
+
+
+.sidebar--filters
+
+  /* Let's get this party started */
+  ::-webkit-scrollbar
+    width: 8px
+
+
+  /* Track */
+  ::-webkit-scrollbar-track
+    background-color: #edeff0
+    -webkit-border-radius: 10px
+    border-radius: 10px
+
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb
+    -webkit-border-radius: 10px
+    border-radius: 10px
+    background: #babfc4
+
+  ::-webkit-scrollbar-thumb:window-inactive
+    background: #edeff0
+
+
+
+  .filter
+    margin-bottom: 20px
+    box-shadow: 0 1px 0 rgba(#ccc, .5)
+
+  .filter--title
+    background-color: #BABFC4
+    border-bottom: 1px solid #9DA3AA
+    padding: 10px 12px
+
+    h3
+      +inuit-font-size(13px)
+      color: #FFF
+      margin-bottom: 0
+
+  .filter--options
+    background-color: #FFF
+    padding: 20px
+    color: #A0A6AF
+
+    ul
+      padding: 0
+      margin: 0
+      +inuit-font-size(14px)
+      max-height: 170px
+      overflow: auto
+
+
+
+      li
+        list-style: none
+
+        input[type='checkbox']
+          margin-right: 10px
+
+    p
+      margin-bottom: 15px
+      font-size: 13px
+
+    select
+      height: 35px
+
+    input[type='checkbox']
+      margin-right: 5px
+
+    &.year--options
+      height: 95px
+
+
+  .panel--filter
+    border-bottom: 1px solid rgba(#ccc, .5)
+    padding: 15px 5px
+    margin: 0
+    -webkit-transform: translateZ(0)
+
+    .panel--header
+
+      .panel-title
+        +inuit-font-size(14px)
+        color: #A0A6AF
+        margin-top: 0
+        margin-bottom: 5px
+
+    .panel--body
+      ul
+        padding: 0
+        margin: 0
+        -webkit-column-count: 2 /* Chrome, Safari, Opera */
+        -moz-column-count: 2 /* Firefox */
+        column-count: 2
+
+        li
+          list-style: none
+          +inuit-font-size(13px)
+          color: #A0A6AF
+
+          input
+            margin-right: 8px
+
+  .filter--ano,
+  .filter--tema,
+  .filter--curso,
+  .filter--autor,
+  .filter--idioma
+    padding: 10px 5px
+
+    .panel--header
+      +span(4)
+
+      .panel-title
+        margin: 0
+        padding-top: 3px
+
+    .panel--body
+      +span(8 omega)
+
+      select
+        +inuit-font-size(13px)
+        height: 30px
+
+
+.ui-slider-horizontal, .ui-slider-range, .ui-slider-handle
+  background-color: #F3F3F3
+  border-radius: 2px
+
+.ui-slider-handle
+  background-color: #fff
+  border: 1px solid darken(#E4E5E5, 5%)
+  box-shadow: 0 3px 4px rgba(#000, .2)
+  cursor: pointer !important
+
+.ui-slider-horizontal, .ui-slider-range
+  border: 1px solid #E4E5E5
+
+.ui-slider-horizontal
+  box-shadow: inset 0 1px 1px rgba(#000, .3)
+
+.ui-slider-horizontal
+  .ui-slider-range
+    // background-color: #3EBED8
+    @include linear-gradient(#40cbe7, #37b6d0)
+
+
+  .ui-slider-handle
+    background-color: #fff
+    width: 14px
+    height: 18px
+    top: -0.4em
+
+    &:focus
+      outline: none
+
+.slider
+  padding: 0 5px
+  padding-top: 5px
+  padding-bottom: 23px
+  position: relative
+
+  .year-start, .year-end
+    color: #A0A6AF
+    +inuit-font-size(12px)
+    font-weight: 500
+    position: absolute
+    top: 21px
+
+  .year-start
+    left: 0
+
+  .year-end
+    right: 0
+    text-align: right
+
+.slider-tip
+  background-color: #5C6976
+  padding: 5px 10px
+  top: 30px
+  left: -20px
+  font-size: 12px
+  font-weight: 700
+  overflow: visible
+
+.search--results
+  padding: 85px 40px 30px 420px
+
+  +respond-to(small)
+    padding: 0
+    padding-top: 85px
+
+  +respond-to(medium)
+    padding-left: 340px
+
+  .advanced-search-mobile
+    background-color: #2db0cb
+    text-decoration: none
+    display: block
+    margin: 0 8px
+    margin-bottom: 5px
+    +inuit-font-size(15px)
+
+    &:hover
+      background-color: darken(#2db0cb, 10%)
+
+    +respond-to(medium, large)
+      display: none
+
+  .file
+    display: block
+    background-color: #fff
+    padding: 20px
+    margin-bottom: 10px
+    overflow: hidden
+    box-shadow: 0 1px 0 rgba(#ccc, .5)
+    text-decoration: none
+
+    &:hover
+      background-color: #fff8b0
+
+      +respond-to(small, medium)
+        background-color: #fff
+
+    +respond-to(small)
+      width: 95%
+      margin: 10px auto
+
+
+    .file--type
+      +span(1)
+      text-align: center
+
+
+    .file--details
+      float: left
+      +span(11 omega)
+
+      +respond-to(small)
+        width: 83%
+
+      +respond-to(medium)
+        width: 86%
+
+      .file--title
+        color: #2DB0CB
+        +inuit-font-size(16px)
+        margin-bottom: 5px
+        display: inline-block
+        text-decoration: none
+        font-weight: 500
+
+
+      .file--extra-info
+        font-size: 14px
+
+      .file--filetype, .file--added, .file--comments-number
+        display: inline
+        color: rgba(#6F777F, 0.7)
+
+  .results--blank-state
+    padding: 40px
+    background-color: #dfe3e4
+
+    p
+      +inuit-font-size(14px)
+      text-align: center
+      margin: 0
+      color: #A0A6AF
+
+
+
+
+  &.full--width
+    width: 100%
+
+.search--public-library
+  position: fixed
+  top: 55px
+  width: 100%
+  display: block
+  margin: 0 auto
+  color: #A0A6AF
+  background-color: #fff
+  border-bottom: 1px solid rgba(#ccc, .4)
+  z-index: 1
+  -webkit-transform: translateZ(0)
+
+  input
+    height: 60px
+    font-size: 20px
+    padding-left: 68px
+    width: 100%
+    outline: 0
+    border: 0
+    color: darken(#A0A6AF, 20%)
+
+    @include placeholder
+      color: rgba(#A0A6AF, .4)
+
+  label
+    position: absolute
+    font-size: 20px
+    padding: 15px
+    padding-left: 30px
+    // padding-left: 95px
+
+.file--content
+  +span(7)
+  +pre(1)
+  +respond-to(small)
+    width: 100%
+    margin: 0 auto
+    display: block
+
+.file--info
+  width: 100%
+  margin: 20px auto
+  margin-top: 100px
+  display: block
+  padding: 40px
+  background-color: #fff
+  text-align: center
+  box-shadow: 0 1px 0 rgba(#ccc, .5)
+
+  .btn--download-file
+    text-transform: none
+    font-weight: 500
+
+  .file--type
+    padding: 32px
+    background-color: rgba(#EDEFF0, 0.5)
+    border: 1px solid #EDEFF0
+    width: 152px
+    height: 152px
+    border-radius: 4px
+    display: block
+    margin: 0 auto
+    margin-bottom: 20px
+
+  .file--filetype-icon
+    width: 74px
+    height: 85px
+
+  .file--title
+    margin: 0
+    font-weight: 500
+    font-size: 26px
+    color: #2DB0CB
+
+  .file--additional-info
+    font-size: 12px
+    color: #6F777F
+
+.file--comments
+  width: 100%
+  margin: 0 auto
+  display: block
+  padding: 20px
+  background-color: #fff
+  box-shadow: 0 1px 0 rgba(#ccc, .5)
+
+  .comments--count
+    border: 1px solid #EDEFF0
+    background-color: #F6F7F7
+    color: #6F777F
+    padding: 10px
+    font-size: 14px
+
+  .comments
+    border: 1px solid #EDEFF0
+    padding: 10px
+    border-top: none
+
+  .comment
+    margin-top: 10px
+    overflow: hidden
+
+    .user--avatar
+      float: left
+      margin-top: 3px
+      margin-right: 10px
+      width: 48px
+      height: 48px
+
+      +respond-to(small)
+        display: none
+
+      img
+        width: 100%
+        height: 100%
+        border-radius: 4px
+
+    .form
+      display: inline
+      float: left
+      width: 514px
+      margin-top: 1px
+      margin-bottom: 0
+
+      +respond-to(small)
+        width: 100%
+
+      textarea
+        height: 50px
+
+      .btn--comment
+        display: none
+        float: right
+
+        +respond-to(small)
+          float: none
+          width: 100%
+
+    .comment--details
+      font-size: 12px
+      margin-bottom: 10px
+
+    .user--name, .timestamp, .delete--comment
+      display: inline
+
+    .user--name
+      color: #2DB0CB
+      font-weight: bold
+
+    .timestamp
+      color: #A5ACB2
+
+    .delete_alert
+      text-decoration: none
+      color: #A5ACB2
+
+      &:hover
+        text-decoration: underline
+        color: #ff0000
+
+    .content
+      font-size: 14px
+      color: #93999F
+      margin-left: 58px
+
+      +respond-to(small)
+        margin-left: 0
+
+      p
+        margin-bottom: 10px
+
+.file--more-info
+  +span(3)
+  margin-top: 100px
+  padding: 20px 20px 5px 20px
+  background-color: darken(#EDEFF0, 5%)
+  border-radius: 2px
+
+  +respond-to(small)
+    width: 100%
+    margin-top: 20px
+
+  h2
+    +inuit-font-size(14px)
+    margin: 0
+    line-height: 160%
+    color: #6F777F
+
+  p
+    +inuit-font-size(13px)
+    color: #6F777F
+    margin: 0 0 15px 0
+    line-height: 160%
+
+.list-file-item
+  +span(12)
+  border-bottom: 1px solid #e9e9e9
+  padding: 0
+  margin: 0
+
+  .file
+    +span(8)
+    display: inline
+    padding: 10px 0
+    margin: 0
+
+    .filetype
+      +span(2)
+
+      img
+        width: 30px
+        height: 36px
+        display: block
+        margin: 0 auto
+
+    .file-details
+      +span(7)
+
+      h2
+        font-size: 16px
+        font-weight: 500
+        margin: 0
+        color: #2DB0CB
+
+      p
+        margin: 0
+        font-size: 13px
+        font-weight: 300
+
+  .file-actions
+    +span(4)
+    padding: 15px 0
+    text-align: right
+
+    .btn
+      width: 40%
+      margin-right: 5%
+
+  &.see-all-files
+    text-align: center
+    +span(12)
+    padding: 20px
+
+    a
+      color: #2DB0CB
+
+      &:visited
+        color: #2DB0CB
+
+.btn--admin-library
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
+  text-transform: capitalize
+  line-height: 1
+  background-color: lighten(#292e3a, 2%)
+  margin-top: 15px
+  margin-left: 30px
+  padding: 7px 20px
+  font-size: 12px
+  color: rgba(#e4ecff, .7)
+  font-weight: 400
+  border-radius: 100px
+  position: absolute
+
+  &:hover
+    color: rgba(#e4ecff, .9)
+
+  +respond-to(small)
+    display: none

@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  database: giz_hub_development
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: giz_hub_test
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: giz_hub_production
+  host: localhost
+

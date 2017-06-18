@@ -1,0 +1,31 @@
+= f.error_notification
+
+fieldset
+
+  .section-form
+
+    .panel.panel-form
+      .panel-heading
+        h2.panel-title Informações Básicas
+        p Email e senha serão os dados de acesso à plataforma. Nome e Descrição irão aparecer nos módulos em que esse tutor é responsável.
+      .panel-body
+        .form
+          .form__row
+            .form__field
+              = f.uploads_one :avatar, preview: :regular, default: image_path('regular_avatar.jpg')
+
+          .form__row
+            = f.input :name, label: 'Nome e Sobrenome'
+
+          .form__row
+            = f.input :email, label: 'Email'
+
+          .form__row
+            = f.input :password, label: 'Senha'
+
+          .form__row
+            = f.input :password_confirmation, label: 'Confirmar Senha'
+
+          .form__row
+            = f.input :biography, label: 'Biografia', input_html:{ 'data-behavior' => 'autosize' }
+

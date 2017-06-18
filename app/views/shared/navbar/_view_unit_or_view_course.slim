@@ -1,0 +1,11 @@
+- if params[:controller] =~ Regexp.new('admin')
+  - unless params[:controller] == 'admin/units' || params[:controller] == 'admin/managers' || !(params[:controller] == 'admin/courses' && params[:action] == 'show')
+    - if current_unit.courses.count > 1
+      = render 'shared/navbar/course_dropdown'
+    - else
+      = render 'shared/navbar/course_brand'
+
+    = link_to 'Visualizar curso', unit_course_url(current_unit, current_course), class: 'btn btn--view-course'
+
+  - else
+    = link_to 'Visualizar unidade', unit_url(current_unit), class: 'btn btn--view-course'

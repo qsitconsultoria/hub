@@ -1,0 +1,43 @@
+= search_form_for @q do |f|
+  .form__row
+    = f.label :searchable_title_cont, 'Título do Arquivo'
+    = f.search_field :searchable_title_cont
+
+  .form__row
+    = f.label :author_cont, 'Autor'
+    = f.search_field :author_cont
+
+  .form__row
+    = f.label :themes_name_eq, 'Tema'
+    = f.select :themes_name_eq, Theme.ordered.pluck(:name), { include_blank: 'qualquer Tema' }
+
+  .form__row
+    = f.label :courses_name_eq, 'Curso'
+    = f.select :courses_name_eq, Course.pluck(:name), { include_blank: 'qualquer Curso' }
+
+  .form__row
+    = f.label :territorial_coverages_name_in, 'Abrangência Territorial'
+    = f.select :territorial_coverages_name_in, TerritorialCoverage.pluck(:name), { include_blank: 'qualquer Região' }
+
+  .form__row
+    = f.label :biomes_name_in, 'Bioma'
+    = f.select :biomes_name_in, Biome.pluck(:name), { include_blank: 'qualquer tipo de Bioma' }
+
+  .form__row
+    = f.label :filetype_in, 'Tipo de Arquivo'
+    = f.select :filetype_in, LibraryFile.filetypes, { include_blank: 'qualquer Tipo de Arquivo' }
+
+  .form__row
+    = f.label :language_eq, 'Idioma'
+    = f.select :language_eq, LibraryFile.languages, { include_blank: 'qualquer Idioma' }
+
+  .form__row
+    = f.label :year_gteq, 'Ano'
+    = f.select :year_gteq, LibraryFile::YEARS, { include_blank: 'ano' }, class: 'inline--select'
+    = f.label :year_lteq, 'até', class: 'inline--label'
+    = f.select :year_lteq, LibraryFile::YEARS, { include_blank: 'ano' }, class: 'inline--select'
+
+  .action
+    = f.label :submit_button, 'Submit'
+    button.btn.btn--primary.btn--search-files type='submit'
+      i.fa.fa-search &nbsp;&nbsp;Buscar Arquivos

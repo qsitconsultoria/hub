@@ -1,0 +1,30 @@
+= render 'admin/courses/sidebar'
+section.dashboard-panel
+  = simple_form_for [:admin, current_unit, current_course, @link] do |f|
+    section.section
+      .section-heading
+        ul.nav-top
+          li = link_to 'Referências', admin_unit_course_links_path(current_unit, current_course), class: 'btn-back'
+        ul.nav-section
+          li = link_to 'Excluir', [:admin, current_unit, current_course, @link], class: 'btn btn--secondary btn--delete', data: {confirm: 'Tem certeza?'}, method: :delete
+          li = f.button :submit
+
+      .section-body
+        = f.error_notification
+
+        fieldset
+
+          .section-form
+
+            .panel.panel-form
+              .panel-heading
+                h2.panel-title Referência
+                p Adicione o nome e referência do arquivo que irá aparecer na biblioteca do seu curso. Escolha também em quais módulos este arquivo deve ser listado.
+              .panel-body
+                .form
+                  .form__row
+                    = f.input :name
+                  .form__row
+                    = f.input :url, label: 'URL'
+                  .form__row
+                    = f.association :subjects, as: :check_boxes, label: 'Módulos', collection: @subjects

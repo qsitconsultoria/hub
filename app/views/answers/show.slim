@@ -1,0 +1,48 @@
+section.topic
+  .container
+
+    main.topic__main
+
+
+      .panel.panel--content.module-answer
+
+        .panel__header.breadcrumb
+          ul
+            li = link_to @course.name, unit_course_url(@unit, @course)
+            li = link_to @subject.name, [@unit, @course, @subject]
+
+        .panel__body
+
+          .panel.panel--done
+            .panel__header
+              .checked &#xf05d;
+              h1 Parabéns!
+              p Você concluiu esse módulo com sucesso.
+
+            .panel__body
+
+              .module-answer
+                = simple_format @answer.content
+
+              p.edit-answer = link_to 'Editar resposta', edit_unit_course_subject_answer_path(@unit, @course, @subject, @answer)
+
+
+            .panel__footer
+              ul.nav-topicos
+                li = link_to 'Anterior', [@unit, current_course, @subject, @subject.topics.ordered.last], class: 'btn-prev'
+                - if @subject.next and @subject.next.active?
+                  li = link_to 'Próximo Módulo', [@unit, current_course, @subject.next], class: 'btn-next'
+                - elsif @subject.next and @subject.next.inactive?
+                  li = link_to "Lançamento em #{l(@subject.next.published_at.to_date)}", '#', class: ''
+
+
+                / - if @topic.next.present?
+                /   li = link_to 'Próximo', [current_course, @topic.next.subject, @topic.next], class: 'btn-next'
+                / - elsif @subject.question.present?
+                /   - if current_user.answered?(@subject.question)
+                /     li = link_to 'Resposta da Questão', course_subject_answer_path(@course, @subject, current_user.answer_for(@subject.question)), class: 'btn-next'
+                /   - else
+                /     li = link_to 'Responder Questão', new_course_subject_answer_path(@course, @subject), class: 'btn-next'
+
+    aside.course__aside
+      = render partial: 'shared/links', locals: {links: @course.links}

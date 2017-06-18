@@ -1,0 +1,21 @@
+- if @links.any?
+  .panel.panel--library
+
+    .panel__header
+      h1.panel__title Biblioteca
+
+    .panel__body
+      .list.list--library
+        - @links.each do |link|
+          .list__item
+            .item__icon
+              = image_tag("file-icons/ico-#{link.icon}-small.png", size: '30x36')
+            .td-file-name
+              - if link.url.present?
+                = link_to link.name, link.url, class: 'file', target: '_blank'
+              - else
+                .file = link.name
+            .td-module = link.subjects.pluck(:name).to_sentence
+
+    .panel__footer
+      = link_to 'Ver todos os arquivos', unit_course_links_url(current_unit, current_course)

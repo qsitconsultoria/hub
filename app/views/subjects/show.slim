@@ -1,0 +1,50 @@
+section.course
+  .container
+
+    main.course__main
+
+
+      .panel.panel--content
+
+        .panel__header.breadcrumb
+          ul
+            li = link_to current_course.name, unit_course_url(current_unit, current_course)
+
+        .panel__body
+          .module-number
+            p Módulo #{padded_number(@subject.position)}
+          h1 = @subject.name
+          .course__video
+            - if @subject.video.present?
+              .video-player
+                .video-player__body
+                  = @subject.video.html_safe
+          = simple_format @subject.description
+          / p O jeito mais comum e mais difícil de negociação. Descubra por que usar e como diminuir os riscos nesse modelo de venda.
+
+
+      .panel.panel--course
+        .panel__header
+          h1.panel__title Tópicos nesse Módulo (#{@topics.size})
+
+        .panel__body
+          .list.list--topics
+            = render @topics
+            - if @subject.question.present?
+              - if current_user.answered?(@subject.question)
+                = link_to unit_course_subject_answer_path(@unit, @course, @subject, current_user.answer_for(@subject.question)), class: 'list__item question__item' do
+                  header.list__header
+                    .list__number &#xf044;
+                  .list__body
+                    h1.list__title Questão do Módulo
+              - else
+                = link_to new_unit_course_subject_answer_path(@unit, @course, @subject), class: 'list__item question__item' do
+                  header.list__header
+                    .list__number &#xf044;
+                  .list__body
+                    h1.list__title Questão do Módulo
+
+    aside.course__aside
+      = render partial: 'shared/links'
+
+      = render @teachers

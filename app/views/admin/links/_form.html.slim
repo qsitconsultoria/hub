@@ -1,0 +1,24 @@
+= f.error_notification
+
+fieldset
+  .section-form
+    .panel.panel-form
+      .panel-heading
+        h2.panel-title Referência
+        p Adicione o nome e referência do arquivo que irá aparecer na biblioteca do seu curso. Escolha também em quais módulos este arquivo deve ser listado.
+      .panel-body
+        .form
+          .form__row
+            = select_tag 'library_file', options_for_select(@files.collect{ |lf| [lf.title, lf.slug] }, params['library_file']), prompt: 'selecione um arquivo da biblioteca', class: "form__select", "data-container" => "managers-select"
+
+          - if params['library_file'].blank?
+            .create-new-manager__container
+              .header-inline
+                span ou criar uma nova
+              .form__row
+                = f.input :name
+              .form__row
+                = f.input :url, label: 'URL'
+
+          .form__row
+            = f.association :subjects, as: :check_boxes, label: 'Módulos', collection: @subjects

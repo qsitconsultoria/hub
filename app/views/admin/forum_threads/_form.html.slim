@@ -1,0 +1,13 @@
+= f.error_notification
+.section-editor
+
+  .form-inputs
+    div data-container="title"
+      = f.input :title, label: false, placeholder: 'Título do tópico...', input_html: {'data-container' => 'first-focus'}
+
+    div data-container="preview"
+      = @thread.content.try(:html_safe)
+    div data-container="content"
+      = f.input :content
+
+  = f.hidden_field :user_id, value: current_user.id

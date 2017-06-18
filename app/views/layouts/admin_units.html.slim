@@ -1,0 +1,82 @@
+- if user_signed_in?
+  - @page_class = 'page--private'
+- elsif devise_controller?
+  - @page_class = 'page--session'
+- else
+  - @page_class = 'page--public'
+
+- @unit = Unit.find(4)
+
+doctype 5
+html.no-js class="#{@page_class}" lang="#{I18n.locale}"
+  head
+    = stylesheet_link_tag 'admin', media: 'all'
+    = javascript_include_tag 'requirements'
+    = javascript_include_tag 'admin'
+    = render 'shared/head'
+  body
+    .sb-slidebar.sb-left class='#{@unit.color_theme}'
+      .sb-slidebar-header Selecionar outra unidade
+      =link_to "#"
+        li.sb-slidebar-item
+          .sb-slidebar-item__avatar = img current_user.avatar.thumb
+          .sb-slidebar-item__title Fundo Nacional do Meio Ambiente
+      =link_to "#"
+        li.sb-slidebar-item
+          .sb-slidebar-item__avatar = img current_user.avatar.thumb
+          .sb-slidebar-item__title IBAMA
+      =link_to "#"
+        li.sb-slidebar-item
+          .sb-slidebar-item__avatar = img current_user.avatar.thumb
+          .sb-slidebar-item__title Serviço Florestal Brasileiro
+
+
+    #sb-site
+      header.header--primary role='banner' class='#{@unit.color_theme}'
+        / .container
+
+        / button.navbar-toggle.js-navbar-toggle type='button' &#9776; Menu
+        nav.navbar.js-navbar role='navigation'
+          ul.navbar-nav--primary
+
+            / ----- Slidebar -------
+            li.slidebar-buttom
+              a.slidebar-toggle.sb-toggle-left href='#'
+                i.fa.fa-bars
+
+            / ----- Current - unit -------
+            li = img current_user.avatar.thumb
+            li.unit-title Instituto Chico Mendes
+
+            / ----- Managers -------
+            li.managers-menu.submenu-toggle
+              = link_to "#" do
+                | Gestores
+                i.fa.fa-angle-down
+              ul.submenu
+                li.submenu-item
+                  = link_to "Cursos"
+                li.submenu-item
+                  = link_to "Unidades"
+
+            / li = render 'admin/shared/select_navigation'
+            / - if current_course.present?
+            /   li = link_to 'Visualizar Curso', course_subjects_url(current_course), class: 'btn btn--view-course', target: '_blank'
+
+          / ----- User -------
+          ul.navbar-nav--secondary.submenu-toggle
+            li = img current_user.avatar.thumb
+            li.user-menu
+              i.fa.fa-angle-down
+              ul.submenu
+                li.submenu-item
+                  = link_to "Sair"
+
+              / li teste
+            / - if current_course
+            /   li = link_to current_user.first_name, edit_admin_unit_course_teacher_path(current_unit, current_course, current_user)
+            / li = link_to 'Sair', destroy_session_path(current_user), method: :delete
+
+
+      .main.main--create--units
+        = yield

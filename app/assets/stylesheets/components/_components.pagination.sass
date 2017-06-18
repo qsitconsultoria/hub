@@ -1,0 +1,46 @@
+// *************************************
+//
+//   Pagination
+//
+// *************************************
+
+.pagination
+  text-align: center
+  padding: 10px 0
+  +clearfix
+
+  .page, .next, .prev, .first, .last
+    background-color: #dfe3e4
+    padding: 5px
+    text-align: center
+    margin-right: 3px
+    display: block
+    float: left
+    +inuit-font-size(13px)
+    color: #6F777F
+    border-radius: 2px
+
+    a
+      text-decoration: none
+      color: #6F777F
+
+    &.current
+      color: #2DB0CB
+      font-weight: bold
+
+  .page
+    width: 40px
+
+  .next, .prev, .first, .last
+    width: 40px
+
+  +respond-to(small)
+    width: 95%
+    margin: 0 auto
+
+
+.dashboard
+  .section-body
+    .pagination
+      +span(12)
+      padding: 10px

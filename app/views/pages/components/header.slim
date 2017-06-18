@@ -1,0 +1,17 @@
+header.header--primary role='banner'
+
+  .header-brand
+    h1 = link_to 'Hub Educação', '/pages/public/index'
+
+  button.navbar-toggle type='button' href='#' data-toggle='collapse' data-target='.js-navbar-collapse' &#9776; Menu
+  nav.navbar--primary.js-navbar-collapse role='navigation'
+
+    ul.navbar-nav--primary
+      li
+        = link_to 'Cursos', '/pages/components/signin'
+
+    ul.navbar-nav--secondary
+      li
+        = link_to 'Login', '#'
+      li
+        = link_to 'Cadastro', '#'

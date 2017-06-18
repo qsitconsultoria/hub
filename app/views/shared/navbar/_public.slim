@@ -1,0 +1,6 @@
+= link_to unit_url(current_unit), class: 'site-brand' do
+  span.site-brand__image = img current_unit.logo.thumb
+  span.site-brand__title = @unit.name
+
+ul class='[ nav-site nav-site--secondary ]'
+  li = link_to 'Entrar', new_user_session_path, class: 'btn btn--login'

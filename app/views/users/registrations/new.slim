@@ -1,0 +1,20 @@
+- set_meta_tags :title => 'Cadastre-se'
+
+section.section--default
+  .container
+
+    .panel.panel--session
+
+      .panel__header
+        h1.panel__title Criar Conta
+        p Adicione seus dados abaixo:
+
+      .panel__body
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource)) do |f|
+          = render partial: 'form', locals: {f: f}
+
+          .form__footer
+            p Já possui conta? #{link_to "Faça o login", new_session_path(resource)}
+
+
+

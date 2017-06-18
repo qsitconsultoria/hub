@@ -1,0 +1,4 @@
+= link_to unit_course_forum_thread_url(@unit, @course, forum_thread) do
+    .forum-preview__item
+      h2.forum-preview__item-title = forum_thread.title
+      p.forum-preview__item-author = "Publicado por <b>#{forum_thread.user.name}</b> ".html_safe + time_ago_in_words(forum_thread.created_at) + " atrás."

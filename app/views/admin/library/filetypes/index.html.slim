@@ -1,0 +1,16 @@
+- set_meta_tags title: 'Procurar por Tipo de Arquivo'
+
+= render 'admin/library_files/sidebar'
+
+section.section.dashboard style="width: 80%; float: right"
+  .section-heading
+    h1.section-title Procurar por Tipo de Arquivo
+    ul.nav-section
+      li = link_to 'Adicionar Arquivo', new_admin_library_file_url, class: 'btn btn--primary fa fa-plus'
+
+  .section-body
+    - @filetypes.each do |filetype|
+      .panel.panel-library
+        = link_to admin_filetype_url(filetype.parameterize) do
+          .panel-body
+            h2 #{filetype} <span class='number-of-files'>(#{count_elements('filetype', filetype)})</span>

@@ -1,0 +1,13 @@
+- set_meta_tags :title => 'Nova Unidade'
+
+= simple_form_for([:admin, @unit]) do |f|
+  section.section
+    .section-heading
+      h1.section-title Nova Unidade
+      ul.nav-section
+        li = link_to "Voltar", :back, class: "btn btn--back"
+        li = f.submit 'Salvar', class: 'btn btn--dark btn--mini', class: 'btn btn--primary'
+
+    .section-body
+      == render partial: 'form', locals: {f: f}
+      / == render 'form'

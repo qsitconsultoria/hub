@@ -1,0 +1,382 @@
+// *************************************
+//
+//   Header
+//
+// *************************************
+
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+.panel
+  +clearfix
+  background-color: #fff
+  margin: 0 $inuit-base-spacing-unit--small/2 $inuit-base-spacing-unit--small $inuit-base-spacing-unit--small/2
+
+  @include respond-to(medium, large, screen-xl)
+    margin: 0 0 $inuit-base-spacing-unit--small 0
+
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+// ----- Panel Course ----- //
+.panel--course
+  box-shadow: 0 1px 0 rgba(#000, .1)
+
+  .panel__header
+    background-color: #989ea4
+    border-bottom: 1px solid darken(#989ea4, 15%)
+    color: #fff
+    padding: 15px 14px 15px 14px
+    text-shadow: 0 -1px 0 rgba(#000, .1)
+    border-top-left-radius: 2px
+    border-top-right-radius: 2px
+
+    .panel__title
+      font-size: 16px
+      line-height: 1.3
+      text-transform: uppercase
+      margin: 0
+
+
+
+// ----- Panel Library ----- //
+.panel--library
+  box-shadow: 0 1px 0 rgba(#000, .1)
+  margin-bottom: 40px
+
+  .panel__header
+    background-color: #989ea4
+    border-bottom: 1px solid darken(#989ea4, 15%)
+    color: #fff
+    text-shadow: 0 -1px 0 rgba(#000, .1)
+    padding: 15px 14px 15px 14px
+    border-top-left-radius: 2px
+    border-top-right-radius: 2px
+
+    .panel__title
+      font-size: 16px
+      line-height: 1.3
+      text-transform: uppercase
+      margin: 0
+
+  .panel__footer
+    border-top: 1px solid rgba(#cacbcc, .5)
+    padding: 15px 20px
+    text-align: center
+    background-color: #f6f7f7
+
+    a
+      color: #2db0cb
+      font-weight: bold
+      text-decoration: none
+      +inuit-font-size(12px)
+      text-transform: uppercase
+
+      &:hover
+        color: darken(#2db0cb, 10%)
+
+
+// ----- Panel About Tutor ----- //
+.panel--about-tutor
+  padding: 10px 20px
+  border-bottom: rgba(#000, .1)
+
+  &:last-of-type
+    border-bottom: none
+
+  .panel__header
+    color: #fff
+    text-shadow: 0 -1px 0 rgba(#000, .1)
+    padding: 15px 14px 15px 14px
+    border-top-left-radius: 2px
+    border-top-right-radius: 2px
+    text-align: center
+
+  .tutor-photo
+    width: 72px
+    height: 72px
+    margin: 0 auto
+    border-radius: 100px
+    overflow: hidden
+
+    img
+      width: 72px
+      height: 72px
+
+  h2
+    margin: 10px 0 5px 0
+    font-size: 9px
+    font-weight: 300
+    text-transform: uppercase
+    color: #5c646c
+
+  .panel__title
+    font-size: 16px
+    font-weight: 500
+    color: #3b4358
+    line-height: 1.3
+    margin: 0
+
+  .panel__body
+    padding: 15px 30px
+    border-top: 1px solid #e9e9e9
+    p
+      color: rgba(#5c646c, .8)
+      font-size: 13px
+      text-align: center
+      margin: 0
+
+
+
+
+// ----- Panel Content ----- //
+.panel--content
+  box-shadow: 0 1px 0 rgba(#000, .1)
+
+  .panel__header
+    background-color: #989ea4
+    border-bottom: 2px solid darken(#989ea4, 15%)
+    color: #fff
+
+    .panel__title
+      font-size: 14px
+      text-transform: uppercase
+      margin: 0
+      padding: 14px
+
+  .breadcrumb
+    background-color: #f9fafa
+    border-bottom: 2px solid darken(#f9fafa, 10%)
+
+    ul
+      padding: 10px 0 10px 15px
+      margin: 0
+
+    li
+      display: inline
+
+      &:last-child
+        a
+          &:after
+            content: ''
+
+    a
+      position: relative
+      padding-right: 20px
+      color: rgba(#5c646c, .6)
+      font-size: 11px
+      text-transform: uppercase
+      text-decoration: none
+
+      &:hover
+        color: #2db0cb
+
+      &:after
+        @extend .fa
+        content: $fa-var-angle-right
+        font-size: 13px
+        position: absolute
+        top: -1px
+        right: 5px
+        color: darken(#e5e5e5, 10%)
+
+
+  .panel__body
+    padding: 25px
+
+    h1
+      font-size: 26px
+      color: #3b4358
+      font-weight: 500
+      text-align: center
+      margin-bottom: 15px
+
+    p
+      font-size: 14px
+      color: rgba(92, 100, 108, 0.9)
+      line-height: 150%
+      font-weight: 200
+
+    .course__video
+      @include respond-to(small)
+        @include span(7)
+        @include omega
+      margin-bottom: 15px
+
+
+  .panel__footer
+    text-align: center
+    padding-top: 10px
+    padding-bottom: 50px
+
+    .nav-topicos
+      padding: 0
+      display: inline-block
+      margin: 0 auto
+      text-align: center
+
+      li
+        list-style: none
+        display: inline-block
+        margin: 0
+        position: relative
+
+        &:last-child
+          a
+
+        a
+          padding: 10px 60px
+          display: inline-block
+          border: 1px solid darken(#f9fafa, 10%)
+          position: relative
+          margin: 0 10px
+          border-radius: 200px
+
+
+          &.btn-next
+            padding: 10px 50px 10px 35px
+            &:after
+              @extend .fa
+              content: $fa-var-angle-right
+              position: absolute
+              top: 10px
+              right: 22px
+              font-size: 24px
+
+          &.btn-prev
+            padding: 10px 35px 10px 50px
+            &:before
+              @extend .fa
+              content: $fa-var-angle-left
+              position: absolute
+              top: 10px
+              left: 22px
+              font-size: 24px
+
+
+          &:hover
+            background-color: #2db0cb
+            border-color: #2db0cb
+            color: #fff
+
+
+.icon-library
+  border: 1px solid #ccc
+  box-shadow: 0 1px 0 rgba(#ccc, .5)
+  border-radius: 6px
+  padding: 7px
+  text-align: center
+  width: 64px
+  height: 64px
+  display: block
+  margin: 0 auto
+  margin-bottom: 20px
+
+.panel--general-library
+
+  .panel__footer
+    border-top: 1px solid rgba(#cacbcc, .5)
+    padding: 15px 20px
+    text-align: center
+    background-color: #f6f7f7
+
+    a
+      color: #2db0cb
+      font-weight: bold
+      text-decoration: none
+      +inuit-font-size(12px)
+      text-transform: uppercase
+
+      &:hover
+        color: darken(#2db0cb, 10%)
+
+
+// ----- Panel Done ----- //
+
+.panel--done
+  .panel__header
+    background-color: #fff
+    border: 0
+    color: rgba(92, 100, 108, 0.6)
+    padding: 15px 30px
+    .checked
+      font-family: FontAwesome
+      font-size: 72px
+      color: #37c544
+      font-weight: 300
+      margin: 0
+      padding: 0
+      line-height: 130%
+      text-align: center
+    h1
+      margin: 0 0 5px 0
+    h2, p
+      text-align: center
+      margin: 0
+      border: 0
+
+  .panel__body
+    padding: 0 20px
+
+    p
+      margin: 0
+
+    .module-answer
+      background-color: rgba(#e9e9e9, .5)
+      border-radius: 2px
+      border: 1px solid #ccc
+      padding: 5px 10px
+
+      p
+        font-size: 14px
+        margin-top: 5px
+        margin-bottom: 10px
+
+    .edit-answer
+      text-align: center
+      margin-top: 10px
+
+
+
+
+
+
+// ----- Panel Session ----- //
+.panel--session
+  margin: $inuit-base-spacing-unit*3 0
+  padding: $inuit-base-spacing-unit--large/1.5 $inuit-base-spacing-unit--large 0 $inuit-base-spacing-unit--large
+  +respond-to(large, x-large)
+    +span(8)
+    +pre(2)
+
+
+
+  .form__footer
+    text-align: left
+
+  .panel__header
+    border-bottom: 1px solid #e5e5e5
+    text-align: center
+
+    .panel__title
+      color: #3b4358
+      font-size: 22px
+      margin-bottom: 5px
+    p
+      font-size: 16px
+      color: #5c646c
+      @include font-weight(light)
+
+  .panel__body
+    padding-top: $inuit-base-spacing-unit--small
+
+
+
+// Meta
+.meta
+  .meta__name
+    font-size: 11px
+    color: #5c646c

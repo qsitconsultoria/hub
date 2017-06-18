@@ -1,0 +1,23 @@
+- set_meta_tags :title => 'Unidades'
+
+section.section.create-unit__section
+  .section-heading
+    h1.section-title Unidades
+    - if can? :create_unit, @unit
+      ul.nav-section
+        li = link_to "Nova Unidade",  new_admin_unit_path, class: "btn btn--positive btn--add"
+
+
+  .section-modules.section-modules--unit-list
+
+    - if @units.present?
+      - @units.each do |unit|
+        = link_to edit_admin_unit_path(unit), id: unit.slug do
+          .panel.panel-module.panel-module--unit-list
+            .panel-body
+              h2 = unit.name
+
+    - else
+      .blank-state__section
+        h1.blank-state__title Você não adicionou nenhum gestor
+        .blank-state__content Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat eius modi tempora ut voluptatem tempora ut voluptatem.

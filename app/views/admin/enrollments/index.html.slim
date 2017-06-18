@@ -1,0 +1,40 @@
+= render 'admin/courses/sidebar'
+
+section.section style="width: 80%; float: right"
+  .section-heading
+    h1.section-title Alunos
+
+  .section-body
+
+    - if @waiting_for_approval.present?
+      p.student-status <b>#{pluralize(@waiting_for_approval.count, 'pessoa está', 'pessoas estão')}</b> aguardando aprovação
+
+    - @waiting_for_approval.each do |enrollment|
+      div class="panel panel-student-pending" id="#{enrollment.student.name.parameterize}"
+        = link_to admin_unit_course_enrollment_url(current_unit, current_course, enrollment) do
+          .panel-avatar
+            .uploadbox-image-container height="36" width="36"
+              = img enrollment.student.avatar.thumb
+          .panel-name
+            h2 = enrollment.student.name
+          .panel-email
+            p = enrollment.student.email
+        .panel-actions
+          = link_to 'Aprovar', admin_unit_course_enrollment_approve_student_path(current_unit, current_course, enrollment), class: 'btn btn--primary'
+          = link_to 'Ignorar', admin_unit_course_enrollment_reject_student_path(current_unit, current_course, enrollment), class: 'btn btn--secondary btn--delete'
+
+    - if @approved.present?
+      p.student-status <b>#{pluralize(@approved.count, 'pessoa está', 'pessoas estão')}</b> fazendo este curso
+
+    - @approved.each do |enrollment|
+      .panel.panel-student
+        = link_to admin_unit_course_enrollment_url(current_unit, current_course, enrollment), id: enrollment.student.name do
+          .panel-avatar
+            .uploadbox-image-container height="36" width="36"
+              = img enrollment.student.avatar.thumb
+          .panel-name
+            h2 = enrollment.student.name
+          .panel-email
+            p = enrollment.student.email
+
+    = link_to "#{pluralize(@rejected.count, 'aluno ignorado', 'alunos ignorados')}", admin_unit_course_ignored_students_url(current_unit, current_course), class: 'ignored-students'

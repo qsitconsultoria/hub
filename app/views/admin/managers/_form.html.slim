@@ -1,0 +1,24 @@
+= f.error_notification
+
+fieldset
+  .section-form
+    .panel.panel-form
+      .panel-heading
+        h2.panel-title Informações do Novo Gestor
+        p Selecione uma pessoa existente ou digite o nome e email para convidar um novo gestor.
+      .panel-body
+        .form
+          .form__row
+            = f.input :id, label: false, collection: @available_managers, include_blank: 'selecionar uma pessoa existente', input_html: {class: "form__select", "data-container" => "managers-select"}
+
+
+          .create-new-manager__container
+            .header-inline
+              span ou criar um novo
+            .form__row
+              label Nome:
+              = f.input :name, label: false, placeholder: 'Digite o nome completo'
+            .form__row
+              label Email:
+              = f.input :email, label: false, placeholder: 'Digite o e-mail'
+

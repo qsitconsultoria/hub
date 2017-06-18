@@ -1,0 +1,12 @@
+ul class='[ nav-site nav-site--primary has-submenu ]'
+  li.nav-site__item
+    = link_to admin_unit_url(current_unit) do
+      span.site-brand__image.image__unit = img current_unit.logo.thumb
+      span.site-brand__title = current_unit.name
+    ul class='nav-site__submenu'
+      li.nav-site__item
+        = link_to 'Gestores', admin_unit_managers_url(current_unit)
+      li.nav-site__item
+        = link_to 'Cursos', admin_unit_url(current_unit)
+      li.nav-site__item
+        = link_to 'Configurações', edit_admin_unit_url(current_unit)

@@ -1,0 +1,175 @@
+// *************************************
+//
+//   Strucutre
+//   -> This is an example structure
+//
+// *************************************
+
+.hero
+  @include clearfix
+  background-color: #fff
+
+  .hero__header, .hero__body, .hero__footer
+    @include clearfix
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+.hero--default
+  @extend .hero
+  background-color: #fff
+
+  .hero__header
+    padding: $inuit-base-spacing-unit*2 $inuit-base-spacing-unit
+    text-align: center
+
+
+  .hero__title
+    +font-weight(light)
+    font-size: 17px
+
+
+// Hero Module
+.hero--module
+  @extend .hero
+  box-shadow: 0 1px 0 rgba(#000, .1)
+
+  .hero__header
+    text-align: center
+    padding: 40px 0
+    border-top-left-radius: 3px
+    border-top-right-radius: 3px
+    margin-top: $inuit-base-spacing-unit
+
+  .hero__title
+    +font-weight(bold)
+    font-size: 24px
+    line-height: 1.1
+    color: #3b4358
+    padding: 0
+    margin-bottom: 20px
+
+  .hero__subtitle
+    +font-weight(light)
+    font-size: 15px
+    line-height: 1.4
+    color: #3b4358
+    padding: 0 $b-whitespace ($b-whitespace*2) $b-whitespace
+
+  .course__intro
+    .hero__action
+      display: none
+    .module-number
+      margin-bottom: 0
+
+
+// Hero course
+.hero--course
+  @extend .hero
+  box-shadow: 0 1px 0 rgba(#000, .1)
+
+  .hero__header
+    text-align: center
+    padding: 0
+    background-color: #f0f2f6
+    border-top-left-radius: 3px
+    border-top-right-radius: 3px
+
+  .hero__title
+    +font-weight(bold)
+    font-size: 20px
+    line-height: 1.1
+    color: #3b4358
+    padding: ($b-whitespace*2) $b-whitespace
+
+  .hero__subtitle
+    +font-weight(light)
+    font-size: 15px
+    line-height: 1.4
+    color: #3b4358
+    padding: 0 $b-whitespace ($b-whitespace*2) $b-whitespace
+
+  .course__intro
+    .hero__action
+      display: none
+
+  .hero__footer
+    margin: 0
+    padding: $gutter
+    background-color: #fff
+    border-bottom-left-radius: 3px
+    border-bottom-right-radius: 3px
+    box-shadow: inset 0 0 0 1px #f0f2f6, 0 1px 0 rgba(#f0f2f6, .5)
+
+  @include respond-to(small)
+
+    .hero__title
+      padding: $b-whitespace*2 $b-whitespace $b-whitespace $b-whitespace
+
+    .hero__subtitle
+      padding-left: ($b-whitespace*2)
+      padding-right: ($b-whitespace)
+
+    .hero__action
+      padding: 0 ($b-whitespace) ($b-whitespace) ($b-whitespace*2)
+
+
+  @include respond-to(small)
+    .course__intro
+      .hero__action
+        display: block
+
+  @include respond-to(medium, large)
+    padding: $gutter 0
+
+    .course__intro
+      .hero__action
+        display: block
+
+    .hero__header
+      text-align: center
+      padding: 0
+      background-color: #f0f2f6
+      border-top-left-radius: 3px
+
+    .hero__title
+      @include fw-bold
+      font-size: 30px
+      line-height: 1.1
+      color: #3b4358
+
+    .hero__subtitle
+      +font-weight(light)
+      font-size: 17px
+      line-height: 1.4
+      color: #3b4358
+
+    .hero__header
+      text-align: left
+
+    .hero__title
+      padding: ($b-whitespace*3) ($b-whitespace*2) ($b-whitespace*2) ($b-whitespace*3)
+
+    .hero__subtitle
+      padding-left: ($b-whitespace*3)
+      padding-right: ($b-whitespace*2)
+
+    .hero__action
+      padding: 0 ($b-whitespace*2) ($b-whitespace*2) ($b-whitespace*3)
+
+// -------------------------------------
+//   States
+// -------------------------------------
+
+// .structure.is-state
+
+// -------------------------------------
+//   Context
+// -------------------------------------
+
+// .has-structure
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------

@@ -1,0 +1,45 @@
+section.section--default
+  .container
+
+    .panel.panel--session
+
+      .panel__header
+        h1.panel__title Criar Conta
+        p Adicione seus dados abaixo:
+
+      .panel__body
+        = simple_form_for(resource, as: resource_name, url: student_registration_path) do |f|
+          fieldset
+            .form__field
+              = f.uploads_one :avatar, preview: :regular, default: image_path('regular_avatar.jpg')
+              .form__note
+                p Essa foto será utilizada como identidade na plataforma e forum.
+
+            .form__row
+              = f.input :name, label: false, placeholder: 'Nome'
+
+            .form__row
+              = f.input :email, label: false, placeholder: 'Email', input_html: {autocorrect: 'off', spellcheck: 'false', autocapitalize: 'off', placeholder: 'Email'}
+
+            .form__row
+              = f.input :password, label: false, placeholder: 'Senha'
+
+            .form__row
+              = f.input :password_confirmation, label: false, placeholder: 'Confirme a senha', required: true
+
+            / .form__row
+            /   .form__field
+            /     .form__select--default
+            /       select name='select-choice'
+            /         option value='' Selecione sua Instituição
+            /         option value='Opção 1' Opção 1
+            /         option value='Opção 2' Opção 2
+
+            .form__row
+              .form__field
+                = f.button :submit, 'Cadastrar', class: 'btn btn--primary btn--large'
+
+            .form__footer
+              p Já possui conta? #{link_to "Faça o login", new_student_session_path}
+
+

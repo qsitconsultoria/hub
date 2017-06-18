@@ -1,0 +1,16 @@
+= f.error_notification
+
+fieldset
+
+  .section-form
+
+    .panel.panel-form
+      .panel-heading
+        h2.panel-title Informações Básicas
+        p Essa questão será apresentada ao final do módulo.
+      .panel-body
+        .form
+
+          .form__row
+            = f.input :title, label: 'Título da questão', input_html:{ 'data-behavior' => 'autosize' }
+

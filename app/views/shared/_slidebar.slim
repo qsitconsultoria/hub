@@ -1,0 +1,24 @@
+- if current_user
+  - if current_user.manager?
+    .sb-slidebar.sb-left
+      .sb-slidebar-header Selecionar outra unidade
+      = link_to admin_library_files_url
+        li.sb-slidebar-item
+          .sb-slidebar-item__avatar = image_tag('thumb_biblioteca.png', width: 35)
+          .sb-slidebar-item__title Biblioteca de Arquivos
+
+      - current_user.units.each do |unit|
+        = link_to admin_unit_path(unit)
+          li.sb-slidebar-item
+            .sb-slidebar-item__avatar = img unit.logo.thumb
+            .sb-slidebar-item__title = unit.name
+
+  / -elsif current_user.teacher?
+  /   .sb-slidebar.sb-left
+  /     .sb-slidebar-header Selecionar outra unidade
+  /     - current_user.unit
+  /       = link_to admin_unit_path(unit)
+  /         li.sb-slidebar-item
+  /           .sb-slidebar-item__avatar = img unit.logo.thumb
+  /           .sb-slidebar-item__title = unit.name
+

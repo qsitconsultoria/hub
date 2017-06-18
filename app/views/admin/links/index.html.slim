@@ -1,0 +1,26 @@
+= render 'admin/courses/sidebar'
+
+section.section style="width: 80%; float: right"
+  .section-heading
+    h1.section-title Referências
+    ul.nav-section
+      li = link_to 'Adicionar Referência', new_admin_unit_course_link_path(current_unit, current_course), class: 'btn btn--primary fa fa-plus'
+
+  .section-body
+
+
+    - @links.each do |link|
+
+      .panel.panel-link
+        = link_to edit_admin_unit_course_link_path(current_unit, current_course, link) do
+          .panel-heading
+            p.icon-file &#xf016;
+          .panel-body
+            h2 = link.name
+            p = link.url
+
+    = link_to new_admin_unit_course_link_path(current_unit, current_course), class: 'btn-add-field' do
+      .btn-add-topic-icon
+        p &#xf067;
+      .btn-add-topic-text
+        h2 Adicionar Referência

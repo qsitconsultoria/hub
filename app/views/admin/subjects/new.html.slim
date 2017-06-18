@@ -1,0 +1,13 @@
+= render 'admin/courses/sidebar'
+section.dashboard-panel
+  = simple_form_for([:admin, @unit, @course, @subject]) do |f|
+    section.section
+      .section-heading
+        h1.section-title Criar módulo
+        ul.nav-section
+          li = link_to 'Cancelar', admin_unit_course_subjects_path(@unit, @course, @subject), class: 'btn btn--secondary'
+          li = f.button :submit
+
+      .section-body
+        = render partial: 'form', locals: {f: f}
+

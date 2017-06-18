@@ -1,0 +1,16 @@
+- set_meta_tags title: 'Procurar por Autor'
+
+= render 'admin/library_files/sidebar'
+
+section.section.dashboard style="width: 80%; float: right"
+  .section-heading
+    h1.section-title Procurar por Autor
+    ul.nav-section
+      li = link_to 'Adicionar Arquivo', new_admin_library_file_url, class: 'btn btn--primary fa fa-plus'
+
+  .section-body
+    - @authors.each do |author|
+      .panel.panel-library
+        = link_to admin_author_url(author) do
+          .panel-body
+            h2 #{author} <span class='number-of-files'>(#{count_elements('author', author)})</span>

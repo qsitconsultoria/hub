@@ -1,0 +1,150 @@
+- if @files.nil?
+  h1.library--title Bem-vindo à Biblioteca do HUB
+
+  .container
+    .search--box
+
+      ul.nav.nav-tabs
+        li.simple-search--tab.active = link_to 'Procurar Arquivo', '#procurar-arquivo'
+        li.advanced-search--tab = link_to 'Busca Avançada', '#busca-avancada'
+
+      .simple--search--panel.visible
+        = render 'simple_search'
+
+      .advanced--search--panel
+        = render 'advanced_search'
+
+    section.search--by--metadata
+      .section--header
+        h2 Ou Faça uma busca rápida por:
+      .section--body
+        ul
+          = link_to '#modal--themes', class: 'open-modal' do
+            li Tema
+          = link_to '#modal--territorial-coverages', class: 'open-modal' do
+            li Abrangência Territorial
+          = link_to '#modal--biomes', class: 'open-modal' do
+            li Bioma
+          = link_to '#modal--courses', class: 'open-modal' do
+            li Curso
+          = link_to '#modal--authors', class: 'open-modal' do
+            li Autor
+          = link_to '#modal--filetypes', class: 'open-modal' do
+            li Tipo de Arquivo
+          = link_to '#modal--languages', class: 'open-modal' do
+            li Idioma
+          = link_to '#modal--years', class: 'open-modal' do
+            li Ano
+
+  .overlay style="display: none !important"
+
+  .metadata--modal#modal--themes
+    .modal-content
+      .modal--header
+        h2.modal-title Selecione o Tema:
+        = link_to "&times;".html_safe, "#close", class: 'close-modal'
+
+      .modal--body
+        ul
+          - @themes.each do |theme|
+            = link_to "?query%5Bthemes_name_eq%5D=#{theme.name}" do
+              li = theme.name
+
+  .metadata--modal#modal--territorial-coverages
+    .modal-content
+      .modal--header
+        h2.modal-title Selecione a Abrangência Territorial:
+        = link_to "&times;".html_safe, "#close", class: 'close-modal'
+
+      .modal--body
+        ul
+          - @territorial_coverages.each do |territorial_coverage|
+            = link_to "?query%5Bterritorial_coverages_name_in%5D=#{territorial_coverage.name}" do
+              li = territorial_coverage.name
+
+  .metadata--modal#modal--biomes
+    .modal-content
+      .modal--header
+        h2.modal-title Selecione o Bioma:
+        = link_to "&times;".html_safe, "#close", class: 'close-modal'
+
+      .modal--body
+        ul
+          - @biomes.each do |biome|
+            = link_to "?query%5Bbiomes_name_in%5D=#{biome.name}" do
+              li = biome.name
+
+  .metadata--modal#modal--courses
+    .modal-content
+      .modal--header
+        h2.modal-title Selecione o Curso:
+        = link_to "&times;".html_safe, "#close", class: 'close-modal'
+
+      .modal--body
+        ul
+          - @courses.each do |course|
+            = link_to "?query%5Bcourses_name_eq%5D=#{course.name}" do
+              li = course.name
+
+  .metadata--modal#modal--authors
+    .modal-content
+      .modal--header
+        h2.modal-title Selecione um Autor:
+        = link_to "&times;".html_safe, "#close", class: 'close-modal'
+
+      .modal--body
+        ul
+          - @authors.each do |author|
+            = link_to "?query%5Bauthor_cont%5D=#{author}" do
+              li = author
+
+  .metadata--modal#modal--filetypes
+    .modal-content
+      .modal--header
+        h2.modal-title Selecione o Tipo de Arquivo:
+        = link_to "&times;".html_safe, "#close", class: 'close-modal'
+
+      .modal--body
+        ul
+          - @filetypes.each do |filetype|
+            = link_to "?query%5Bfiletype_in%5D=#{filetype}" do
+              li = filetype
+
+  .metadata--modal#modal--languages
+    .modal-content
+      .modal--header
+        h2.modal-title Selecione o Idioma:
+        = link_to "&times;".html_safe, "#close", class: 'close-modal'
+
+      .modal--body
+        ul
+          - @languages.each do |language|
+            = link_to "?query%5Blanguage_eq%5D=#{language}" do
+              li = language
+
+  .metadata--modal#modal--years
+    .modal-content
+      .modal--header
+        h2.modal-title Selecione o Ano:
+        = link_to "&times;".html_safe, "#close", class: 'close-modal'
+
+      .modal--body
+        ul
+          - @years.each do |year|
+            = link_to "?query%5Byear_lteq%5D=#{year}" do
+              li = year
+
+- else
+  = form_tag library_files_path, method: :get do
+    = render 'search_bar'
+
+    = render 'sidebar'
+
+  .search--results
+    - if @files.total_count >= 1
+      h1.results--number Mostrando <b>#{@files.count}</b> de <b>#{pluralize(@files.total_count, 'arquivo', 'arquivos')}</b>
+      = render 'library_files/files', collection: @files
+      = link_to 'Fazer busca avançada', '/biblioteca#busca-avancada', class: 'btn advanced-search-mobile'
+    - else
+      .results--blank-state
+        p <b>Nenhum arquivo</b> foi encontrado para sua busca.

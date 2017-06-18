@@ -1,0 +1,84 @@
+.section
+  +clearfix
+  padding-top: $inuit-base-spacing-unit--small
+
+  .section__header
+    text-align: center
+    padding: 0 $inuit-base-spacing-unit--small
+
+    .section__title
+      font-size: 18px
+      @include font-weight(bold)
+      margin-bottom: $inuit-base-spacing-unit--small/2
+
+    p
+      font-size: 13px
+      line-height: 1.2
+      @include font-weight(light)
+
+      &:last-of-type
+        margin-bottom: 0
+
+  .section__body
+    padding: $inuit-base-spacing-unit--small/2
+
+
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+.section--basic
+  @extend .section
+  background-color: #fff
+
+  .section__header
+    padding: 0 $inuit-base-spacing-unit--small
+    color: #343434
+
+    p
+      @include font-weight(light)
+
+  .section__body
+    text-align: center
+    padding-bottom: 40px
+
+
+.section--default
+  @extend .section
+
+.section--courseIntro
+  .container
+    background-color: #fff
+    box-shadow: 0 1px 0 rgba(#000, .1)
+
+  > .header, .container > .header
+    +span(5)
+    padding: $inuit-base-spacing-unit--small
+
+    .title
+      font-size: 22px
+
+    .subtitle
+      font-size: 17px
+
+  > .body, .container > .body
+    +span(7)
+    padding: $inuit-base-spacing-unit--small
+
+// -------------------------------------
+//   States
+// -------------------------------------
+// .is-module-state
+
+
+// -------------------------------------
+//   Context
+// -------------------------------------
+// .has-module
+
+
+// -------------------------------------
+//   Submodules
+// -------------------------------------
+
+// ----- Submodule ----- //

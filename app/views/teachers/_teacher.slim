@@ -1,0 +1,11 @@
+.panel.panel--about-tutor
+
+  .panel__header
+    .tutor-photo
+      = img teacher.avatar.regular
+    h2 Sobre o Tutor
+    h1.panel__title = teacher.name
+
+  - if teacher.biography?
+    .panel__body
+      p = teacher.biography

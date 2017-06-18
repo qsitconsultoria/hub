@@ -1,0 +1,22 @@
+- set_meta_tags title: current_unit.name
+
+section.landing-hero
+  .container
+    .landing-hero__brand
+      = img current_unit.logo.regular
+    h1.landing-hero__title Bem vindo aos cursos da #{current_unit.name}
+    p.landing-hero__description = current_unit.about
+
+section.landing-list
+  .container
+    - @courses.each do |course|
+      .landing-list-card
+        .landing-list-card__header
+          h2.landing-list-card__title = course.name
+          p.landing-list-card__description = course.subname
+        .landing-list-card__created_at
+          .landing-list-card__created_at__description.fa.fa-calendar Criado dia #{l course.created_at, format: :small}
+        .landing-list-card__footer
+          .landing-list-card__footer__count.fa.fa-list <b>#{course.subjects.count}</b> Módulos
+          .landing-list-card__footer__action
+            = link_to "Ver Curso", unit_course_url(current_unit, course) , class: "btn btn--white"

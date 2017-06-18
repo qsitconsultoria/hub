@@ -1,0 +1,39 @@
+// *************************************
+//
+//   Landing_hero
+//
+// *************************************
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+.landing-hero
+  margin-top: $inuit-base-spacing-unit*4
+
+  .landing-hero__brand
+    margin: 0 auto $inuit-base-spacing-unit--small
+    +size(85px 87px)
+    img
+      width: 100%
+      height: auto
+
+
+  .landing-hero__title
+    font-size: 21px
+    text-align: center
+    letter-spacing: -.01em
+    margin: $inuit-base-spacing-unit--small 0
+    line-height: 1.2em
+
+  .landing-hero__description
+    text-align: center
+    color: #5c646c
+    font-weight: 300
+    line-height: 1.2em
+    +respond-to(medium, large, x-large)
+      +span(8)
+      +pre(2)
+  // -------------------------------------
+//   Modifiers
+// -------------------------------------
+

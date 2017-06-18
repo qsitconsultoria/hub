@@ -1,0 +1,26 @@
+- set_meta_tags site: @unit.name, title: 'Cursos'
+
+section.section.create-unit__section
+  .section-heading
+    h1.section-title Cursos
+    - if can? :create_new_course, @course
+      ul.nav-section
+        li = link_to "Criar curso", new_admin_unit_course_path(current_unit), class: 'btn btn--primary fa fa-plus'
+
+  .list-courses
+    .list-courses__header
+
+    .list-courses__container
+      - @courses.each do |course|
+        li.list-courses__item
+          .list-courses__item__body
+            .list-courses__item__title = course.name
+            .list-courses__item__description = course.subname
+            .list-courses__item__modules <b>#{pluralize(course.subjects.count, 'módulo', 'módulos')}</b> neste curso
+          .list-courses__item__buttons
+            = link_to unit_course_url(current_unit, course), target: '_blank' do
+              button.btn.btn--secondary.btn--full.btn--mini Visualizar
+            = link_to admin_unit_course_path(current_unit, course) do
+              button.btn.btn--secondary.btn--full.btn--mini
+                i.fa.fa-gear
+                | &nbsp;Editar

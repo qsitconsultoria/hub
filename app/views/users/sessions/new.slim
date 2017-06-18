@@ -1,0 +1,26 @@
+- set_meta_tags :title => 'Entrar'
+
+section.section--default
+  .container
+
+    .panel.panel--session
+      .panel__header
+        h1.panel__title Entrar
+        p Digite seu email e senha para entrar.
+        = render partial: 'shared/alert'
+
+      .panel__body
+        = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          fieldset
+            .form-inputs
+              .form__row
+                = f.input :email, label: false, placeholder: 'Email', input_html: {autocorrect: 'off', spellcheck: 'false', autocapitalize: 'off'}
+              .form__row
+                = f.input :password, label: false, placeholder: 'Senha'
+              .form__row
+                = f.input :remember_me, as: :boolean, label: 'Lembrar' if devise_mapping.rememberable?
+            .form-actions
+              .form__row
+                = f.button :submit, 'Entrar', class: 'btn btn--primary btn--large'
+            .form__footer
+              p = link_to "Esqueceu sua senha?", new_password_path(resource_name)

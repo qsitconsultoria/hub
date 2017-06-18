@@ -1,0 +1,23 @@
+section.hero.hero--default
+  .container
+    .hero__header
+      h1.hero__title Olá, seja bem-vindo ao curso de Desenvolvimento sustentável e desenvolvimento econômico.
+
+    .hero__body
+
+      .video
+        .video__player
+          iframe src="//player.vimeo.com/video/79899786?title=0&amp;byline=0&amp;portrait=0&amp;color=e91c6b" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen
+
+
+section.section--basic
+  .container
+
+    .section__header
+      h1.section__title Pronto para começar?
+      p Utilize os botoes abaixo para fazer o seu cadastro ou acessar o curso.
+
+    .section__body
+      = link_to 'Cadastrar', '/', class: 'btn btn--positive btn--large'
+      p.txt--singleLineCross: span ou
+      = link_to 'Entrar', '/', class: 'btn btn--primary btn--large'

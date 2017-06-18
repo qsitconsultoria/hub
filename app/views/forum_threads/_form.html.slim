@@ -1,0 +1,13 @@
+= f.error_notification
+
+fieldset
+  .section-form
+    .panel.panel-form
+      .panel-heading
+        h2.panel-title Tópico
+      .panel-body
+        .form
+          .form__row
+            = f.input :title, label: 'Título'
+          .form__row
+            = f.input :content, label: 'Conteúdo', as: :text

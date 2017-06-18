@@ -1,0 +1,16 @@
+- set_meta_tags title: 'Procurar por Abrangência Territorial'
+
+= render 'admin/library_files/sidebar'
+
+section.section.dashboard style="width: 80%; float: right"
+  .section-heading
+    h1.section-title Procurar por Abrangência Territorial
+    ul.nav-section
+      li = link_to 'Adicionar Arquivo', new_admin_library_file_url, class: 'btn btn--primary fa fa-plus'
+
+  .section-body
+    - @territorial_coverages.each do |territorial_coverage|
+      .panel.panel-library
+        = link_to admin_territorial_coverage_url(territorial_coverage) do
+          .panel-body
+            h2 #{territorial_coverage.name} <span class='number-of-files'>(#{territorial_coverage.library_files.count})</span>

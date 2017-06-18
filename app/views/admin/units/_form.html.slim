@@ -1,0 +1,35 @@
+= f.error_notification
+
+fieldset
+  .section-form
+    .panel.panel-form
+      .panel-heading
+        h2.panel-title = "Olá #{current_user.name}!"
+        p Por favor complete as informações da unidade.
+      .panel-body
+        .form
+          .form__row
+            label Nome da unidade
+            = f.input :name, label: false, placeholder: 'Digite o nome da unidade'
+          - if can? :edit_all_unit_fields, @unit
+            .form__row
+              .form__field
+                = f.uploads_one :logo, preview: :regular, default: image_path('regular_logo.png')
+
+            .form__row
+              .box-edit-url
+                .input
+                  label.form__label Endereço web da unidade:
+                .box-url
+                  label.label for='unit_slug' <span>http://</span>#{request.host}#{":#{request.port}" if request.port}<span>/</span>
+                .box-url-edit
+                  = f.input :slug, required: true, label: false
+                = f.hint 'Endereço único e customizado para o curso. Não utilize acentos ou espaços.'
+
+            .form__row.form__input--radio--color-check
+              = f.input :color_theme, label: 'Tema de cores, escolha um:', as: :radio_buttons, collection: Unit::COLORS
+
+            .form__row
+              = f.input :about, label: 'Sobre: ', placeholder: 'digite aqui a descrição da unidade'
+
+

@@ -1,0 +1,11 @@
+= simple_form_for([:admin, :unit, @course]) do |f|
+  section.section
+    .section-heading
+      h1.section-title Novo curso
+      ul.nav-section
+        li = link_to 'Cancelar', :back, class: 'btn btn--secondary'
+        li = f.button :submit
+
+
+    .section-body
+      = render partial: 'form', locals: {f: f}

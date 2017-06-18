@@ -1,0 +1,14 @@
+= render 'admin/courses/sidebar'
+
+section.dashboard-panel
+  div data-component="Editor"
+    = simple_form_for([:admin, @unit, @course, @forum, @thread]) do |f|
+      section.section
+        .section-heading
+          h1.section-title Adicionar tópico #{link_to @forum.name, admin_unit_course_forum_forum_threads_url(@unit, @course, @forum), class: 'module-title fa fa-angle-right'}
+
+          ul.nav-section
+            li = link_to 'Cancelar', admin_unit_course_forum_url(@unit, @course, @forum), class: 'btn btn--secondary'
+            li = f.button :submit
+
+        == render partial: 'form', locals: {f: f}

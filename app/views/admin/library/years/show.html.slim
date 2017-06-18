@@ -1,0 +1,14 @@
+- set_meta_tags title: 'Procurar por Ano'
+
+= render 'admin/library_files/sidebar'
+
+section.section.dashboard style="width: 80%; float: right"
+  .section-heading
+    ul.nav-top
+      li = link_to 'Ver Anos', admin_years_url, class: 'btn-back'
+    ul.nav-section
+      li = link_to 'Adicionar Arquivo', new_admin_library_file_url, class: 'btn btn--primary fa fa-plus'
+
+  .section-body
+    p.library-category = @year
+    = render 'admin/library/shared/files', collection: @files

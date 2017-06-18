@@ -1,0 +1,69 @@
+section.forum
+  .forum-header.forum-header--show
+    .container
+      p.forum-welcome Bem vindo ao Fórum do Curso
+      h1.forum-header__title = @course.name
+      .forum-header__actions = link_to "Voltar para lista", unit_course_forum_url(@unit, @course), class: "btn--go-back"
+
+  .forum-list
+    .container
+      .forum-topic-destaque
+        .forum-topic-destaque__avatar-holder
+          .forum-topic-destaque__avatar = img @thread.user.avatar.thumb
+        .forum-topic-destaque__body-description
+          h1.forum-topic-destaque__title = @thread.title
+          p.forum-topic-destaque__description = "Publicado por <b>#{link_to(@thread.user.name, user_url(@thread.user))}</b> ".html_safe + time_ago_in_words(@thread.created_at) + " atrás."
+          p.forum-topic-destaque__body = simple_format(@thread.content)
+
+  .forum-answers
+    .container
+      .forum-answers-header
+        .forum-answers-header__count <b>#{pluralize(@thread.posts.count, 'Resposta', 'Respostas')}</b>
+
+      - @thread.posts.each do |post|
+        .forum-answers-list
+          .forum-answers-list__avatar
+            .forum-answers-list__avatar-image = img post.user.avatar.thumb
+          .forum-answers-list__body
+            .forum-answers-list__name = link_to(post.user.name, user_url(post.user))
+            .forum-answers-list__date = "· " + time_ago_in_words(post.created_at) + " atrás."
+            .forum-answers-list__description = post.content
+            .forum-answers-list__actions
+              .forum-answers-list__actions-item = link_to "Responder", "#", class: "js-reply-form-trigger"
+              - if current_user == post.user
+                .forum-answers-list__actions-item = link_to 'Excluir', [@unit, @course, @thread, post], class: 'delete_alert', data: {confirm: 'Tem certeza?'}, method: :delete
+
+          - if post.replies.any?
+            - post.replies.each do |reply|
+              .forum-reply
+                .forum-reply__avatar
+                  .forum-reply__avatar-image = img reply.user.avatar.thumb
+                .forum-reply__body
+                  .forum-reply__name = link_to(reply.user.name, user_url(reply.user))
+                  .forum-reply__date = "· " + time_ago_in_words(reply.created_at) + " atrás."
+                  .forum-reply__description = reply.content
+                  .forum-reply__actions
+                    - if current_user == reply.user
+                      .forum-reply__actions-item = link_to 'Excluir', [@unit, @course, @thread, post, reply], class: 'delete_alert', data: {confirm: 'Tem certeza?'}, method: :delete
+
+          .forum-answers-list__reply-form
+            .form
+              = simple_form_for [@unit, @course, @thread, post, post.replies.build] do |f|
+                .form__row
+                  = f.input :content, label: false, placeholder: "Mensagem", as: :text, input_html: { class: 'form__input' , 'js-data-toggle' => 'autosize' }
+                  = f.hidden_field :forum_post_id, value: post.id
+                  = f.hidden_field :user_id, value: current_user.id
+
+                  = f.submit "Publicar", class: "btn btn--forum"
+
+      .forum-answers-list
+        .forum-answers-list__avatar
+          .forum-answers-list__avatar-image = image_tag("regular_avatar.jpg")
+        .forum-answers-list__body
+          .form
+            = simple_form_for [@unit, @course, @thread, @thread.posts.build] do |f|
+              .form__row
+                = f.input :content, label: false, placeholder: "Mensagem", as: :text, input_html: { class: 'form__input' , 'js-data-toggle' => 'autosize' }
+                = f.hidden_field :forum_thread_id, value: @thread.id
+                = f.hidden_field :user_id, value: current_user.id
+                = f.submit "Publicar", class: "btn btn--forum"

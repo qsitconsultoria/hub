@@ -1,0 +1,92 @@
+section.section--default
+  .container
+    .panel.panel--session
+      .panel__header
+        h1.panel__title Editar perfil
+        p Altere seus dados abaixo:
+
+      .panel__body
+        = simple_form_for(@user, url: user_path) do |f|
+          fieldset
+            = f.error_notification
+            .form__field
+              = f.uploads_one :avatar, preview: :regular, default: image_path('regular_avatar.jpg')
+              .form__note
+                p Essa foto será utilizada como identidade na plataforma e forum.
+
+            .form__row
+              = f.input :name, label: false, placeholder: 'Nome'
+
+            .form__row
+              = f.input :email, label: false, placeholder: 'Email', input_html: {autocorrect: 'off', spellcheck: 'false', autocapitalize: 'off', placeholder: 'Email'}
+
+            .form__row
+              = f.input :password, label: false, placeholder: 'Senha'
+
+            .form__row
+              = f.input :password_confirmation, label: false, placeholder: 'Confirme a senha', required: true
+
+              .form__row
+                .form__field
+                  = f.input :unit_id, label: false, collection: Unit.all.collect {|u| [ u.name, u.id ] }, include_blank: 'Selecione sua Instituição', input_html: {class: 'form__select'}
+
+            - if @user.student?
+              .form__row
+                .form__field
+                  label.form__label Você é servidor público?
+
+                  .form__field data-component='WorkPlaceChooser' style='display: none'
+                    div data-item='radio'
+                      = f.input :is_public_server, label: false, as: :radio_buttons, collection: [['Sim', true], ['Não', false]], input_html: { class: 'form__radio' }
+
+                    = f.input :works_on, label: false, include_blank: 'Selecione o Órgão',
+                                                 collection: [["Federal", "Servidor Público Federal"],
+                                                              ["Estadual", "Servidor Público Estadual"],
+                                                              ["Municipal", "Servidor Público Municipal"]],
+                                                 input_html: {class: 'form__select', data: { item: 'select-true'}}
+
+                    = f.input :works_on, label: false, include_blank: 'Selecione o Setor',
+                                                 collection: [["Agricultura", "Agricultura"],
+                                                              ["Comércio", "Comércio"],
+                                                              ["Indústria", "Indústria"],
+                                                              ["Serviços", "Serviços"],
+                                                              ["ONG", "ONG"]],
+                                                 input_html: {class: 'form__select', data: { item: 'select-false'}}
+
+              .form__row
+                .form__field
+                  label.form__label Informe seu grau de escolaridade:
+                  = f.input :scholarity_level, label: false, include_blank: true,
+                                               collection: [['Ensino Fundamental', 'Ensino Fundamental'],
+                                                            ['Ensino Médio', 'Ensino Médio'],
+                                                            ['Ensino Técnico', 'Ensino Técnico'],
+                                                            ['Superior incompleto', 'Superior incompleto'],
+                                                            ['Superior completo', 'Superior completo'],
+                                                            ['Especialização', 'Especialização'],
+                                                            ['Mestrado', 'Mestrado'],
+                                                            ['Doutorado', 'Doutorado']],
+                                               input_html: {class: 'form__select'}
+
+              .form__row
+                .form__field
+                  label.form__label Informe sua área de atuação:
+
+                  = f.input :field_of_operation, label: false, include_blank: true,
+                                                collection: [['Engenharia Florestal', 'Engenharia Florestal'],
+                                                             ['Agricultura Familiar', 'Agricultura Familiar'],
+                                                             ['Agro-ecologia', 'Agro-ecologia'],
+                                                             ['Educação Ambiental', 'Educação Ambiental'],
+                                                             ['Gestão Pública', 'Gestão Pública'],
+                                                             ['Administração de empresas', 'Administração de empresas'],
+                                                             ['Economia', 'Economia'],
+                                                             ['Direito', 'Direito'],
+                                                             ['Tecnologia da Informação', 'Tecnologia da Informação'],
+                                                             ['Povos Indígenas', 'Povos Indígenas'],
+                                                             ['Regularização Fundiária', 'Regularização Fundiária'],
+                                                             ['Educação', 'Educação'],
+                                                             ['Outros', 'Outros']],
+                              input_html: {class: 'form__select'}
+
+            .form__row
+              .form__field
+                = f.button :submit, 'Salvar', class: 'btn btn--primary btn--large'

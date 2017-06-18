@@ -1,0 +1,16 @@
+- set_meta_tags title: 'Procurar por Ano'
+
+= render 'admin/library_files/sidebar'
+
+section.section.dashboard style="width: 80%; float: right"
+  .section-heading
+    h1.section-title Procurar por Ano
+    ul.nav-section
+      li = link_to 'Adicionar Arquivo', new_admin_library_file_url, class: 'btn btn--primary fa fa-plus'
+
+  .section-body
+    - @years.each do |year|
+      .panel.panel-library
+        = link_to admin_year_url(year) do
+          .panel-body
+            h2 #{year} <span class='number-of-files'>(#{count_elements('year', year)})</span>

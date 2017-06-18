@@ -1,0 +1,11 @@
+.panel.panel--about-tutor
+
+  .panel__header
+    .tutor-photo
+      = img current_user.avatar.regular
+    h1.panel__title style="margin-top: 10px" = current_user.name
+
+  .panel__body
+    p style="margin-bottom: 20px; font-size: 110%" Por enquanto você não pode acessar esta área.
+    center
+      = link_to 'Voltar para página do curso', :back, class: 'btn btn--primary'

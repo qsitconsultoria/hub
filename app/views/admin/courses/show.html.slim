@@ -1,0 +1,32 @@
+- set_meta_tags title: current_course.name
+
+section.dashboard
+  = render 'admin/courses/sidebar'
+  .dashboard-panel
+    .dashboard-panel__header
+      - if current_course.video.present?
+        .dashboard-panel__video
+          = current_course.video.html_safe
+      .dashboard-panel__description
+        h1.dashboard-panel__description-title = current_course.name
+        - if current_course.subname?
+          p.dashboard-panel__description-subtitle = current_course.subname
+        p.dashboard-panel__description-qty <b>#{pluralize(current_course.subjects.size, 'módulo', 'módulos')}</b> nesse curso
+        .dashboard-panel__description-actions
+          = link_to 'Editar Curso', edit_admin_unit_course_path(current_unit, current_course), class: 'btn btn--secondary fa fa-cog'
+        - if current_course.enrollments.waiting.present?
+          p.dashboard-panel__description-pending-students <b>#{pluralize(current_course.enrollments.waiting.size, 'aluno', 'alunos')}</b> #{'está'.pluralize(current_course.enrollments.waiting.size)} aguardando aprovação nesse curso. <b>#{link_to('Ver novos alunos', admin_unit_course_enrollments_url(current_unit, current_course))}</b>
+
+    .dashboard-panel__body
+      .dashboard-panel__body-header
+        .user
+          p <b>#{pluralize(@students.count, 'pessoa')}</b> fazendo esse curso
+        .finished__modules
+          p Módulos concluídos
+        .last__seen
+          p Último acesso
+
+      .dashboard-panel__body-list
+        .dashboard-panel__body-list--list-users
+          = render @students
+

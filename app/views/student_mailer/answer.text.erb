@@ -1,0 +1,14 @@
+Olá <%= @teacher.first_name %>,
+
+uma questão foi <%= @context == :create ? 'respondida' : 'atualizada' %>.
+
+--
+Aluno: <%= @student.name %>
+Módulo: <%= @subject.name %>
+Questão: <%= @question.title %>
+
+Resposta:
+<%= @answer.content %>
+--
+
+Para conversar com <%= @student.first_name %> responda esse email.

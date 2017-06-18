@@ -1,0 +1,7 @@
+= form_tag library_files_path, method: :get do
+  .form__row
+    label for='library_file_search'
+      i.fa.fa-search
+    = text_field_tag 'query[searchable_title_cont]', params[:query], class: "form-control form search--library--field", id: "library_file_search", autocomplete: "off", placeholder: 'Qual arquivo você procura?', autofocus: true
+
+  = submit_tag 'Buscar', class: 'btn btn-primary', style: 'display: none'

@@ -1,0 +1,20 @@
+= render 'admin/courses/sidebar'
+
+section.section style="width: 80%; float: right"
+  .section-heading
+    ul.nav-top
+      li = link_to 'Voltar', admin_unit_course_enrollments_url(current_unit, current_course), class: 'btn-back'
+
+  .section-body
+    p.student-status <b>#{pluralize(@rejected.count, 'pessoa não foi aprovada', 'pessoas não foram aprovadas')}</b> neste curso
+
+    - @rejected.each do |enrollment|
+      .panel.panel-student
+        = link_to admin_unit_course_enrollment_url(current_unit, current_course, enrollment), id: enrollment.student.name do
+          .panel-avatar
+            .uploadbox-image-container height="36" width="36"
+              = img enrollment.student.avatar.thumb
+          .panel-name
+            h2 = enrollment.student.name
+          .panel-email
+            p = enrollment.student.email

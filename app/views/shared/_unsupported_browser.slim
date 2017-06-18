@@ -1,0 +1,203 @@
+javascript:
+  // http://www.quirksmode.org/js/detect.html
+  var BrowserDetect = {
+    init: function () {
+      this.browser = this.searchString(this.dataBrowser) || "Um navegador desconhecido";
+      this.version = this.searchVersion(navigator.userAgent)
+        || this.searchVersion(navigator.appVersion)
+        || "uma versão desconhecida";
+      this.OS = this.searchString(this.dataOS) || "um sistema operacional desconhecido";
+    },
+    searchString: function (data) {
+      for (var i = 0; i < data.length; i++) {
+        var dataString = data[i].string;
+        var dataProp = data[i].prop;
+        this.versionSearchString = data[i].versionSearch || data[i].identity;
+        if (dataString) {
+          if (dataString.indexOf(data[i].subString) != -1)
+            return data[i].identity;
+        }
+        else if (dataProp)
+          return data[i].identity;
+      }
+    },
+    searchVersion: function (dataString) {
+      var index = dataString.indexOf(this.versionSearchString);
+      if (index == -1) return;
+      return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+    },
+    dataBrowser: [
+      {
+        string: navigator.userAgent,
+        subString: "Chrome",
+        identity: "Chrome"
+      },
+      {
+        string: navigator.userAgent,
+        subString: "Fluid",
+        identity: "Fluid",
+        versionSearch: "Version"
+      },
+      {
+        string: navigator.vendor,
+        subString: "Apple",
+        identity: "Safari",
+        versionSearch: "Version"
+      },
+      {
+        prop: window.opera,
+        identity: "Opera",
+        versionSearch: "Version"
+      },
+      {
+        string: navigator.userAgent,
+        subString: "Firefox",
+        identity: "Firefox"
+      },
+      {
+        string: navigator.userAgent,
+        subString: "chromeframe",
+        identity: "Chrome Frame"
+      },
+      {
+        string: navigator.userAgent,
+        subString: "MSIE",
+        identity: "Explorer",
+        versionSearch: "MSIE"
+      }
+    ],
+    dataOS : [
+      {
+         string: navigator.userAgent,
+         subString: "iPhone",
+         identity: "iPhone/iPod"
+      },
+      {
+         string: navigator.userAgent,
+         subString: "iPad",
+         identity: "iPad"
+      },
+      {
+         string: navigator.userAgent,
+         subString: "Android",
+         identity: "Android"
+      },
+      {
+        string: navigator.platform,
+        subString: "Win",
+        identity: "Windows"
+      },
+      {
+        string: navigator.platform,
+        subString: "Mac",
+        identity: "Mac"
+      },
+      {
+        string: navigator.platform,
+        subString: "Linux",
+        identity: "Linux"
+      }
+    ]
+
+  };
+  BrowserDetect.init();
+
+  if( (BrowserDetect.browser == "Chrome" && parseInt(BrowserDetect.version) < 15) ||
+      (BrowserDetect.browser == "Safari" && parseInt(BrowserDetect.version) < 5) ||
+      (BrowserDetect.browser == "Firefox" && parseInt(BrowserDetect.version) < 4) ||
+      (BrowserDetect.browser == "Explorer" && parseInt(BrowserDetect.version) < 8)) {
+      document.write(
+        "<div id='old_browser'>" +
+          "<div id='message_block_outdated'>" +
+            "<p><strong>Desculpe, este navegador não é suportado.</strong></p>" +
+            "<p>Utilizamos as tecnologias mais recentes para proporcionar uma melhor experiência do usuário. Infelizmente, seu navegador está desatualizado e poderia colocar seus dados em risco. Por favor, atualize para um desses navegadores suportados:</p>" +
+            "<ul class='upgrade-browser'>" +
+              "<li class='up-chrome'><a href='http://www.google.com/chrome'>Google Chrome</a></li>" +
+              "<li class='up-firefox'><a href='http://www.mozilla.com/firefox/'>Mozilla Firefox</a></li>" +
+              "<li class='up-safari'><a href='http://support.apple.com/kb/DL1531'>Safari</a></li>" +
+              "<li class='up-ie'><a href='http://windows.microsoft.com/en-US/internet-explorer/download-ie'>Internet Explorer</a></li>" +
+            "</ul>" +
+          "</div>" +
+        "</div>");
+  }
+  else if( (BrowserDetect.browser == "Chrome" && parseInt(BrowserDetect.version) >= 15) ||
+           (BrowserDetect.browser == "Safari" && parseInt(BrowserDetect.version) >= 5) ||
+           (BrowserDetect.browser == "Firefox" && parseInt(BrowserDetect.version) >= 4) ||
+           (BrowserDetect.browser == "Explorer" && parseInt(BrowserDetect.version) >= 8) ||
+           (BrowserDetect.browser == "Fluid") ||
+           (BrowserDetect.browser == "Chrome Frame") ||
+           (BrowserDetect.OS == 'iPhone/iPod') ||
+           (BrowserDetect.OS == 'iPad') ||
+           (BrowserDetect.OS == 'Android')) {
+           // do nothing
+  }
+  else {
+    document.write(
+      "<div id='old_browser'>" +
+        "<div id='message_block_outdated'>" +
+          "<strong>Você está usando um navegador não suportado.</strong><br />" +
+          "O uso continuado pode colocar seus dados em risco. Por favor, considere um destes navegadores suportados em seu lugar:" +
+          "<ul class='upgrade-browser'>" +
+            "<li class='up-chrome'><a href='http://www.google.com/chrome'>Google Chrome</a></li>" +
+            "<li class='up-firefox'><a href='http://www.mozilla.com/firefox/'>Mozilla Firefox</a></li>" +
+            "<li class='up-safari'><a href='http://support.apple.com/kb/DL1531'>Safari</a></li>" +
+            "<li class='up-ie'><a href='http://windows.microsoft.com/en-US/internet-explorer/download-ie'>Internet Explorer</a></li>" +
+          "</ul>" +
+        "</div>" +
+      "</div>");
+  }
+
+
+sass:
+  #old_browser
+    background: #fffbdf
+    color: #333
+    font-size: 14px
+    line-height: 20px
+    padding: 15px 10px
+    text-align: center
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-weight: 300
+
+    a
+      color: #369
+      text-decoration: underline
+
+    #message_block_outdated
+      background: url(/unsupported-browser/unsupported-browser-face.png) 0 0 no-repeat
+      margin: 0 auto
+      max-width: 640px
+      padding-left: 75px
+      text-align: left
+
+    #message_block_outdated>p
+      margin-bottom: 8px
+
+    ul.upgrade-browser
+      margin-top: 15px
+      overflow: hidden
+      padding: 0
+
+      &>li
+        background: url(/unsupported-browser/browser-logos.png) no-repeat
+        float: left
+        font-size: 12px
+        font-weight: bold
+        height: 32px
+        line-height: 30px
+        list-style: none
+        margin-right: 25px
+        padding-left: 40px
+        vertical-align: middle
+
+      &>li.up-chrome
+        background-position: 0 0
+
+      &>li.up-firefox
+        background-position: 0 -64px
+
+      &>li.up-safari
+        background-position: 0 -32px
+
+      &>li.up-ie
+        background-position: 0 -96px

@@ -1,0 +1,19 @@
+section.section--default
+  .container
+
+    .panel.panel--session
+      .panel__header
+        h1.panel__title Esqueceu sua senha?
+        p Digite seu email para receber instruções por email para alterar sua senha
+
+      .panel__body
+        = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          fieldset
+            = f.error_notification
+
+            .form__row
+              = f.input :email, label: false, placeholder: 'Email', input_html: {autocorrect: 'off', spellcheck: 'false', autocapitalize: 'off'}
+            .form__row
+              = f.button :submit, 'Enviar instruções por email', class: 'btn btn--primary btn--large'
+
+

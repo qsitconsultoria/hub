@@ -1,0 +1,10 @@
+ul class='[ nav-site nav-site--primary has-submenu ]'
+  li.nav-site__item
+    = link_to admin_unit_course_url(current_unit, current_course) do
+      - @title = current_course.name
+      span.site-brand__title style="margin-left: 10px;" = current_course.name
+
+  ul class='nav-site__submenu'
+    - current_unit.courses.each do |course|
+      li.nav-site__item
+        = link_to course.name, admin_unit_course_url(current_unit, course) unless @title == course.name

@@ -1,0 +1,11 @@
+.panel.panel--about-tutor
+
+  .panel__header
+    .tutor-photo
+      = img current_user.avatar.regular
+    h1.panel__title style="margin-top: 10px" = current_user.name
+
+  .panel__body
+    p style="margin-bottom: 20px; font-size: 110%" = "#{t(current_user.type.pluralize)} não podem acessar esta área"
+    center
+      = link_to 'Entrar como outro usuário', destroy_session_path(current_user), method: :delete, class: 'btn btn--primary'

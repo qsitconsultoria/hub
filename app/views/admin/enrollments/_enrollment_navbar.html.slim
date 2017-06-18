@@ -1,0 +1,10 @@
+ul.nav-top
+    li = link_to 'Alunos', admin_unit_course_enrollments_url(current_unit, current_course), class: 'btn-back'
+ul.nav-section
+  - if @enrollment.waiting?
+    li = link_to 'Ignorar', admin_unit_course_enrollment_reject_student_path(current_unit, current_course, @enrollment), class: 'btn btn--secondary btn--delete'
+    li = link_to 'Aprovar', admin_unit_course_enrollment_approve_student_path(current_unit, current_course, @enrollment), class: 'btn btn--primary'
+  - elsif @enrollment.approved?
+    li = link_to 'Desmatricular', admin_unit_course_enrollment_reject_student_path(current_unit, current_course, @enrollment), class: 'btn btn--secondary btn--delete'
+  - else
+    li = link_to 'Aprovar', admin_unit_course_enrollment_approve_student_path(current_unit, current_course, @enrollment), class: 'btn btn--primary'

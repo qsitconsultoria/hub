@@ -1,0 +1,50 @@
+= f.error_notification
+
+fieldset
+
+  .section-form
+
+    .panel.panel-form
+      .panel-heading
+        h2.panel-title Informações Básicas
+        p Essas são as informações que aparecem na página de capa do módulo.
+
+      .panel-body
+        .form
+          .form__row
+            = f.input :name, label: 'Título do Módulo'
+          .form__row
+            / = f.input :slug, label: 'URL do Módulo'
+            .box-edit-url
+              .input
+                label.form__label Endereço do Módulo na web
+              .box-url
+                label.label for='subject_slug' <span>#{unit_course_url(@unit, @course)}/</span>
+              .box-url-edit
+                = f.input :slug, required: true, label: false, placeholder: 'Inserir nome do módulo'
+              = f.hint 'Endereço único e customizado para o módulo. Não utilize acentos ou espaços.'
+
+          .form__row
+            = f.input :description, label: 'Descrição', input_html: {data: {behavior: 'autosize'}}
+
+          .form__row
+            = f.input :video, wrapper_html: {data: {component: 'VideoInput'}}
+
+          .form__row
+            = f.input :published_at, label: 'Data de início do Módulo programada para', wrapper_html: {'data-component' => 'DateTimePicker'}
+            = f.hint 'Data que o módulo deve dar início, pode ser programado para uma data futura. O módulo ficará desabilitado até que a data especificada seja atingida.'
+
+          // PLACEHOLDER
+          / .form__row
+          /   = f.association :users, label: 'Tutores', as: :check_boxes, collection: @unit.teachers_and_managers
+
+          // PLACEHOLDER
+          / .form__row
+          /   = link_to 'Adicionar Educador', '#', class: 'btn-add-field fa fa-plus'
+
+  / .btn-group
+  /   ul.nav-section
+  /     li = link_to 'Cancelar', admin_course_subjects_path(@course), class: 'btn btn--secondary'
+  /     li = f.button :submit
+
+

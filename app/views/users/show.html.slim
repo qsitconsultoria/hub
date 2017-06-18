@@ -1,0 +1,25 @@
+section.user
+  .user-header.user-header--show
+    .container
+      .user-header__actions = link_to "Voltar", :back, class: "btn--go-back"
+
+  .user-info
+    .container
+      .user-profile
+        .user-profile__avatar-holder
+          .user-info__avatar = img @user.avatar.regular
+        .user-profile__body-description
+          h1.user-profile__title = @user.name
+          .user-profile__attribute = "<b>Unidade:</b> #{@user.unit.name if @user.unit.present?}".html_safe
+          .user-profile__attribute = "<b>Tipo de usuário:</b> #{t(@user.type)}".html_safe
+
+
+  / .forum-list
+  /   .container
+  /     .forum-topic-destaque
+  /       .forum-topic-destaque__avatar-holder
+  /         .forum-topic-destaque__avatar = img @thread.user.avatar.thumb
+  /       .forum-topic-destaque__body-description
+  /         h1.forum-topic-destaque__title = @thread.title
+  /         p.forum-topic-destaque__description = "Publicado por <b>#{link_to(@thread.user.name, user_url(@thread.user))}</b> ".html_safe + time_ago_in_words(@thread.created_at) + " atrás."
+  /         p.forum-topic-destaque__body = simple_format(@thread.content)

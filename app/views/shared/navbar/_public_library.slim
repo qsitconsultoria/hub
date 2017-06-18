@@ -1,0 +1,6 @@
+= link_to library_files_url, class: 'site-brand' do
+  span.site-brand__image = image_tag('thumb_biblioteca.png', width: 35)
+  span.site-brand__title Biblioteca de Arquivos
+
+ul class='[ nav-site nav-site--secondary ]'
+  li = link_to 'Entrar', new_user_session_path, class: 'btn btn--login'

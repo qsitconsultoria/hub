@@ -1,0 +1,23 @@
+- if user_signed_in?
+  - @page_class = 'page--private'
+- elsif devise_controller?
+  - @page_class = 'page--session'
+- else
+  - @page_class = 'page--public'
+
+doctype 5
+html.no-js class="#{@page_class}" lang="#{I18n.locale}"
+  head
+    = stylesheet_link_tag 'vendor-admin', media: 'all'
+    = stylesheet_link_tag 'admin', media: 'all'
+    = render 'shared/head'
+  body
+
+    = render 'shared/slidebar'
+    #sb-site
+      = render 'shared/header'
+      .main.main--create--units
+        = yield
+
+    = javascript_include_tag 'requirements'
+    = javascript_include_tag 'admin'

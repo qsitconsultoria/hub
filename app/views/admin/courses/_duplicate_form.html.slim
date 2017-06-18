@@ -1,0 +1,16 @@
+fieldset
+  .section-form
+    .panel.panel-form
+      .panel-heading
+        h2.panel-title Informações do Curso
+        p Escolha a unidade em que deseja duplicar o curso #{@course.name}:
+      .panel-body
+        .form
+          .form__row
+            .form__field
+              = f.input :unit_id, label: 'Unidade', collection: current_user.units {|u| [ u.name, u.id ] }, include_blank: 'Selecione a Unidade', input_html: {class: 'form__select'}
+
+            = f.hidden_field :name, label: 'Título do Curso'
+            = f.hidden_field :slug, required: true, label: false, placeholder: 'Inserir nome do curso'
+            = f.hidden_field :subname, label: 'Subtítulo do Curso'
+            = f.hidden_field :video, label: 'Vídeo de Introdução do Curso'

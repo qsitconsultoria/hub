@@ -1,0 +1,37 @@
+.sidebar
+  ul
+    li = link_to admin_library_files_url, class: "#{nav_status_class('nav__item', 'admin/library_files', 'index')}" do
+      i.fa.fa-search
+      | Procurar Arquivos
+
+    li = link_to admin_authors_url, class: "#{nav_status_class('nav__item', 'admin/library/authors')}" do
+      i.fa.fa-chevron-right
+      | por Autor
+
+    li = link_to admin_themes_url, class: "#{nav_status_class('nav__item', 'admin/library/themes')}" do
+      i.fa.fa-chevron-right
+      | por Tema
+
+    li = link_to admin_territorial_coverages_url, class: "#{nav_status_class('nav__item', 'admin/library/territorial_coverages')}" do
+      i.fa.fa-chevron-right
+      | por Abrangência Territorial
+
+    li = link_to admin_biomes_url, class: "#{nav_status_class('nav__item', 'admin/library/biomes')}" do
+      i.fa.fa-chevron-right
+      | por Bioma
+
+    li = link_to admin_courses_url, class: "#{nav_status_class('nav__item', 'admin/library/courses')}" do
+      i.fa.fa-chevron-right
+      | por Curso
+
+    li = link_to admin_filetypes_url, class: "#{nav_status_class('nav__item', 'admin/library/filetypes')}" do
+      i.fa.fa-chevron-right
+      | por Tipo de Arquivo
+
+    li = link_to admin_languages_url, class: "#{nav_status_class('nav__item', 'admin/library/languages')}" do
+      i.fa.fa-chevron-right
+      | por Idioma
+
+    li = link_to admin_years_url, class: "#{nav_status_class('nav__item', 'admin/library/years')}" do
+      i.fa.fa-chevron-right
+      | por Ano

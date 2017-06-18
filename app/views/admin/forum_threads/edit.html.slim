@@ -1,0 +1,14 @@
+= render 'admin/courses/sidebar'
+
+section.dashboard-panel
+  div data-component="Editor"
+    = simple_form_for([:admin, @unit, @course, @forum, @thread]) do |f|
+      section.section
+        .section-heading
+          ul.nav-top
+            li = link_to 'Tópicos', admin_unit_course_forum_path(@unit, @course, @forum), class: 'btn-back'
+          ul.nav-section
+              li = link_to 'Excluir', [:admin, @unit, @course, @forum, @thread], class: 'btn btn--secondary btn--delete', data: {confirm: 'Tem certeza?'}, method: :delete
+              li = f.button :submit
+
+        == render partial: 'form', locals: {f: f}

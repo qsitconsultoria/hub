@@ -1,0 +1,10 @@
+= simple_form_for [:admin, @unit, @manager] do |f|
+  section.section.create-unit__section
+    .section-heading
+      h1.section-title Adicionar Gestor
+      ul.nav-section
+        li = link_to "Voltar", :back, class: "btn btn--secondary"
+        li = f.submit 'Salvar', class: "btn btn--primary"
+
+    .section-body
+      == render partial: 'form', locals: {f: f}

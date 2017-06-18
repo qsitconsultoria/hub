@@ -1,0 +1,18 @@
+.list-user-item
+  .user
+    .avatar-user
+      .avatar-img
+        = img enrollment.student.avatar.thumb
+    .user-details
+      h2 = enrollment.student.name
+      p = enrollment.student.email
+  .finished__modules
+    .progressbar--steps
+      ul
+        - @subjects.each do |subject|
+          li class="#{'is-checked' if enrollment.student.answered?(subject.question)}"
+            a.tooltip-item href='#' data-tooltip="<b>Módulo #{subject.position}:</b> #{subject.name}<br><b>Status:</b> #{enrollment.student.answered?(subject.question) ? 'Completo' : 'Incompleto'}"
+
+  .last__seen
+    - if enrollment.student.last_sign_in_at
+      p = l enrollment.student.last_sign_in_at.to_date, format: :long

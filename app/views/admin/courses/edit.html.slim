@@ -1,0 +1,14 @@
+= simple_form_for([:admin, @unit, @course]) do |f|
+  = render 'admin/courses/sidebar'
+
+  section.section style="width: 80%; float: right"
+    .section-heading
+      h1.section-title Configurações do curso
+      ul.nav-section
+        - if current_user.units.count > 1
+          li = link_to 'Duplicar curso em...', admin_unit_course_duplicate_course_url(current_unit, current_course), class: 'btn btn--secondary'
+        li = link_to 'Excluir', [:admin, @unit, @course], class: 'btn btn--secondary btn--delete', data: {confirm: 'Tem certeza?'}, method: :delete
+        li = f.button :submit
+
+    .section-body
+      = render partial: 'form', locals: {f: f}

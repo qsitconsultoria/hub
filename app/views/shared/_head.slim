@@ -1,0 +1,23 @@
+meta charset='utf-8'
+= display_meta_tags :site => 'Ensino Online', :separator => '&mdash;'.html_safe, :reverse => true
+/ Prefetch DNS for external assets (CND assets, Google Analytics assets, etc).
+link rel='dns-prefetch' href='//cdnjs.cloudflare.com'
+link rel='dns-prefetch' href='//www.google-analytics.com'
+meta http-equiv='X-UA-Compatible' content='IE=edge'
+meta name='author' content='Startaê — http://www.startae.com.br'
+meta content='on' http-equiv='cleartype'
+meta content='True' name='HandheldFriendly'
+meta content='320' name='MobileOptimized'
+meta content='initial-scale=1, user-scalable=yes, width=device-width' name='viewport'
+= favicon_link_tag 'favicon.png', type: 'image/x-icon'
+/ -------------------------------------
+/ Modernizr - Development version
+/ Use the Development version to develop with and learn from. Then, when you’re
+/ ready for production, use the build tool below to pick only the tests you need.
+/ -------------------------------------
+= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js'
+/[if lt IE 9]
+  = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js'
+  = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js'
+= csrf_meta_tags
+= yield :head

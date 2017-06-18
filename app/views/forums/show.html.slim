@@ -1,0 +1,26 @@
+section.forum
+  .forum-header.forum-header--forum-show
+    .container
+      p.forum-welcome Bem vindo ao Fórum do Curso
+      h1.forum-header__title--forum-show = @course.name
+      .forum-header__actions = link_to "Voltar para o curso", unit_course_url(@unit, @course), class: "btn--go-back"
+
+      .forum-filters
+        .forum-filters__action.selected Tópicos mais ativos
+        .forum-filters__action Tópicos recentes
+
+  .forum-list
+    .container
+      - @threads.ordered.each do |thread|
+        = link_to unit_course_forum_thread_url(@unit, @course, thread) do
+          .forum-item
+            .forum-item__avatar
+              .forum-item__avatar--image = img thread.user.avatar.regular, size: "80x80"
+            .forum-item__description
+              .forum-item__description-info
+                h2.forum-item__description-info-title = thread.title
+                p.forum-item__description-info-author = "Publicado por <b>#{thread.user.name}</b> ".html_safe + time_ago_in_words(thread.created_at) + " atrás."
+            .forum-item__description-actions
+              .forum-item__info-answers-count = thread.views_count
+            .forum-item__description-actions
+              .forum-item__info-arrow

@@ -1,0 +1,17 @@
+- @files.each do |file|
+
+  = link_to library_file_url(file), class: 'file'
+    .file--type
+      = image_tag("file-icons/ico-#{file.filetype.parameterize}-small.png", size: '30x36')
+    .file--details
+      - if file.original_file_size
+        .file--title = "#{file.title} (#{readable_file_size(file.original_file_size, 1)})"
+      - else
+        .file--title = file.title
+
+      .file--extra-info
+        p.file--filetype = file.filetype
+        p.file--added = " • Adicionado #{time_ago_in_words(file.created_at)} atrás • "
+        p.file--comments-number = "#{file.comments.count} comentários"
+
+= paginate @files

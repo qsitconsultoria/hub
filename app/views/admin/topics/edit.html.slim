@@ -1,0 +1,36 @@
+= render 'admin/courses/sidebar'
+section.dashboard-panel
+  div data-component="Editor"
+    = simple_form_for([:admin, @unit, @course, @subject, @topic]) do |f|
+      section.section
+        .section-heading
+          - if @topic.persisted?
+            / h1.section-title Editar tópico
+            ul.nav-top
+              li = link_to 'Tópicos', admin_unit_course_subject_topics_path(@unit, @course, @subject), class: 'btn-back'
+            / {link_to @subject.name, admin_course_subject_topics_path(@course, @subject), class: 'module-title fa fa-angle-right'}
+            ul.nav-section
+                li = link_to 'Excluir', [:admin, @unit, @course, @subject, @topic], class: 'btn btn--secondary btn--delete', data: {confirm: 'Tem certeza?'}, method: :delete
+                li = f.button :submit
+          - else
+            h1.section-title Adicionar tópico #{link_to @subject.name, admin_unit_course_subject_topics_path(@unit, @course, @subject), class: 'module-title fa fa-angle-right'}
+
+            ul.nav-section
+              li = link_to 'Cancelar', admin_unit_course_subject_topics_path(@unit, @course, @subject), class: 'btn btn--secondary'
+              li = f.button :submit
+
+        = f.error_notification
+
+        div data-behavior="image-uploader"
+          = f.uploads_many :images, choose_label: 'Imagem'
+
+        .section-editor
+
+          .form-inputs
+            div data-container="title"
+              = f.input :name, label: false, placeholder: 'Título do tópico...', input_html: {'data-container' => 'first-focus'}
+
+            div data-container="preview"
+              = @topic.content.try(:html_safe)
+            div data-container="content"
+              = f.input :content

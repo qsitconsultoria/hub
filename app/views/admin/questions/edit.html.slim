@@ -1,0 +1,12 @@
+= simple_form_for [:admin, current_unit, current_course, @subject, @question] do |f|
+  section.section
+    .section-heading
+      / h1.section-title Editar Tutor
+      ul.nav-top
+        li = link_to @subject.name, admin_unit_course_subjects_path(@unit, @course), class: 'btn-back'
+      ul.nav-section
+        li = link_to 'Excluir', [:admin, @unit, @course, @subject, @question], class: 'btn btn--secondary btn--delete', data: {confirm: 'Tem certeza?'}, method: :delete
+        li = f.button :submit
+
+    .section-body
+      = render partial: 'form', locals: {f: f}

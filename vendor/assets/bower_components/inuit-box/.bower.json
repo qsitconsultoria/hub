@@ -1,0 +1,30 @@
+{
+  "name": "inuit-box",
+  "version": "0.4.3",
+  "homepage": "https://github.com/inuitcss/objects.box",
+  "authors": [
+    "Harry Roberts <harry@csswizardry.com>"
+  ],
+  "description": "Basic box object for the inuitcss framework",
+  "main": "_objects.box.scss",
+  "keywords": [
+    "inuitcss",
+    "oocss",
+    "css"
+  ],
+  "license": "Apache",
+  "dependencies": {
+    "inuit-defaults": "~0.2.1",
+    "inuit-clearfix": "~0.2.0",
+    "inuit-functions": "~0.2.0"
+  },
+  "_release": "0.4.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.4.3",
+    "commit": "0e9de9b6105e5d7466b42fbd8836255e3e68f33e"
+  },
+  "_source": "git://github.com/inuitcss/objects.box.git",
+  "_target": "*",
+  "_originalSource": "inuit-box"
+}

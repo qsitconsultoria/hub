@@ -1,0 +1,9 @@
+= link_to admin_unit_course_subject_topics_path(@unit, @course, subject), data: { 'sortable-container' => 'item', 'sortable-position' => subject.position, 'id' => subject.id, 'resource-name' => subject.class.name } do
+  .panel.panel-module
+    .panel-heading
+      h1.panel-title = padded_number(subject_counter + 1)
+    .panel-body
+      h2 = subject.name
+      = simple_format truncate(subject.description, length: 220)
+      - if @course.teachers.any?
+        p.author #{@course.teachers.count == 1 ? 'Tutor:' : 'Tutores:'} <b>#{@course.teachers.pluck(:name).to_sentence}</b>

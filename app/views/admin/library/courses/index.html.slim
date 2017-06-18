@@ -1,0 +1,16 @@
+- set_meta_tags title: 'Procurar por Curso'
+
+= render 'admin/library_files/sidebar'
+
+section.section.dashboard style="width: 80%; float: right"
+  .section-heading
+    h1.section-title Procurar por Curso
+    ul.nav-section
+      li = link_to 'Adicionar Arquivo', new_admin_library_file_url, class: 'btn btn--primary fa fa-plus'
+
+  .section-body
+    - @courses.each do |course|
+      .panel.panel-library
+        = link_to admin_course_url(course) do
+          .panel-body
+            h2 #{course.name} <span class='number-of-files'>(#{course.library_files.count})</span>

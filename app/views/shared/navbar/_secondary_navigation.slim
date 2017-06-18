@@ -1,0 +1,10 @@
+/ Nav logged User
+ul class='[ nav-site nav-site--secondary has-submenu ]'
+  li class='[ nav-site__item nav-site__item--user ]'
+    = link_to '#' do
+      = img current_user.avatar.thumb
+    ul class='[ nav-site__submenu nav-site__submenu--right ]'
+      li.nav-site__item
+        = link_to current_user.name, edit_user_url(current_user)
+      li.nav-site__item
+        = link_to 'Sair', destroy_session_url(current_user), method: :delete

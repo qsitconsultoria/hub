@@ -1,0 +1,14 @@
+= render 'admin/courses/sidebar'
+
+section.dashboard-panel
+  = simple_form_for([:admin, @unit, @course, @subject]) do |f|
+    section.section
+      .section-heading
+        ul.nav-top
+          li = link_to 'Voltar', admin_unit_course_subject_topics_path(@unit, @course, @subject), class: 'btn-back'
+        ul.nav-section
+          li = link_to 'Excluir', admin_unit_course_subject_path(@unit, @course, @subject), method: :delete, data: {confirm: 'Tem certeza? Os tópicos desse módulo também serão excluídos.'}, class: 'btn btn--secondary btn--delete'
+          li = f.button :submit
+
+      .section-body
+        = render partial: 'form', locals: {f: f}

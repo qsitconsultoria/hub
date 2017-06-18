@@ -1,0 +1,205 @@
+// *************************************
+//
+//   Strucutre
+//   -> This is an example structure
+//
+// *************************************
+
+.hero
+  +clearfix
+  background-color: #fff
+
+  .hero__header, .hero__body, .hero__footer
+    +clearfix
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+.hero--default
+  @extend .hero
+  background-color: #fff
+
+  .hero__header
+    padding: $inuit-base-spacing-unit--small*2 $inuit-base-spacing-unit--small
+    text-align: center
+
+
+  .hero__title
+    +font-weight(light)
+    font-size: 17px
+
+
+// Hero Module
+.hero--module
+  @extend .hero
+  box-shadow: 0 1px 0 rgba(#000, .1)
+
+  .hero__header
+    text-align: center
+    padding: 40px 0
+    border-top-left-radius: 3px
+    border-top-right-radius: 3px
+
+  .hero__title
+    +font-weight(bold)
+    font-size: 24px
+    line-height: 1.1
+    color: #3b4358
+    padding: 0
+    margin-bottom: 20px
+
+  .hero__subtitle
+    +font-weight(light)
+    font-size: 15px
+    line-height: 1.4
+    color: #3b4358
+    padding: 0 $inuit-base-spacing-unit--small ($inuit-base-spacing-unit--small*2) $inuit-base-spacing-unit--small
+
+  .course__intro
+    .hero__action
+      display: none
+    .module-number
+      margin-bottom: 0
+
+
+// Hero course
+.hero--course
+  @extend .hero
+  box-shadow: 0 1px 0 rgba(#000, .1)
+  padding-top: $inuit-base-spacing-unit--small
+  padding-bottom: $inuit-base-spacing-unit--small
+
+  .hero__header
+    text-align: center
+    padding: 0
+    background-color: #f0f2f6
+    border-top-left-radius: 3px
+    border-top-right-radius: 3px
+
+  .hero__title
+    +font-weight(bold)
+    font-size: 20px
+    line-height: 1.1
+    color: #3b4358
+    //padding: ($inuit-base-spacing-unit--small*2) $inuit-base-spacing-unit--small
+
+  .hero__subtitle
+    +font-weight(light)
+    font-size: 15px
+    line-height: 1.4
+    color: #3b4358
+    //padding: 0 $inuit-base-spacing-unit--small ($inuit-base-spacing-unit--small*2) $inuit-base-spacing-unit--small
+
+  .course__intro
+    .hero__action
+      display: none
+
+  .hero__footer
+    margin: 0
+    //padding: $inuit-base-spacing-unit--small
+    background-color: #fff
+    border-bottom-left-radius: 3px
+    border-bottom-right-radius: 3px
+    //box-shadow: inset 0 0 0 1px #f0f2f6, 0 1px 0 rgba(#f0f2f6, .5)
+
+  +respond-to(small)
+    .hero__title
+      padding: $inuit-base-spacing-unit--small*2 $inuit-base-spacing-unit--small $inuit-base-spacing-unit--small $inuit-base-spacing-unit--small
+
+    .hero__subtitle
+      padding-left: ($inuit-base-spacing-unit--small*2)
+      padding-right: ($inuit-base-spacing-unit--small)
+
+    .hero__action
+      padding: 0 ($inuit-base-spacing-unit--small) ($inuit-base-spacing-unit--small) ($inuit-base-spacing-unit--small*2)
+
+  +respond-to(small)
+    .course__intro
+      .hero__action
+        display: block
+
+  +respond-to(medium)
+    padding-top: $inuit-base-spacing-unit
+    padding-bottom: $inuit-base-spacing-unit
+
+  +respond-to(large)
+    padding-top: $inuit-base-spacing-unit--large
+    padding-bottom: $inuit-base-spacing-unit--large
+
+  +respond-to(medium, large)
+
+    .course__intro
+      .hero__action
+        display: block
+
+    .hero__header
+      text-align: center
+      padding: 0
+      background-color: #f0f2f6
+      border-top-left-radius: 3px
+
+    .hero__footer
+      +span(12)
+
+    .hero__couse-info
+      +span(8)
+
+    .hero__title
+      +font-weight(bold)
+      font-size: 30px
+      line-height: 1.1
+      color: #3b4358
+
+    .hero__subtitle
+      +font-weight(light)
+      font-size: 17px
+      line-height: 1.4
+      color: #3b4358
+
+    .hero__header
+      text-align: left
+
+    .hero__title
+      padding-top: ($inuit-base-spacing-unit--small*3)
+      margin-bottom: 20px
+
+    .hero__action
+      padding: 0 ($inuit-base-spacing-unit--small*2) ($inuit-base-spacing-unit--small*2) ($inuit-base-spacing-unit--small*3)
+
+    .hero__links
+      +span(4)
+      padding-top: ($inuit-base-spacing-unit--small*3)
+      margin-right: 0
+      float: right
+      text-align: center
+
+      .btn--primary
+        width: 100%
+        line-height: 1.8
+        padding-right: 1.5em
+
+      .disabled
+        pointer-events: none
+        pointer: default
+
+      p
+        color: rgba(92, 100, 108, 0.8)
+        font-size: 14px
+
+
+// -------------------------------------
+//   States
+// -------------------------------------
+
+// .structure.is-state
+
+// -------------------------------------
+//   Context
+// -------------------------------------
+
+// .has-structure
+
+// -------------------------------------
+//   Scaffolding
+// -------------------------------------

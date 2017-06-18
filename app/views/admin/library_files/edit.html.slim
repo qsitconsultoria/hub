@@ -1,0 +1,17 @@
+= render 'admin/library_files/sidebar'
+
+section.dashboard-panel
+  = simple_form_for [:admin, @file] do |f|
+    section.section
+      .section-heading
+        ul.nav-top
+          li = link_to 'Ver Arquivos', session[:previous], class: 'btn-back'
+        ul.nav-section
+          li = link_to 'Excluir', [:admin, @file], class: 'btn btn--secondary btn--delete', data: {confirm: 'Tem certeza?'}, method: :delete
+          li = f.button :submit
+
+      .section-body
+        - if flash[:notice]
+          .alert.alert--success
+            = flash[:notice]
+        = render partial: 'form', locals: {f: f}

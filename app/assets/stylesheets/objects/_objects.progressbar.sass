@@ -1,0 +1,95 @@
+// *************************************
+//
+//   Progress Bar
+//
+// *************************************
+
+// -------------------------------------
+//   Variables
+// -------------------------------------
+
+$progressbar-height: 20px !default
+
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+
+.progressbar
+
+  .progressbar__bar
+    height: $progressbar-height
+    background: #edeff0
+    margin: 0
+    overflow: hidden
+    position: relative
+    box-shadow: inset 0 0 1px 1px rgba(#333, .05)
+
+  .progressbar__fill
+    +transition (width 1.0s ease-in-out)
+    width: 0
+    background: #30ad3c
+    height: $progressbar-height
+    box-shadow: inset 1px 0 1px 1px rgba(#333, .05)
+
+  .progressbar__label
+    @include font-weight(bold)
+    text-transform: uppercase
+    color: #30ad3c
+    font-size: 9px
+    margin: ($inuit-base-spacing-unit--small/2) 0 0 0
+    padding: 0
+
+
+.progressbar--sm
+  .progressbar__bar, .progressbar__fill
+    height: $progressbar-height/4
+
+// PROGRESSBAR BY STEPS
+$progressbar-steps-checked: rgb(142,213,59)
+$progressbar-steps-bar-height: 14px
+
+.progressbar--steps
+  display: table
+  width: 100%
+  border-collapse: separate
+  border-spacing: 2px
+
+  ul
+    margin: 0 auto
+    padding: 0
+    list-style-type: none
+    display: table-row
+    width: 100%
+    overflow: hidden
+
+  li
+    background-color: #edeff0
+    box-shadow: inset 0 1px 2px rgba(#000, 0.15)
+    display: table-cell
+    margin: 0
+    padding: 0
+    list-style: none
+    height: $progressbar-steps-bar-height
+    line-height: $progressbar-steps-bar-height
+    text-align: center
+
+    &:last-of-type
+      border-color: transparent
+
+    &.single-subject
+      border-radius: 2em !important
+
+    &:first-child
+      border-radius: 2em 0 0 2em
+
+    &:last-child
+      border-radius: 0 2em 2em 0
+
+    &.is-checked
+      background: $progressbar-steps-checked
+      box-shadow: none
+
+    a
+      display: block
+      height: $progressbar-steps-bar-height

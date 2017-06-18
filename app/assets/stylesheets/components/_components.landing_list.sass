@@ -1,0 +1,82 @@
+// *************************************
+//
+//   Landing_hero
+//
+// *************************************
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+.landing-list
+  margin-top: $inuit-base-spacing-unit--large
+
+.landing-list-card
+  margin-bottom: $inuit-base-spacing-unit*2
+  display: inline-block
+  background-color: #fff
+  +span(12)
+  +respond-to(large, xlarge)
+    +span(4)
+    &:nth-child(3n+3)
+      +span(4 omega)
+
+.landing-list-card__header
+  padding: $inuit-base-spacing-unit--large/1.2 $inuit-base-spacing-unit*1.5 $inuit-base-spacing-unit--small
+  +respond-to(small)
+    padding: $inuit-base-spacing-unit $inuit-base-spacing-unit $inuit-base-spacing-unit--small
+
+.landing-list-card__title
+  font-size: 21px
+  color: #6092c5
+  margin-bottom: $inuit-base-spacing-unit--small
+  line-height: 1em
+  min-height: 42px
+
+.landing-list-card__description
+  color: #5c646c
+  font-weight: 300
+  line-height: 1.5em
+  font-size: 14px
+  margin-bottom: $inuit-base-spacing-unit--small
+
+.landing-list-card__created_at
+  padding: $inuit-base-spacing-unit/1.5 $inuit-base-spacing-unit*1.5 $inuit-base-spacing-unit/1.2
+  border-top: 1px solid rgba(0,0,0, 0.1)
+  +respond-to(small)
+    padding: $inuit-base-spacing-unit/1.5 $inuit-base-spacing-unit $inuit-base-spacing-unit/1.2
+
+  .landing-list-card__created_at__description
+    color: #b7babc
+    font-size: 14px
+    &:before
+      margin-right: 10px
+
+.landing-list-card__footer
+  +clearfix
+  background-color: #6092c5
+  padding: $inuit-base-spacing-unit
+  +respond-to(small)
+    padding: $inuit-base-spacing-unit--small
+
+  .landing-list-card__footer__count
+    padding: 0 $inuit-base-spacing-unit--small
+    font-size: 14px
+    color: white
+    font-weight: 300
+    float: left
+    margin-top: $inuit-base-spacing-unit--small/1.2
+    +respond-to(small)
+      padding: 0
+    &:before
+      margin-right: 10px
+
+  .landing-list-card__footer__action
+    float: right
+    padding-right: $inuit-base-spacing-unit--small
+    +respond-to(small)
+      padding-right: 0px
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+

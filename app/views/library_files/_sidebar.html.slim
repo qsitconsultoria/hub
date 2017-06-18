@@ -1,0 +1,89 @@
+.sidebar--filters method='get'
+  .scroll
+    .container-filters
+      .panel.panel--filter.filter--tema
+        .panel--header
+          h2.panel-title Tema
+        .panel--body
+          = select_tag 'query[themes_name_eq]', options_for_select(Theme.ordered.pluck(:name), params['query']['themes_name_eq']), prompt: 'Selecione o Tema'
+
+      .panel.panel--filter.filter--curso
+        .panel--header
+          h2.panel-title Curso
+        .panel--body
+          = select_tag 'query[courses_name_eq]', options_for_select(Course.pluck(:name), params['query']['courses_name_eq']), prompt: 'Selecione o Curso'
+
+      .panel.panel--filter.filter--autor
+        .panel--header
+          h2.panel-title Autor
+        .panel--body
+          = select_tag 'query[author_cont]', options_for_select(LibraryFile.authors, params['query']['author_cont']), prompt: 'Selecione o Autor'
+
+      .panel.panel--filter.filter--idioma
+        .panel--header
+          h2.panel-title Idioma
+        .panel--body
+          = select_tag 'query[language_eq]', options_for_select(LibraryFile.languages, params['query']['language_eq']), prompt: 'Selecione o Idioma'
+
+      .panel.panel--filter.filter--ano
+        .panel--header
+          h2.panel-title Ano
+        .panel--body
+          .slider
+            #year-slider
+
+            - if params[:query][:year_gteq].blank?
+              p.year-start 1950
+            - else
+              p.year-start = params['query']['year_gteq']
+
+            - if params[:query][:year_lteq].blank?
+              p.year-end 2015
+            - else
+              p.year-end = params['query']['year_lteq']
+
+
+            input type='hidden' id='query_year_gteq' name='query[year_gteq]'
+            input type='hidden' id='query_year_lteq' name='query[year_lteq]'
+
+      .panel.panel--filter.filter--tipos-de-arquivo
+        .panel--header
+          h2.panel-title Tipos de Arquivo
+        .panel--body
+          ul
+            - @filetypes.each do |filetype|
+              li
+                - if params['query']['filetype_in'] && (params['query']['filetype_in'].include? filetype)
+                  = check_box_tag 'query[filetype_in][]', filetype, checked: true
+                - else
+                  = check_box_tag 'query[filetype_in][]', filetype
+                = filetype
+
+      .panel.panel--filter.filter--abrangencia-territorial
+        .panel--header
+          h2.panel-title Abrangência Territorial
+        .panel--body
+          ul
+            - @territorial_coverages.each do |territorial_coverage|
+              li
+                - if params['query']['territorial_coverages_name_in'] && (params['query']['territorial_coverages_name_in'].include? territorial_coverage.name)
+                  = check_box_tag 'query[territorial_coverages_name_in][]', territorial_coverage.name, checked: true
+                - else
+                  = check_box_tag 'query[territorial_coverages_name_in][]', territorial_coverage.name
+                = territorial_coverage.name
+
+      .panel.panel--filter.filter--bioma
+        .panel--header
+          h2.panel-title Bioma
+        .panel--body
+          ul
+            - @biomes.each do |biome|
+              li
+                - if params['query']['biomes_name_in'] && (params['query']['biomes_name_in'].include? biome.name)
+                  = check_box_tag 'query[biomes_name_in][]', biome.name, checked: true
+                - else
+                  = check_box_tag 'query[biomes_name_in][]', biome.name
+                = biome.name
+
+    .search--action
+      button.btn.btn--primary.btn--show-results type='submit' Mostrar Resultados

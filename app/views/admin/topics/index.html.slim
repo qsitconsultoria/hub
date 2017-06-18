@@ -1,0 +1,110 @@
+= render 'admin/courses/sidebar'
+section.dashboard-panel
+  section.section
+    .section-heading
+      ul.nav-top
+        li = link_to 'Módulos', admin_unit_course_subjects_path(@unit, @course), class: 'btn-back'
+
+      ul.nav-section
+        / li URL: #{link_to course_subject_url(@course, @subject), course_subject_url(@course, @subject), target: '_blank'}
+        li = link_to 'Visualizar', unit_course_subject_url(@unit, @course, @subject), target: '_blank', class: 'btn btn--secondary'
+        li = link_to 'Adicionar Tópico', new_admin_unit_course_subject_topic_path(@unit, @course, @subject), class: 'btn btn--primary fa fa-plus'
+        / li URL: #{link_to course_subject_url(@course, @subject), '#', target: '_blank'}
+
+
+    .dashboard-panel--modules
+      .dashboard-panel--modules__header class="#{'has-video' if @subject.video.present?}"
+        h2.module-number Módulo #{padded_number(@subject.position)}
+        h1.panel-title #{@subject.name}
+        p #{@subject.description}
+      .dashboard-panel--modules__info
+        - if @subject.published_at <= Date.today
+          h3 Iniciado em:
+        - else
+          h3 Data de início programada para:
+        p #{l @subject.published_at, format: :short}
+        - if @course.teachers.any?
+          h3 #{@course.teachers.count == 1 ? 'Tutor:' : 'Tutores:'}
+          ul#teachers
+            li #{@course.teachers.pluck(:name).to_sentence}
+        = link_to 'Editar Módulo', edit_admin_unit_course_subject_path(@unit, @course, @subject), class: 'btn btn--secondary btn--mini fa fa-cog'
+
+
+
+    .section-area
+
+      - if @subject.question.present?
+        / QUESTÃO CADASTRADA
+        = link_to edit_admin_unit_course_subject_question_path(current_unit, current_course, @subject, @subject.question), class: 'list-question' do
+          .btn-add-topic-icon
+            p &#xf044;
+          .btn-add-topic-text
+            h2 <span>Questão:</span> #{truncate(@subject.question.title, length: 80)}
+      - else
+        / ADICIONAR QUESTÃO
+        = link_to new_admin_unit_course_subject_question_path(current_unit, current_course, @subject), class: 'btn-add-question' do
+          .btn-add-topic-icon
+            p &#xf044;
+          .btn-add-topic-text
+            h2 Adicionar Questão do Módulo
+
+      div data-component="Sortable" data-sortable-route="#{sortables_path}"
+        = render @topics
+      / = link_to 'Adicionar Tópico', new_admin_course_subject_topic_path(@course, @subject), class: 'btn-add-topic fa fa-plus'
+      = link_to new_admin_unit_course_subject_topic_path(@unit, @course, @subject), class: 'btn-add-field' do
+        .btn-add-topic-icon
+          p &#xf067;
+        .btn-add-topic-text
+          h2 Adicionar Tópico
+
+
+
+
+  / BLANK STATE
+  / .section-blank.blank-topics
+  /   h2 Você ainda não possui nenhum tópico cadastrado
+  /   .btn-group
+  /     = link_to 'Adicionar Tópico', new_admin_course_subject_topic_path(@course, @subject), class: 'btn btn--primary fa fa-plus'
+
+
+
+
+
+
+
+
+
+
+
+/ .panel.panel-module
+/   .panel-heading
+/     h1.panel-title = padded_number(subject_counter + 1)
+/   .panel-body
+/     h2 = subject.name
+/     = simple_format subject.description
+/     p.author prof. <b>Rafael Torales</b>
+
+
+/ h1 Listing admin_topics
+
+/ table
+/   tr
+/     th Name
+/     th Content
+/     th Subject
+/     th
+/     th
+/     th
+
+/   - @admin_topics.each do |admin_topic|
+/     tr
+/       td = admin_topic.name
+/       td = admin_topic.content
+/       td = admin_topic.subject_id
+/       td = link_to 'Show', admin_topic
+/       td = link_to 'Edit', edit_admin_topic_path(admin_topic)
+/       td = link_to 'Destroy', admin_topic, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+/ br
+
+

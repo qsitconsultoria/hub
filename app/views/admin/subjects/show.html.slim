@@ -1,0 +1,13 @@
+section.section
+  .section-heading
+    h1.section-title #{@subject.name}
+
+  .section-body
+    p = link_to course_subject_url(@course, @subject), target: '_blank' do
+      = course_subject_url(@course, @subject)
+
+    = simple_format @subject.description
+    p Publicado em <b>#{l @subject.published_at}</b>
+
+    p = link_to 'Editar', edit_admin_unit_course_subject_path(@unit, @course, @subject)
+    p = link_to 'Excluir', [:admin, @unit, @course, @subject], data: {confirm: 'Tem certeza?'}, method: :delete

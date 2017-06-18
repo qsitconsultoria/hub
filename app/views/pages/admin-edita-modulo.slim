@@ -1,0 +1,100 @@
+section.section
+  .section-heading
+    h1.section-title Editar Módulo
+    ul.nav-section
+      li = link_to 'Cancelar', '#', class: 'btn btn--secondary'
+      li = link_to 'Salvar', '#', class: 'btn btn--primary'
+
+
+  .section-area
+
+    .panel.panel-area
+      .panel-heading
+        h2.panel-title Informações Básicas
+        p Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies.
+      .panel-body
+        form.form
+          fieldset
+            .form-row
+              .form-field
+                label.form-label for='form-id--module-title' Título do Módulo
+                input.form-input#form-id--module-title type='text' name='form-id--module-title' tabindex='1' value='Conceitos, Componentes e Possibilidades' autocorrect='off' autocapitalize='off'
+
+            .form-row
+              .form-field
+                label.form-label for='form-id--description' Descrição
+                textarea.form-textarea#form-id--description type='text' name='form-id--description' value='Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.'
+
+            .form-row
+              .form-field
+                label.form-label for='form-id--author' Educador
+                select.form-select#form-id--author type='select' name='form-id--author' value=''
+                  option value="Flavio Ludgero" Flavio Ludgero
+                  option value="Julio Protzek" Julio Protzek
+                  option value="Rafael Torales" Rafael Torales
+                  option value="Renato Carvalho" Renato Carvalho
+
+            .form-row
+              = link_to 'Adicionar Educador', '#', class: 'btn-add-field fa fa-plus'
+
+
+  .section-area
+
+    .panel.panel-area
+      .panel-heading
+        h2.panel-title Tópicos
+        p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies.
+        = link_to 'Adicionar Tópico', '#', class: 'btn btn-add-blue fa fa-plus'
+      .panel-body
+        .panel.panel-topicos
+          .panel-heading
+            h2.panel-title 01
+          .panel-body
+            h3 Introdução
+          .panel-footer
+            ul.nav-topicos
+              li = link_to 'Editar', '#', class: 'fa fa-pencil-square-o'
+              li = link_to 'Deletar', '#', class: 'fa fa-times'
+        .panel.panel-topicos
+          .panel-heading
+            h2.panel-title 02
+          .panel-body
+            h3 Características da Região
+          .panel-footer
+            ul.nav-topicos
+              li = link_to 'Editar', '#', class: 'fa fa-pencil-square-o'
+              li = link_to 'Deletar', '#', class: 'fa fa-times'
+        .panel.panel-topicos
+          .panel-heading
+            h2.panel-title 03
+          .panel-body
+            h3 Integração Lavoura, Pecuária e Floresta - Uma opção para recuperação das Pastagens
+          .panel-footer
+            ul.nav-topicos
+              li = link_to 'Editar', '#', class: 'fa fa-pencil-square-o'
+              li = link_to 'Deletar', '#', class: 'fa fa-times'
+        .panel.panel-topicos
+          .panel-heading
+            h2.panel-title 04
+          .panel-body
+            h3 Etapas para implantação e estabelecimento da ILPF
+          .panel-footer
+            ul.nav-topicos
+              li = link_to 'Editar', '#', class: 'fa fa-pencil-square-o'
+              li = link_to 'Deletar', '#', class: 'fa fa-times'
+        .panel.panel-topicos
+          .panel-heading
+            h2.panel-title 05
+          .panel-body
+            h3 Considerações Finais
+          .panel-footer
+            ul.nav-topicos
+              li = link_to 'Editar', '#', class: 'fa fa-pencil-square-o'
+              li = link_to 'Deletar', '#', class: 'fa fa-times'
+        .btn-group
+          = link_to 'Adicionar Tópico', '#', class: 'btn-add-field fa fa-plus'
+
+  .btn-group
+    ul.nav-section
+      li = link_to 'Cancelar', '#', class: 'btn btn--secondary'
+      li = link_to 'Salvar', '#', class: 'btn btn--primary'

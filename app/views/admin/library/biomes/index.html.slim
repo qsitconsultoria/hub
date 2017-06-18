@@ -1,0 +1,16 @@
+- set_meta_tags title: 'Procurar por Bioma'
+
+= render 'admin/library_files/sidebar'
+
+section.section.dashboard style="width: 80%; float: right"
+  .section-heading
+    h1.section-title Procurar por Bioma
+    ul.nav-section
+      li = link_to 'Adicionar Arquivo', new_admin_library_file_url, class: 'btn btn--primary fa fa-plus'
+
+  .section-body
+    - @biomes.each do |biome|
+      .panel.panel-library
+        = link_to admin_biome_url(biome) do
+          .panel-body
+            h2 #{biome.name} <span class='number-of-files'>(#{biome.library_files.count})</span>

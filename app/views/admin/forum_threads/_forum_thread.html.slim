@@ -1,0 +1,7 @@
+= link_to edit_admin_unit_course_forum_forum_thread_url(current_unit, current_course, current_course.forum, forum_thread), data: { 'sortable-container' => 'item', 'sortable-position' => forum_thread.position, 'id' => forum_thread.id, 'resource-name' => forum_thread.class.name } do
+  .panel.panel-module
+    .panel-heading
+      h1.panel-title = padded_number(forum_thread_counter + 1)
+    .panel-body
+      h2 = forum_thread.title
+      = simple_format truncate(forum_thread.content, length: 220)

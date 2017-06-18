@@ -1,0 +1,12 @@
+section.section
+  .section-heading
+    h1.section-title Tópico: #{@topic.name}
+    ul.nav-section
+      li = link_to 'Editar', edit_admin_unit_course_subject_topic_path(@unit, @course, @subject, @topic), class: 'btn btn--primary fa fa-plus'
+
+  - if notice
+    .alert.alert-success = notice
+
+
+  .section-modules
+    = @topic.content

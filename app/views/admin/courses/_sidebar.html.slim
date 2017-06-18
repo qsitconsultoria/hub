@@ -1,0 +1,23 @@
+.sidebar
+  ul
+    li = link_to admin_unit_course_url(current_unit, current_course), class: "#{nav_status_class('nav__item', 'admin/courses', 'show')}" do
+      i.fa.fa-tasks
+      | Painel
+    li = link_to admin_unit_course_subjects_url(current_unit, current_course), class: "#{nav_status_class('nav__item', 'admin/subjects|admin/topics|admin/questions')}" do
+      i.fa.fa-th-large
+      | Módulos
+    li = link_to admin_unit_course_teachers_url(current_unit, current_course), class: "#{nav_status_class('nav__item', 'admin/teachers')}" do
+      i.fa.fa-user
+      | Tutores
+    li = link_to admin_unit_course_enrollments_url(current_unit, current_course), class: "#{nav_status_class('nav__item', 'admin/enrollments')}" do
+      i.fa.fa-users
+      | Alunos
+    li = link_to admin_unit_course_links_url(current_unit, current_course), class: "#{nav_status_class('nav__item', 'admin/links')}" do
+      i.fa.fa-files-o
+      | Biblioteca
+    li = link_to admin_unit_course_forum_url(current_unit, current_course, current_course.forum), class: "#{nav_status_class('nav__item', 'admin/forums|admin/items')}" do
+      i.fa.fa-list
+      | Fórum
+    li = link_to edit_admin_unit_course_url(current_unit, current_course), class: "#{nav_status_class('nav__item', 'admin/courses', 'edit')}" do
+      i.fa.fa-cog
+      | Configurações

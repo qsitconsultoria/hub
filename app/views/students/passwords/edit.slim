@@ -1,0 +1,21 @@
+section.section--default
+  .container
+
+    .panel.panel--session
+      .panel__header
+        h1.panel__title Alterar senha
+        p Digite uma nova senha
+
+      .panel__body
+        = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+          fieldsetp
+            = f.error_notification
+            = f.input :reset_password_token, as: :hidden
+            = f.full_error :reset_password_token
+
+            .form__row
+              = f.input :password, label: false, placeholder: "Nova senha", :required => true, :autofocus => true
+            .form__row
+              = f.input :password_confirmation, label: false, placeholder: "Confirme sua nova senha", :required => true
+            .form__row
+              = f.button :submit, 'Alterar', class: 'btn btn--primary btn--large'

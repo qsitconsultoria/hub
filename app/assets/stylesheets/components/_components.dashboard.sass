@@ -1,0 +1,250 @@
+.dashboard
+  width: 100%
+  position: relative
+
+.dashboard-panel
+  margin-left: 20%
+
+  .dashboard-panel__header
+    +span(12)
+    background-color: #f7f7f7
+    padding: $inuit-base-spacing-unit--small
+    border-bottom: 1px solid #e9e9e9
+
+    h2
+      font-size: 48px
+      font-weight: 300
+      text-align: center
+      color: #A0A6AF
+      padding-top: 40px
+
+    .search--library
+      width: 80%
+      display: block
+      margin: 0 auto
+      position: relative
+
+    #library_file_search
+      padding: 15px
+      font-size: 20px
+      margin-bottom: 40px
+      padding-left: 50px
+      width: 100%
+
+    label
+      position: absolute
+      font-size: 20px
+      padding: 15px
+      color: #2DB0CB
+
+    .btn--search
+      position: absolute
+      margin: 10px 0
+      right: 10px
+      background-color: #2DB0CB
+
+  .dashboard-panel__video
+    +span(4)
+    margin: $inuit-base-spacing-unit--small
+    iframe
+      width: 100%
+      min-height: 210px
+
+  .dashboard-panel__description
+    +span(7)
+    padding-left: $inuit-base-spacing-unit--small
+
+  .dashboard-panel__description-title
+    font-size: 21px
+    color: #2db0cb
+    padding-top: 20px
+    margin-bottom: 0px
+  .dashboard-panel__description-subtitle
+    font-size: 14px
+    font-weight: 300
+    color: #5c646c
+    min-height: 40px
+    margin-bottom: 10px
+
+  p
+    font-size: 14px
+    font-weight: 300
+    color: #5c646c
+
+    &.dashboard-panel__description-qty
+      font-size: 11px
+      margin-bottom: 10px
+
+  .dashboard-panel__description-actions
+    padding: 5px 0 15px 0
+
+    li
+      list-style: none
+      display: inline
+      margin-right: 10px
+
+      a
+        background-color: #f7f7f7
+
+  .dashboard-panel__description-pending-students
+    background-color: white
+    padding: 7px 10px
+    box-shadow: inset 0 0 1px rgba(#8c959d, .9)
+
+    &:before
+      @extend .fa
+      content: $fa-var-arrow-right
+      padding-right: 5px
+
+  .dashboard-panel__body
+    +span(12)
+    background-color: #fff
+
+    .dashboard-panel__body-header
+      +span(12)
+      padding: 0
+      background-color: #edeff0
+      border-bottom: 2px solid #d9d9d9
+      height: 40px
+
+      .user, .finished__modules, .last__seen, .recent-files
+        padding: 10px 20px
+        height: 100%
+
+        p
+          font-size: 12px
+          font-weight: 400
+          color: #444e58
+
+      .finished__modules, .last__seen
+        border-left: 1px solid #d9d9d9
+
+
+    .dashboard-panel__body-list
+      +span(12)
+
+    .dashboard-panel__body-list--list-users
+      position: relative
+
+      .list-user-item
+        +clearfix
+        width: 100%
+        display: block
+        padding: 15px 0
+        border-bottom: 1px solid #e9e9e9
+
+  .user
+    +span(5)
+    padding: 0 20px
+    text-align: left
+
+    p
+      margin: 0
+
+    .avatar-user
+      +span(2)
+      .avatar-img
+        width: 36px
+        height: 36px
+        display: block
+        border-radius: 100px
+        overflow: hidden
+
+    .user-details
+      +span(10)
+      +last
+
+      h2
+        font-size: 15px
+        margin: 0
+      p
+        margin: 0
+        font-size: 13px
+        font-weight: 300
+
+
+  .finished__modules
+    +span(5)
+    text-align: left
+    padding: 8px 20px
+
+    p
+      margin: 0
+
+  .last__seen
+    +span(2)
+    +last
+    padding: 8px 20px
+    text-align: left
+
+    p
+      font-size: 12px
+      margin: 0
+
+
+
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
+
+
+.dashboard-panel--modules
+  +span(12)
+  background-color: #edeff0
+  padding: 20px 40px
+  border-bottom: 1px solid #e9e9e9
+
+  .dashboard-panel--modules__header
+    +span(8)
+    padding: 10px 0
+
+    .module-number
+      color: #5c646c
+      font-weight: 300
+      font-size: 13px
+      text-transform: uppercase
+
+    .panel-title
+      color: darken(#5c646c, 10%)
+      font-size: 26px
+
+    &.has-video
+      padding-left: 50px
+      position: relative
+      &:before
+        @extend .fa
+        content: $fa-var-youtube-play
+        position: absolute
+        top: 29px
+        left: 0
+        font-size: 30px
+        color: #383838
+    h1
+      margin-bottom: $inuit-base-spacing-unit--small
+      line-height: 1em
+
+    h2
+      font-size: 18px
+      margin-bottom: $inuit-base-spacing-unit--small/4
+    p
+      font-size: 14px
+
+
+  .dashboard-panel--modules__info
+    +span(3 omega)
+    +pre(1)
+    h3
+      font-size: 13px
+      margin: 0
+      color: #5c646c
+      font-weight: 500
+    p, ul, li
+      font-size: 12px
+      color: #5c646c
+      font-weight: 300
+      letter-spacing: .5px
+    ul
+      padding: 0
+      li
+        list-style: none
+        margin: 0

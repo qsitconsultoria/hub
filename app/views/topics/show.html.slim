@@ -1,0 +1,38 @@
+section.topic
+  .container
+
+    main.topic__main
+
+
+      / CONTEÚDO NORMAL DO TÓPICO
+      .panel.panel--content
+
+        .panel__header.breadcrumb
+          ul
+            li = link_to current_course.name, unit_course_url(current_unit, current_course)
+            li = link_to @subject.name, unit_course_subject_path(current_unit, current_course, @subject)
+
+        .panel__body
+          .topic-number
+            p Tópico #{padded_number(@topic.position)}
+
+          h1 = @topic.name
+          = @topic.content.html_safe
+
+        .panel__footer
+          ul.nav-topicos
+            - if @topic.previous.present?
+              li = link_to 'Anterior', [@unit, current_course, @topic.previous.subject, @topic.previous], class: 'btn-prev'
+
+            - if @topic.next.present?
+              li = link_to 'Próximo', [@unit, current_course, @topic.next.subject, @topic.next], class: 'btn-next'
+            - elsif @subject.question.present?
+              - if current_user.answered?(@subject.question)
+                li = link_to 'Resposta da Questão', unit_course_subject_answer_path(@unit, @course, @subject, current_user.answer_for(@subject.question)), class: 'btn-next'
+              - else
+                li = link_to 'Responder Questão', new_unit_course_subject_answer_path(@unit, @course, @subject), class: 'btn-next'
+
+
+    aside.course__aside
+
+      = render partial: 'shared/links', locals: {links: @course.links}

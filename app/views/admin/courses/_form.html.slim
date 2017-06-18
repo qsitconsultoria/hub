@@ -1,0 +1,28 @@
+/ = f.error_notification
+
+fieldset
+  .section-form
+    .panel.panel-form
+      .panel-heading
+        h2.panel-title Informações do Curso
+        p Essas são as informações que aparecem na página inicial do seu curso. Não esqueça de colocar um vídeo bem atrativo! :)
+      .panel-body
+        .form
+          .form__row
+            = f.input :name, label: 'Título do Curso'
+
+          .form__row
+            .box-edit-url
+              .input
+                label.form__label Endereço do Curso na web
+              .box-url
+                label.label for='course_slug' <span>http://</span>#{request.host}#{":#{request.port}" if request.port}<span>/</span>#{@unit.slug}<span>/</span>
+              .box-url-edit
+                = f.input :slug, required: true, label: false, placeholder: 'Inserir nome do curso'
+              = f.hint 'Endereço único e customizado para o curso. Não utilize acentos ou espaços.'
+
+          .form__row
+            = f.input :subname, label: 'Subtítulo do Curso'
+
+          .form__row
+            = f.input :video, label: 'Vídeo de Introdução do Curso', wrapper_html: {data: {component: 'VideoInput'}}

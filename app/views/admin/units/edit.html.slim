@@ -1,0 +1,16 @@
+- set_meta_tags site: @unit.name, title: 'Configurações'
+
+= simple_form_for([:admin, @unit]) do |f|
+  section.section
+    .section-heading
+      h1.section-title Configurações da unidade
+      ul.nav-section
+        - if can? :see_managers_link, @unit
+          li = link_to 'Gestores', admin_unit_managers_url(@unit), class: 'btn btn--primary fa fa-users'
+
+        li = link_to 'Excluir', [:admin, @unit], class: 'btn btn--secondary btn--delete', data: {confirm: 'Tem certeza?'}, method: :delete unless @unit.new_record?
+        li = f.submit 'Salvar', class: 'btn btn--dark btn--mini', class: 'btn btn--primary'
+
+
+    .section-body
+      == render partial: 'form', locals: {f: f}

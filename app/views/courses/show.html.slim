@@ -1,0 +1,70 @@
+section class="hero hero--course #{'has-video' if @course.video.present?}"
+  .container
+    .hero__body
+      - if @course.video.present?
+        .video-player
+          .video-player__body
+            = @course.video.html_safe
+
+    .hero__footer
+      - if current_user && current_user.student?
+        h1.hero__title = @course.name
+        h2.hero__subtitle = @course.subname
+
+        - if current_user.enrolled_in? @course
+
+          - if current_user.enrollment_status_on(@course) == 'waiting'
+            .hero__links
+              = link_to 'MATRICULADO E AGUARDANDO APROVAÇÃO', '#', class: 'btn btn--danger disabled'
+
+          - else
+            .course__progress
+
+              .course__progress-title
+                b Progresso:
+
+              .course__progress-body
+                .progressbar--steps
+                  ul
+                    - @subjects.each do |subject|
+                      li class="#{'is-checked' if current_user.answered?(subject.question)} #{'single-subject' if @subjects.size == 1}"
+                        a.tooltip-item href='#' data-tooltip="<b>Módulo #{subject.position}:</b> #{subject.name}<br><b>Status:</b> #{current_user.answered?(subject.question) ? 'Completo' : 'Incompleto'}"
+
+        - else
+          .hero__links
+            = link_to 'MATRICULAR NESSE CURSO', unit_course_enroll_student_url(@unit, @course), class: 'btn btn--primary btn--positive'
+
+      - else
+        .hero__couse-info
+          h1.hero__title = @course.name
+          h2.hero__subtitle = @course.subname
+
+        .hero__links
+          = link_to 'MATRICULAR NESSE CURSO', new_unit_course_enrollment_url(@unit, @course), class: 'btn btn--primary btn--positive'
+          p Já está matriculado? #{link_to('Faça o login', new_user_session_url)}
+
+
+section.course
+  .container
+
+    main.course__main
+
+      .panel.panel--course
+        .panel__header
+          h1.panel__title Módulos nesse curso (#{@course.subjects.size})
+
+        .panel__body
+          .list.list--modules
+            = render @course.subjects.ordered
+
+    aside.course__aside
+
+      = render partial: 'shared/links', locals: {links: @course.links}
+
+      section.forum-preview
+        .panel.panel--course
+          .panel__header
+            h1.panel__title = "Itens no fórum (#{@forum.threads.count})"
+          .panel__body
+            = render @forum.threads.ordered
+

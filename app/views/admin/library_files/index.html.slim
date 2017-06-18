@@ -1,0 +1,42 @@
+- set_meta_tags title: 'Biblioteca de Arquivos'
+
+section.section.dashboard
+  = render 'admin/library_files/sidebar'
+  .section-heading  style="width: 80%; float: right"
+    - if @files
+      ul.nav-top
+        li = link_to 'Voltar', admin_library_files_path, class: 'btn-back'
+    - else
+      h1.section-title Procurar Arquivo
+
+    ul.nav-section
+      li = link_to 'Adicionar Arquivo', new_admin_library_file_url, class: 'btn btn--primary fa fa-plus'
+
+  - if @files
+    .section-body style="width: 80%; float: right"
+      p.library-category = "Mostrando #{@files.count} de #{@files.total_count} arquivos"
+      = render 'admin/library/shared/files', collection: @files, as: :files
+
+  - else
+    .dashboard-panel
+      .dashboard-panel__header
+        h2 Biblioteca de Arquivos
+
+        = form_tag admin_library_files_path, method: :get do
+          .search--library
+            label for='library_file_search'
+              i.fa.fa-search
+            = text_field_tag 'query[title_cont]', params[:query], class: "form-control form", id: "library_file_search", autocomplete: "off", placeholder: 'Qual arquivo você procura?'
+            = submit_tag 'Buscar Arquivo', class: 'btn btn--search'
+
+      .dashboard-panel__body
+        .dashboard-panel__body-header
+          .recent-files
+            p Arquivos adicionados recentemente
+
+        .dashboard-panel__body-list
+          .dashboard-panel__body-list--list-files
+            = render @library_files
+            .list-file-item.see-all-files
+              = link_to "Ver todos os arquivos (#{LibraryFile.all.count})", '?utf8=✓&query%5Btitle_cont%5D='
+

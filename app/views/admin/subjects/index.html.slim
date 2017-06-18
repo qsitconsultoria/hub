@@ -1,0 +1,29 @@
+= render 'admin/courses/sidebar'
+
+section.section style="width: 80%; float: right"
+  .section-heading
+    h1.section-title <b>#{pluralize(@subjects.count, 'Módulo', 'Módulos')}</b> em #{@course.name}
+    ul.nav-section
+      li = link_to 'Visualizar', unit_course_url(current_unit, current_course), class: 'btn btn--secondary', target: '_blank'
+      li = link_to 'Adicionar Módulo', new_admin_unit_course_subject_path(@unit, @course), class: 'btn btn--primary fa fa-plus'
+
+
+  .section-modules data-component="Sortable" data-sortable-route="#{sortables_path}"
+    = render @subjects
+
+  / BLANK STATE
+  / .section-blank.blank-modules
+  /   h2 Você ainda não possui nenhum módulo cadastrado
+  /   .btn-group
+  /     = link_to 'Adicionar Módulo', new_admin_course_subject_path(@course), class: 'btn btn--primary fa fa-plus'
+
+
+
+
+
+/ .section-body
+/   p = link_to course_subjects_url(@course), target: '_blank' do
+/     = course_subjects_url(@course)
+/   ul
+/     li = link_to 'Editar', edit_admin_course_path(@course)
+/     li = link_to 'Excluir', [:admin, @course], data: {confirm: 'Tem certeza?'}, method: :delete

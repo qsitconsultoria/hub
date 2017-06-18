@@ -1,0 +1,9 @@
+= render 'shared/navbar/units'
+
+- unless params[:controller] == 'admin/units' || params[:controller] == 'admin/managers' || !(params[:controller] == 'admin/courses' && params[:action] == 'show')
+  = render 'shared/navbar/unit_brand'
+- else
+  = render 'shared/navbar/unit_dropdown'
+
+
+= render 'shared/navbar/view_unit_or_view_course'

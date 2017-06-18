@@ -1,0 +1,100 @@
+// -----------------------------------------
+
+//  # Forum
+
+// -----------------------------------------
+
+.user
+
+.user-header
+  padding: 25px 0 0px 0px
+  border-bottom: 1px solid #dde3e3
+  &--show
+    padding-bottom: 20px
+
+  &__actions
+    +respond-to(small)
+      display: none
+    font-size: 20px
+    margin-bottom: 0px
+    > a
+      color: #9B9B9B
+      text-decoration: none
+      &:hover
+        color: black
+
+
+.user-info
+  +clearfix
+  background: rgba(#D8D8D8, 0.2)
+  margin: $inuit-base-spacing-unit--small 0
+  > a
+    text-decoration: none
+
+.user-profile
+  text-align: center
+  padding: 20px
+  display: table
+  margin-top: -12px
+  +respond-to(medium)
+    text-align: left
+
+  &__avatar
+    margin: 0 auto
+    +size(80px 80px)
+    border-radius: 3px
+    overflow: hidden
+    img
+      +size(100% 100%)
+
+    +respond-to(medium)
+      margin: 0
+
+  &__title
+    padding: 0 40px
+    font-size: 20px
+    color: #202020
+    font-weight: bold
+    line-height: 1.2em
+    margin-bottom: 10px
+
+    +respond-to(medium)
+      padding: 0px
+      font-size: 30px
+      margin-bottom: 20px
+
+  &__attribute
+    font-size: 16px
+    color: #4A4A4A
+    text-align: left
+    line-height: 1.6em
+    padding: $inuit-base-spacing-unit--small 0
+
+
+  &__avatar-holder, &__body-description
+    +respond-to(medium)
+      display: table-cell
+      margin-top: 0px
+      vertical-align: top
+      padding: 20px
+
+  &__avatar
+    border-right: 1px solid #F0F0F0
+    background: #FDFDFD
+    padding: 10px
+    display: block
+    float: left
+    .uploadbox-image-container
+      border-radius: 3px
+      overflow: hidden
+      display: block
+      border: 1px solid rgba(0,0,0, 0.1)
+
+
+  &__avatar--image
+    +size(50px 50px)
+    +respond-to(medium)
+      +size(80px 80px)
+
+    border-radius: 3px
+    border: 1px solid rgba(#C0C0C0, 0.2)

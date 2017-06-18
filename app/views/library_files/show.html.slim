@@ -1,0 +1,73 @@
+= render 'search_bar'
+
+.container
+  .file--content
+    section.file--info
+      .file--type
+        = image_tag("file-icons/ico-#{@file.filetype.parameterize}-large.png", class: 'file--filetype-icon')
+      h1.file--title = @file.title
+      - if @file.original_file_size
+        p.file--additional-info = "#{@file.filetype} • Adicionado #{time_ago_in_words(@file.created_at)} atrás • (#{readable_file_size(@file.original_file_size, 1)})"
+      - else
+        p.file--additional-info = "#{@file.filetype} • Adicionado #{time_ago_in_words(@file.created_at)} atrás"
+
+      = link_to attachment_url(@file, :original_file, filename: @file.original_file_filename) do
+        button.btn.btn--primary.btn--download-file
+          i.fa.fa-download &nbsp;&nbsp;Download
+
+    section.file--comments
+      .comments--count = "<b>#{pluralize(@file.comments.count, 'comentário', 'comentários')}</b> sobre este arquivo".html_safe
+      .comments
+        - if current_user
+          .comment
+            .user--avatar = img current_user.avatar.thumb
+            .form
+              = simple_form_for [@file, @comment] do |f|
+                .form__row
+                  = f.input :content, label: false, placeholder: "Deixe o seu comentário...", as: :text, input_html: { class: 'form__input' , 'js-data-toggle' => 'autosize' }
+                  = f.submit "Publicar", class: "btn btn--forum btn--comment"
+
+        - @file.comments.ordered.each do |comment|
+          .comment
+            .user--avatar = img comment.user.avatar.thumb
+            .comment--details
+              .user--name = comment.user.name
+              .timestamp = "• #{time_ago_in_words(comment.created_at)} atrás"
+              .delete--comment
+                - if current_user == comment.user
+                  = link_to '• excluir', [@file, comment], class: 'delete_alert', data: {confirm: 'Tem certeza?'}, method: :delete
+            .content
+              p = comment.content
+
+  .sidebar.file--more-info
+    - if @file.filetype
+      h2 Tipo de Arquivo:
+      p = @file.filetype
+
+    - if @file.year
+      h2 Ano de Publicação:
+      p = @file.year
+
+    - if @file.author
+      h2 Autor:
+      p = @file.author
+
+    - if @file.language
+      h2 Idioma:
+      p = @file.language
+
+    - unless @file.themes.empty?
+      h2 Tema:
+      p = @file.themes.map(&:name).to_sentence
+
+    - unless @file.courses.empty?
+      h2 Curso:
+      p = @file.courses.map(&:name).to_sentence
+
+    - unless @file.territorial_coverages.empty?
+      h2 Abrangência Territorial:
+      p = @file.territorial_coverages.map(&:name).to_sentence
+
+    - unless @file.biomes.empty?
+      h2 Bioma:
+      p = @file.biomes.map(&:name).to_sentence

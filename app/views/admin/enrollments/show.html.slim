@@ -1,0 +1,42 @@
+= render 'admin/courses/sidebar'
+section.dashboard-panel
+    section.section
+      .section-heading
+        = render 'admin/enrollments/enrollment_navbar'
+
+      .section-body
+
+        .section-form
+          .panel.panel-form
+            .panel-heading
+              h2.panel-title Informações Básicas
+              p Estes são os dados do aluno #{@enrollment.student.name}
+            .panel-body
+              .form
+                .form__row
+                  .form__field
+                    .panel-avatar
+                      .uploadbox-image-container height="80" width="80"
+                        = img @enrollment.student.avatar.regular
+
+                .form__row
+                  h1 = @enrollment.student.name
+
+                - if @enrollment.student.is_public_server?
+                  .form__row
+                    <b>É servidor público?</b> Sim,
+
+                  .form__row
+                    <b>Órgão:</b> #{@enrollment.student.works_on}
+                - else
+                  .form__row
+                    <b>É servidor público?</b> Não
+
+                  .form__row
+                    <b>Setor:</b> #{@enrollment.student.works_on}
+
+                .form__row
+                  <b>Nível de escolaridade:</b> #{@enrollment.student.scholarity_level}
+
+                .form__row
+                  <b>Área de atuação:</b> #{@enrollment.student.field_of_operation}

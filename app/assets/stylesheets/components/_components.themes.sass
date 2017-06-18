@@ -1,0 +1,60 @@
+// **************************************
+//
+//   Themes
+//   -> Color themes setup. The app has custom themes for the unit.
+//      This will generate all styles for each theme in the app.
+//
+// **************************************
+
+// Multidimensional list. First parameter is the theme name
+// and the second the base color.
+$themes: theme--orange #db7340, theme--light-green #82b051, theme--dark-green #338219, theme--water-blue #1496c8, theme--sky-blue #6092c5, theme--ocean-blue #0f50a0, theme--purple #843a9b, theme--red #d64a42, theme--gray #999999, theme--dark #212121
+
+@each $theme in $themes
+  $color-name: nth($theme, 1)
+  $color-value: nth($theme, 2)
+
+  // Styling the radio buttons for each color theme
+  .form__input--radio--color-check
+    label.#{$color-name}
+      background: $color-value
+
+
+  // Styles for the elements of the page based on a class
+  // placed on the html tag
+  html.#{$color-name}
+
+    .sb-slidebar
+      background-color: darken($color-value, 32%)
+
+    .header--primary
+      background-color: $color-value
+
+    .hero--course
+
+      .hero__header
+        background-color: rgba($color-value, 0.05)
+
+      .hero__title
+        color: darken($color-value, 45%)
+
+    .nav-site.has-submenu
+      &:hover
+        background-color: darken($color-value, 10%)
+
+    .site-brand
+      &:hover
+        background-color: darken($color-value, 10%)
+
+    .slidebar-btn
+      &:hover
+        background-color: darken($color-value, 10%)
+    .nav-site__submenu
+      background-color: darken($color-value, 10%)
+
+    .landing-list-card__footer
+      background-color: $color-value
+
+    .landing-list-card__title
+      color: $color-value
+

@@ -1,0 +1,16 @@
+- set_meta_tags title: 'Procurar por Tema'
+
+= render 'admin/library_files/sidebar'
+
+section.section.dashboard style="width: 80%; float: right"
+  .section-heading
+    h1.section-title Procurar por Tema
+    ul.nav-section
+      li = link_to 'Adicionar Arquivo', new_admin_library_file_url, class: 'btn btn--primary fa fa-plus'
+
+  .section-body
+    - @themes.each do |theme|
+      .panel.panel-library
+        = link_to admin_theme_url(theme) do
+          .panel-body
+            h2 #{theme.name} <span class='number-of-files'>(#{theme.library_files.count})</span>

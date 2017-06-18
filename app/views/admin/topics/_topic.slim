@@ -1,0 +1,15 @@
+.panel.panel-topico data-sortable-container="item" data-sortable-position="#{topic.position}" data-id="#{topic.id}" data-resource-name="#{topic.class.name}"
+  = link_to edit_admin_unit_course_subject_topic_path(@unit, @course, @subject, topic) do
+    .panel-heading
+      h1.panel-title = padded_number(topic_counter + 1)
+    .panel-body
+      h2 = topic.name
+      / = topic.content
+    / .panel-footer
+    /   ul.nav-topicos
+    /     li = link_to 'Editar', edit_admin_course_subject_topic_path(@course, @subject, topic), class: 'fa fa-pencil-square-o'
+    /     li = link_to 'Excluir', [:admin, @course, @subject, topic], method: :delete, data: {confirm: 'Tem certeza?'}, class: 'fa fa-times'
+
+
+
+

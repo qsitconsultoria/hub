@@ -1,0 +1,26 @@
+section.create-unit__section
+  .header-section
+    .header-section__title Editar Unidade
+    .header-section__actions
+      = link_to "#" do
+        .header-section__plus-button
+          i.fa.fa-arrow-left
+          |  Voltar
+  .create-unit__container
+    = simple_form_for("resource", url: "#") do |f|
+      fieldset
+        .form-inputs
+          .form__row
+            label Nome da unidade
+            = f.input :email, label: false, placeholder: 'Digite o nome da unidade'
+        .form-actions
+          .form__row
+            = f.submit 'Salvar', class: 'btn btn--dark btn--mini fr'
+
+
+
+
+
+
+
+

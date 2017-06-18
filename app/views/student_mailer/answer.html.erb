@@ -1,0 +1,22 @@
+<div style="font-family: sans-serif">
+  <p>
+    Olá <%= @teacher.first_name %>,
+    <br>
+    <br>
+
+    uma questão foi <%= @context == :create ? 'respondida' : 'atualizada' %>.
+  </p>
+  ---------<br>
+  <b>Aluno: </b><%= @student.name %><br>
+  <b>Módulo: </b><%= @subject.name %><br>
+  <b>Questão: </b><%= @question.title %><br>
+
+  <b>Resposta:</b><br>
+  <%= simple_format @answer.content %>
+  <br>
+  ---------
+  <br>
+  <br>
+  <br>
+  <p>Para conversar com o aluno responda esse email.</p>
+</div>

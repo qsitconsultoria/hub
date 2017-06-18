@@ -1,0 +1,11 @@
+div data-component="SelectNavigation"
+  .form__select.form__select--headerAdmin
+    - if current_user.type == 'Teacher'
+      select
+        - if current_course
+          = options_for_select(courses_for_select, admin_unit_course_dashboard_index_path(current_unit, current_course))
+        - else
+          = options_for_select(courses_for_select)
+    - elsif current_user.type == 'Manager'
+      select
+        = options_for_select(units_for_select)

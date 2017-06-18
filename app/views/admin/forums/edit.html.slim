@@ -1,0 +1,12 @@
+= render 'admin/courses/sidebar'
+
+= simple_form_for [:admin, current_unit, current_course, @forum] do |f|
+  section.section
+    .section-heading
+      ul.nav-top
+        li = link_to 'Fórum', admin_unit_course_forums_url(current_unit, current_course), class: 'btn-back'
+      ul.nav-section
+        li = f.button :submit
+
+    .section-body
+      = render partial: 'form', locals: {f: f}

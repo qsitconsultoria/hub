@@ -1,0 +1,134 @@
+source 'https://rubygems.org'
+
+ruby '2.4.0'
+
+# rails
+gem 'rails', '~> 5.1.1'
+
+# use postgresql as the database for Active Record
+gem 'pg'
+
+# error tracking
+gem 'rollbar'
+
+# assets
+gem 'uglifier', '~> 2.5.3'
+gem 'jquery-rails'
+# -------------------------------
+# trick to use sass 3.3
+gem 'sprockets', '<= 2.11.0'
+gem 'sprockets-rails'
+gem 'sass'
+gem 'sass-rails'
+# -------------------------------
+#gem 'coffee-rails', '~> 4.0.1'
+gem 'coffee-rails'
+gem 'font-awesome-sass', '~> 4.2.0'
+
+# slim
+#gem 'slim-rails', '~> 2.1.5'
+gem 'slim-rails'
+
+# forms
+#gem 'simple_form', '~> 3.0.2'
+gem 'simple_form'
+
+# meta tags
+gem 'meta-tags', '~> 2.0.0'
+
+# static pages
+gem 'high_voltage', '~> 2.2.1'
+
+# uploads
+#gem 'uploadbox', '~> 0.2.0'
+gem 'uploadbox'
+gem 'aws-sdk', '< 2'
+gem 'refile', require: ['refile/rails']
+
+# duplicate records
+#gem 'deep_cloneable', '~> 2.0.0'
+gem 'deep_cloneable'
+
+# search
+gem 'ransack'
+
+# spring speeds up development by keeping your application running in the background. Read more: https://github.com/jonleighton/spring
+group :development do
+  gem 'spring'
+  gem 'start', '0.1.1'
+  gem 'better_errors',           '~> 1.0.1'
+  gem 'binding_of_caller',       '~> 0.7.1'
+  gem 'spring-commands-rspec'
+  # gem 'sprockets_better_errors', '~> 0.0.2'
+end
+
+group :production do
+  # heroku config
+  gem 'rails_12factor'
+end
+
+# server
+gem 'unicorn', '~> 4.8.3'
+
+# server timeout
+gem 'rack-timeout', '~> 0.0.4'
+
+# authentication
+#gem 'devise', '~> 3.2.6'
+gem 'devise'
+#gem 'devise_invitable', '~> 1.3.6'
+gem 'devise_invitable'
+
+# access levels
+gem 'cancancan', '~> 1.9'
+
+# xray rails
+gem 'xray-rails', '~> 0.1.14'
+
+# friendly urls
+#gem 'friendly_id', '~> 5.0.4'
+gem 'friendly_id'
+
+# custom validation for urls
+gem 'validate_url'
+
+# keeps session in active record so session can be bigger than 4kb
+gem 'activerecord-session_store', '~> 0.1.0'
+
+gem 'kaminari', '0.16.1'
+
+
+group :test, :development do
+  # specs
+  #gem 'rspec-rails', '~> 3.0.2'
+  gem 'rspec-rails'
+
+  # interactive debug
+  gem 'pry-rails',   '~> 0.3.2'
+
+  # factories
+  #gem 'factory_girl_rails', '~> 4.4.0'
+  gem 'factory_girl_rails'
+
+  # javascript specs
+  #gem 'jasmine-rails', '~> 0.6.0'
+  gem 'jasmine-rails'
+
+  # jquery for javascript specs
+  gem 'jasmine-jquery-rails', '2.0.2'
+end
+
+group :test do
+  # feature specs
+  # gem 'capybara',   '~> 2.2.1'
+  gem 'capybara',  github: 'jnicklas/capybara'
+
+  # feature specs
+  gem 'launchy',    '~> 2.4.2'
+
+  # code climate coverage
+  gem 'codeclimate-test-reporter', require: nil
+
+  gem 'rspec-collection_matchers', '~> 1.0.0'
+end
+

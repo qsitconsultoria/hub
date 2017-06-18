@@ -1,0 +1,74 @@
+section.hero.hero--course
+  .container
+
+    .hero__header
+
+      .course__intro
+        h1.hero__title Integração Lavoura-Pecuária-Floresta
+        h2.hero__subtitle Uma alternativa para produção sustentável nos trópicos.
+
+      .course__video
+        .video
+          .video__player
+            iframe src="//player.vimeo.com/video/79899786?title=0&amp;byline=0&amp;portrait=0&amp;color=e91c6b" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen
+
+      .course__progress
+        .progressbar data-progress-percent='70'
+          .progressbar__bar
+            .progressbar__fill
+          .progressbar__label Esse curso está 80% concluído
+        .course__progress-action
+          = link_to 'Continuar Curso', '/', class: 'btn btn--primary btn--large'
+
+section.course
+  .container
+
+    main.course__main
+
+      .panel.panel--course
+        .panel__header
+          h1.panel__title Módulos nesse curso (4)
+
+        .panel__body
+          .list.list--modules
+            - for i in (1..5)
+              = link_to '#', class: 'list__item' do
+                header.list__header
+                  .list__number 0#{i}
+                  h1.list__title Conceitos, Componentes e Possibilidades
+                  .meta
+                    .meta__name Prof. Rafael Torales
+
+                  .progressbar.progressbar--sm data-progress-percent='10'
+                    .progressbar__bar
+                      .progressbar__fill
+                    .progressbar__label Esse curso está 80% concluído
+
+                .list__body
+                  p Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+
+                .list__footer
+                  button.btn.btn--primary Assistir
+
+
+    aside.course__aside
+
+      .panel.panel--course
+        .panel__header
+          h1.panel__title Biblioteca
+
+        .panel__body
+
+          .list.list--library
+            .list__item
+              = link_to '#', class: 'file' do
+                | Apresentação.pdf
+            .list__item
+              = link_to '#', class: 'file' do
+                | Apresentação.pdf
+            .list__item
+              = link_to '#', class: 'file' do
+                | Apresentação.pdf
+            .list__item
+              = link_to '#', class: 'file' do
+                | Apresentação.pdf

@@ -1,0 +1,26 @@
+main.topic__main
+
+  .panel.panel--content.module-question
+    = simple_form_for([@unit, @course, @subject, @answer]) do |f|
+      = f.error_notification
+
+      .panel__header.breadcrumb
+        ul
+          li = link_to @course.name, unit_course_url(@unit, @course)
+          li = link_to @subject.name, [@unit, @course, @subject]
+
+      .panel__body
+        .topic-number
+          p Questão do Módulo
+
+        h1 = @question.title
+
+        fieldset
+          .form__row
+            = f.input :content, label: false, placeholder: 'Escreva sua resposta...', input_html: {spellcheck: 'true', 'data-behavior' => 'autosize', rows: 10}
+
+      .panel__footer
+        = f.button :submit, 'Responder Questão', class: 'btn btn--positive btn--large'
+
+aside.course__aside
+  = render partial: 'shared/links', locals: {links: @course.links}

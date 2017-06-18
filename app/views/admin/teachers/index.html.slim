@@ -1,0 +1,27 @@
+= render 'admin/courses/sidebar'
+
+section.section style="width: 80%; float: right"
+  .section-heading
+    h1.section-title Tutores
+    ul.nav-section
+      li = link_to 'Adicionar Tutor', new_admin_unit_course_teacher_path(current_unit, current_course), class: 'btn btn--primary fa fa-plus'
+
+  .section-body
+
+
+    - @teachers.each do |teacher|
+      .panel.panel-tutor
+        = link_to edit_admin_unit_course_teacher_path(current_unit, current_course, teacher), id: teacher.name do
+          .panel-avatar
+            .uploadbox-image-container height="36" width="36"
+              = img teacher.avatar.thumb
+          .panel-name
+            h2 = teacher.name
+          .panel-email
+            p = teacher.email
+
+    = link_to new_admin_unit_course_teacher_path(current_unit, current_course), class: 'btn-add-field' do
+      .btn-add-topic-icon
+        p &#xf067;
+      .btn-add-topic-text
+        h2 Adicionar Tutor

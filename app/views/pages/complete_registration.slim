@@ -1,0 +1,23 @@
+section.create-unit__section
+  .header-section
+    .header-section__title--centered Completar cadastro
+    .header-section__subtitle--centered Unidade MMA
+
+
+  .create-unit__container
+    = simple_form_for("resource", url: "#") do |f|
+      fieldset
+        .form-inputs
+          .form__row
+            label Nome:
+            = f.input :email, label: false, placeholder: 'digite o nome completo'
+          .form__row
+            p joaosilva@mma.com.br
+          .form__row
+            label Senha:
+            = f.input :password, label: false, placeholder: 'digite sua senha, mínimo 8 caracteres'
+
+        .form-actions
+          .form__row
+            = f.submit 'Salvar', class: 'btn btn--dark btn--mini fr'
+

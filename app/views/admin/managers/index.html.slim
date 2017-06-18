@@ -1,0 +1,45 @@
+- set_meta_tags site: @unit.name, title: 'Gestores'
+
+section.section.create-unit__section
+  .section-heading
+    h1.section-title Gestores
+    ul.nav-section
+      li = link_to "Adicionar Gestor", new_admin_unit_manager_url(@unit), class: "btn btn--positive btn--add"
+
+  .section-body
+    .list-courses__manager
+      .list-courses__manager__header = "#{pluralize(@managers.confirmed.count, 'gestor', 'gestores')}"
+      .list-courses__manager__container
+
+      - @managers.confirmed.each do |manager|
+
+          li.list-courses__manager
+            .list-courses__manager__photo
+              .photo--container
+                = img manager.avatar.thumb
+            .list-courses__manager__description
+              .list-courses__manager__name = manager.name
+              .list-courses__manager__email = manager.email
+            .list-courses__manager__button
+              = link_to edit_admin_unit_manager_path(current_unit, manager) do
+                button.btn.btn--secondary.btn--mini
+                  i.fa.fa-gear &nbsp;Editar
+
+    - if @managers.unconfirmed.length > 0
+      .list-courses__manager
+        .list-courses__manager__header = "Não #{'confirmado'.pluralize(@managers.unconfirmed.length)}"
+        .list-courses__manager__container
+
+        - @managers.unconfirmed.each do |manager|
+
+            li.list-courses__manager
+              .list-courses__manager__photo
+                .photo--container
+                  = img manager.avatar.thumb
+              .list-courses__manager__description
+                .list-courses__manager__name = manager.name
+                .list-courses__manager__email = manager.email
+              .list-courses__manager__button
+                = link_to edit_admin_unit_manager_path(current_unit, manager) do
+                  button.btn.btn--secondary.btn--mini
+                    i.fa.fa-gear &nbsp;Editar

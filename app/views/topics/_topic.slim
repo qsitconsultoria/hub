@@ -1,0 +1,7 @@
+= link_to [current_unit, current_course, @subject, topic], class: 'list__item' do
+  header.list__header
+    .list__number #{padded_number(topic_counter + 1)}
+  .list__body
+    h1.list__title = topic.name
+    / .status
+    /   .status__finished Concluído

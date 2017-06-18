@@ -1,0 +1,80 @@
+= f.error_notification
+
+fieldset
+
+  .section-form
+
+    .panel.panel-form
+      .panel-heading
+        h2.panel-title Informações do Arquivo
+        p Adicione as informações básicas do seu arquivo. Dessa forma será mais fácil de achá-lo na Biblioteca.
+
+      .panel-body
+        .form
+          - if @file.original_file.nil?
+            .form__row.upload_file.js-has-no-file
+              label.form__label Upload do Arquivo
+              .upload--progress
+              .form__input.form__input--file
+                p Nenhum arquivo selecionado...
+
+              input type='button' value='Adicionar arquivo' class='btn-upload-file'
+
+              = f.attachment_field :original_file, direct: true, presigned: true, hidden: true
+
+              - if @missing_file
+                .no-file-alert
+                  p Você precisa adicionar um arquivo.
+
+          - else
+            .form__row.upload_file.js-has-no-file style="display: none"
+              label.form__label Upload do Arquivo
+              .upload--progress
+              .form__input.form__input--file
+                p Nenhum arquivo selecionado...
+
+              input type='button' value='Adicionar arquivo' class='btn-upload-file'
+
+              = f.attachment_field :original_file, direct: true, presigned: true, hidden: true
+
+              .no-file-alert
+                p Você precisa adicionar um arquivo.
+
+            .form__row.upload_file.js-has-file style="padding-bottom: 20px"
+              label.form__label Upload do Arquivo
+              .form__input.form__input--file
+                p.file--name = @file.original_file_filename
+
+              = f.check_box :remove_original_file
+              = f.label :remove_original_file, '&nbsp;'.html_safe, class: 'remove--file--icon'
+
+          .form__row
+            = f.input :title, label: 'Título do Arquivo'
+
+          .form__row
+            = f.input :author, label: 'Nome do Autor'
+
+          .form__row
+            = f.label 'Temas'
+            .checkbox__group
+              = f.association :themes, label: '', as: :check_boxes, collection: Theme.ordered
+
+          .form__row
+            = f.label 'Cursos'
+            .checkbox__group
+              = f.association :courses, label: '', as: :check_boxes, collection: Course.all
+
+          .form__row
+          = f.input :filetype, as: :select, label: 'Tipo de Arquivo', collection: LibraryFile.filetypes, include_blank: 'Selecione o tipo de arquivo', input_html: { class: 'form__select' }
+
+          .form__row
+            = f.input :language, as: :select, label: 'Idioma', collection: LibraryFile.languages, include_blank: 'Selecione o idioma do arquivo', input_html: { class: 'form__select' }
+
+          .form__row
+            = f.input :year, as: :select, label: 'Ano', collection: LibraryFile::YEARS, include_blank: 'Selecione o ano de publicação do arquivo', input_html: { class: 'form__select' }
+
+          .form__row
+            = f.association :territorial_coverages, label: 'Abrangência Territorial', as: :check_boxes, collection: TerritorialCoverage.all
+
+          .form__row
+            = f.association :biomes, label: 'Biomas', as: :check_boxes, collection: Biome.all
